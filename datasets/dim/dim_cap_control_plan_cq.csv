@@ -1,0 +1,11 @@
+﻿Process,Operation,Characteristic,Class,InspectionType,Specification,Method,Equipment,Standard,ISOLevel,AQL,Frequency,LotSize,ISOCode,SampleSize,AcceptanceNumber,RejectionNumber,Owner,ReactionPlan
+Injection Molding,Production,Weight,Major,Variable,Per technical data sheet,Weighing,Scale 0.001 g,ISO 3951,—,—,Every 30 min,Production run,—,10 pieces,—,—,Quality,Adjust Process
+Injection Molding,Production,Height,Major,Variable,Per drawing,Caliper,Caliper,ISO 3951,—,—,Every 1 h,Production run,—,10 pieces,—,—,Quality,Adjust Mold
+Injection Molding,Production,Diameter,Major,Variable,Per drawing,Caliper,Caliper,ISO 3951,—,—,Every 1 h,Production run,—,10 pieces,—,—,Quality,Adjust Mold
+Injection Molding,Production,Torque,Critical,Variable,Per specification,Torque Test,Torque Wrench,ISO 3951,—,—,Per lot,Lot,—,5 pieces,—,—,Laboratory,Adjust Mold
+Injection Molding,Production,Thread,Critical,Attribute,Per drawing,Go/No-Go,Gauge,ISO 2859-1,II,0.1,Per lot,Per lot,Auto,Auto,0,1,Quality,Block Lot
+Injection Molding,Production,Sealing,Critical,Attribute,No leakage,Leak Test,Leak Tester,ISO 2859-1,II,0.1,Per lot,Per lot,Auto,Auto,0,1,Laboratory,Block Lot
+Injection Molding,Production,Flash,Major,Attribute,Absent,Visual,D65 Light Booth,ISO 2859-1,II,0.65,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Machine
+Injection Molding,Production,Short Shot,Major,Attribute,Absent,Visual,D65 Light Booth,ISO 2859-1,II,0.65,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Pressure
+Injection Molding,Production,Stain,Minor,Attribute,Absent,Visual,D65 Light Booth,ISO 2859-1,II,1.5,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Process
+Injection Molding,Production,Color,Minor,Attribute,Standard,Visual,D65 Light Booth,ISO 2859-1,II,1.5,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Quality,Change Masterbatch Lot

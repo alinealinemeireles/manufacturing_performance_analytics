@@ -1,0 +1,133 @@
+﻿ProductId,ProductType,MoldId,BaseMaterial,ColorId,ColorName,PantoneCodeApprox,MasterbatchType,StandardDosagePctMass
+FR-001-HDPE-300,Bottle,M-SOP-001,HDPE,COR-007,Cardinal Red,Pantone 200 C,Red Masterbatch,0.02
+FR-002-HDPE-PCR-300,Bottle,M-SOP-002,HDPE-PCR,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
+FR-001-HDPE-PCR-300,Bottle,M-SOP-001,HDPE-PCR,COR-007,Cardinal Red,Pantone 200 C,Red Masterbatch,0.02
+FR-001-rPET-300,Bottle,M-SOP-001,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-003-rPET-300,Bottle,M-SOP-003,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-004-rPET-330,Bottle,M-SOP-004,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-008-HDPE-350,Bottle,M-SOP-008,HDPE,COR-006,Graphite Gray,Pantone Cool Gray 11,Gray Masterbatch,0.02
+FR-007-HDPE-350,Bottle,M-SOP-007,HDPE,COR-005,Translucent Amber,Pantone 1375 C,Amber Masterbatch,0.015
+FR-009-HDPE-350,Bottle,M-SOP-009,HDPE,COR-007,Cardinal Red,Pantone 200 C,Red Masterbatch,0.02
+FR-008-HDPE-PCR-350,Bottle,M-SOP-008,HDPE-PCR,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
+FR-007-HDPE-PCR-350,Bottle,M-SOP-007,HDPE-PCR,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
+FR-009-HDPE-PCR-350,Bottle,M-SOP-009,HDPE-PCR,COR-005,Translucent Amber,Pantone 1375 C,Amber Masterbatch,0.015
+FR-008-LDPE-350,Bottle,M-SOP-008,LDPE,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+FR-008-PET-350,Bottle,M-SOP-008,PET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-009-PET-350,Bottle,M-SOP-009,PET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-008-PETG-350,Bottle,M-SOP-008,PETG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-007-PETG-350,Bottle,M-SOP-007,PETG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-009-PETG-350,Bottle,M-SOP-009,PETG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-008-PP-350,Bottle,M-SOP-008,PP,COR-004,Emerald Green,Pantone 3415 C,Green Masterbatch,0.02
+FR-007-PP-350,Bottle,M-SOP-007,PP,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+FR-008-PP-PCR-350,Bottle,M-SOP-008,PP-PCR,COR-005,Translucent Amber,Pantone 1375 C,Amber Masterbatch,0.015
+FR-007-PP-PCR-350,Bottle,M-SOP-007,PP-PCR,COR-004,Emerald Green,Pantone 3415 C,Green Masterbatch,0.02
+FR-007-PVC-350,Bottle,M-SOP-007,PVC,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-008-rPET-350,Bottle,M-SOP-008,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-007-rPET-350,Bottle,M-SOP-007,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-009-rPET-350,Bottle,M-SOP-009,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-010-PET-400,Bottle,M-SOP-010,PET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-014-HDPE-500,Bottle,M-SOP-014,HDPE,COR-005,Translucent Amber,Pantone 1375 C,Amber Masterbatch,0.015
+FR-013-HDPE-500,Bottle,M-SOP-013,HDPE,COR-006,Graphite Gray,Pantone Cool Gray 11,Gray Masterbatch,0.02
+FR-015-HDPE-500,Bottle,M-SOP-015,HDPE,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
+FR-014-HDPE-PCR-500,Bottle,M-SOP-014,HDPE-PCR,COR-006,Graphite Gray,Pantone Cool Gray 11,Gray Masterbatch,0.02
+FR-013-HDPE-PCR-500,Bottle,M-SOP-013,HDPE-PCR,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
+FR-015-HDPE-PCR-500,Bottle,M-SOP-015,HDPE-PCR,COR-004,Emerald Green,Pantone 3415 C,Green Masterbatch,0.02
+FR-013-LDPE-500,Bottle,M-SOP-013,LDPE,COR-006,Graphite Gray,Pantone Cool Gray 11,Gray Masterbatch,0.02
+FR-013-MDPE-500,Bottle,M-SOP-013,MDPE,COR-002,Matte Black,Pantone Black 6,Black Masterbatch (Carbon Black),0.02
+FR-013-PET-500,Bottle,M-SOP-013,PET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-014-PETG-500,Bottle,M-SOP-014,PETG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-015-PETG-500,Bottle,M-SOP-015,PETG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-014-PP-500,Bottle,M-SOP-014,PP,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+FR-013-PP-500,Bottle,M-SOP-013,PP,COR-002,Matte Black,Pantone Black 6,Black Masterbatch (Carbon Black),0.02
+FR-014-PP-PCR-500,Bottle,M-SOP-014,PP-PCR,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
+FR-013-PP-PCR-500,Bottle,M-SOP-013,PP-PCR,COR-005,Translucent Amber,Pantone 1375 C,Amber Masterbatch,0.015
+FR-013-PVC-500,Bottle,M-SOP-013,PVC,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-014-rPET-500,Bottle,M-SOP-014,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-013-rPET-500,Bottle,M-SOP-013,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-015-rPET-500,Bottle,M-SOP-015,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-018-HDPE-600,Bottle,M-SOP-018,HDPE,COR-005,Translucent Amber,Pantone 1375 C,Amber Masterbatch,0.015
+FR-017-HDPE-600,Bottle,M-SOP-017,HDPE,COR-006,Graphite Gray,Pantone Cool Gray 11,Gray Masterbatch,0.02
+FR-019-HDPE-600,Bottle,M-SOP-019,HDPE,COR-007,Cardinal Red,Pantone 200 C,Red Masterbatch,0.02
+FR-018-HDPE-PCR-600,Bottle,M-SOP-018,HDPE-PCR,COR-005,Translucent Amber,Pantone 1375 C,Amber Masterbatch,0.015
+FR-017-HDPE-PCR-600,Bottle,M-SOP-017,HDPE-PCR,COR-007,Cardinal Red,Pantone 200 C,Red Masterbatch,0.02
+FR-018-LDPE-600,Bottle,M-SOP-018,LDPE,COR-007,Cardinal Red,Pantone 200 C,Red Masterbatch,0.02
+FR-018-MDPE-600,Bottle,M-SOP-018,MDPE,COR-004,Emerald Green,Pantone 3415 C,Green Masterbatch,0.02
+FR-018-PET-600,Bottle,M-SOP-018,PET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-019-PET-600,Bottle,M-SOP-019,PET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-018-PETG-600,Bottle,M-SOP-018,PETG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-018-PP-600,Bottle,M-SOP-018,PP,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+FR-017-PP-600,Bottle,M-SOP-017,PP,COR-007,Cardinal Red,Pantone 200 C,Red Masterbatch,0.02
+FR-018-PP-PCR-600,Bottle,M-SOP-018,PP-PCR,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+FR-017-PP-PCR-600,Bottle,M-SOP-017,PP-PCR,COR-002,Matte Black,Pantone Black 6,Black Masterbatch (Carbon Black),0.02
+FR-018-rPET-600,Bottle,M-SOP-018,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-017-rPET-600,Bottle,M-SOP-017,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-019-rPET-600,Bottle,M-SOP-019,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-020-HDPE-750,Bottle,M-SOP-020,HDPE,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+FR-019-HDPE-750,Bottle,M-SOP-019,HDPE,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+FR-021-HDPE-750,Bottle,M-SOP-021,HDPE,COR-005,Translucent Amber,Pantone 1375 C,Amber Masterbatch,0.015
+FR-020-HDPE-PCR-750,Bottle,M-SOP-020,HDPE-PCR,COR-004,Emerald Green,Pantone 3415 C,Green Masterbatch,0.02
+FR-019-HDPE-PCR-750,Bottle,M-SOP-019,HDPE-PCR,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+FR-019-MDPE-750,Bottle,M-SOP-019,MDPE,COR-006,Graphite Gray,Pantone Cool Gray 11,Gray Masterbatch,0.02
+FR-020-PET-750,Bottle,M-SOP-020,PET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-019-PET-750,Bottle,M-SOP-019,PET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-019-PETG-750,Bottle,M-SOP-019,PETG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-020-PP-750,Bottle,M-SOP-020,PP,COR-002,Matte Black,Pantone Black 6,Black Masterbatch (Carbon Black),0.02
+FR-019-PP-750,Bottle,M-SOP-019,PP,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+FR-020-PP-PCR-750,Bottle,M-SOP-020,PP-PCR,COR-005,Translucent Amber,Pantone 1375 C,Amber Masterbatch,0.015
+FR-019-PVC-750,Bottle,M-SOP-019,PVC,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-020-rPET-750,Bottle,M-SOP-020,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-019-rPET-750,Bottle,M-SOP-019,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-021-rPET-750,Bottle,M-SOP-021,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-022-HDPE-1000,Bottle,M-SOP-022,HDPE,COR-002,Matte Black,Pantone Black 6,Black Masterbatch (Carbon Black),0.02
+FR-023-HDPE-1000,Bottle,M-SOP-023,HDPE,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+FR-022-HDPE-PCR-1000,Bottle,M-SOP-022,HDPE-PCR,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
+FR-022-MDPE-1000,Bottle,M-SOP-022,MDPE,COR-006,Graphite Gray,Pantone Cool Gray 11,Gray Masterbatch,0.02
+FR-025-PET-1000,Bottle,M-SOP-025,PET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-024-PET-1000,Bottle,M-SOP-024,PET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-022-PET-1000,Bottle,M-SOP-022,PET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-022-PETG-1000,Bottle,M-SOP-022,PETG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-022-PP-1000,Bottle,M-SOP-022,PP,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+FR-022-PP-PCR-1000,Bottle,M-SOP-022,PP-PCR,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
+FR-022-PVC-1000,Bottle,M-SOP-022,PVC,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-022-rPET-1000,Bottle,M-SOP-022,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-023-rPET-1000,Bottle,M-SOP-023,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-026-HDPE-4000,Bottle,M-SOP-026,HDPE,COR-004,Emerald Green,Pantone 3415 C,Green Masterbatch,0.02
+FR-027-HDPE-5000,Bottle,M-SOP-027,HDPE,COR-007,Cardinal Red,Pantone 200 C,Red Masterbatch,0.02
+FR-028-HDPE-5000,Bottle,M-SOP-028,HDPE,COR-002,Matte Black,Pantone Black 6,Black Masterbatch (Carbon Black),0.02
+FR-029-MDPE-5000,Bottle,M-SOP-029,MDPE,COR-007,Cardinal Red,Pantone 200 C,Red Masterbatch,0.02
+FR-005-rPET-330,Bottle,M-SOP-005,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-006-rPET-330,Bottle,M-SOP-006,rPET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-011-PET-400,Bottle,M-SOP-011,PET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-012-PET-400,Bottle,M-SOP-012,PET,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+FR-016-HDPE-600,Bottle,M-SOP-016,HDPE,COR-002,Matte Black,Pantone Black 6,Black Masterbatch (Carbon Black),0.02
+TR-001-HDPE-24410,Cap,M-INJ-001,HDPE,COR-007,Cardinal Red,Pantone 200 C,Red Masterbatch,0.02
+TR-001-PP-24410,Cap,M-INJ-001,PP,COR-005,Translucent Amber,Pantone 1375 C,Amber Masterbatch,0.015
+TR-001-PP-PCR-24410,Cap,M-INJ-001,PP-PCR,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+TR-001-PETG-24410,Cap,M-INJ-001,PETG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+TR-002-HDPE-24410,Cap,M-INJ-002,HDPE,COR-005,Translucent Amber,Pantone 1375 C,Amber Masterbatch,0.015
+TR-002-PP-24410,Cap,M-INJ-002,PP,COR-004,Emerald Green,Pantone 3415 C,Green Masterbatch,0.02
+TR-002-PP-PCR-24410,Cap,M-INJ-002,PP-PCR,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+TR-002-PETG-24410,Cap,M-INJ-002,PETG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+TR-003-HDPE-24415,Cap,M-INJ-003,HDPE,COR-007,Cardinal Red,Pantone 200 C,Red Masterbatch,0.02
+TR-003-PP-24415,Cap,M-INJ-003,PP,COR-004,Emerald Green,Pantone 3415 C,Green Masterbatch,0.02
+TR-003-PP-PCR-24415,Cap,M-INJ-003,PP-PCR,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
+TR-003-PETG-24415,Cap,M-INJ-003,PETG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+TR-004-HDPE-28410,Cap,M-INJ-004,HDPE,COR-004,Emerald Green,Pantone 3415 C,Green Masterbatch,0.02
+TR-004-PP-28410,Cap,M-INJ-004,PP,COR-006,Graphite Gray,Pantone Cool Gray 11,Gray Masterbatch,0.02
+TR-004-PP-PCR-28410,Cap,M-INJ-004,PP-PCR,COR-007,Cardinal Red,Pantone 200 C,Red Masterbatch,0.02
+TR-004-PETG-28410,Cap,M-INJ-004,PETG,COR-008,Natural (Uncolored),—,No Masterbatch,0.0
+TF-005-PP-24410,Cap,M-INJ-005,PP,COR-006,Graphite Gray,Pantone Cool Gray 11,Gray Masterbatch,0.02
+TF-005-PP-PCR-24410,Cap,M-INJ-005,PP-PCR,COR-004,Emerald Green,Pantone 3415 C,Green Masterbatch,0.02
+TF-005-HDPE-24410,Cap,M-INJ-005,HDPE,COR-004,Emerald Green,Pantone 3415 C,Green Masterbatch,0.02
+TF-006-PP-24415,Cap,M-INJ-006,PP,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
+TF-006-PP-PCR-24415,Cap,M-INJ-006,PP-PCR,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025
+TF-006-HDPE-24415,Cap,M-INJ-006,HDPE,COR-002,Matte Black,Pantone Black 6,Black Masterbatch (Carbon Black),0.02
+TF-007-PP-28410,Cap,M-INJ-007,PP,COR-002,Matte Black,Pantone Black 6,Black Masterbatch (Carbon Black),0.02
+TF-007-PP-PCR-28410,Cap,M-INJ-007,PP-PCR,COR-007,Cardinal Red,Pantone 200 C,Red Masterbatch,0.02
+TF-007-HDPE-28410,Cap,M-INJ-007,HDPE,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
+TF-008-PP-28410,Cap,M-INJ-008,PP,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
+TF-008-PP-PCR-28410,Cap,M-INJ-008,PP-PCR,COR-006,Graphite Gray,Pantone Cool Gray 11,Gray Masterbatch,0.02
+TF-008-HDPE-28410,Cap,M-INJ-008,HDPE,COR-004,Emerald Green,Pantone 3415 C,Green Masterbatch,0.02
+TF-009-PP-28415,Cap,M-INJ-009,PP,COR-005,Translucent Amber,Pantone 1375 C,Amber Masterbatch,0.015
+TF-009-PP-PCR-28415,Cap,M-INJ-009,PP-PCR,COR-003,Cobalt Blue,Pantone 2145 C,Blue Masterbatch,0.02
+TF-009-HDPE-28415,Cap,M-INJ-009,HDPE,COR-001,Opaque White,Pantone White,White Masterbatch (TiO2),0.025

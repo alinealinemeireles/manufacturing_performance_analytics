@@ -1,0 +1,9 @@
+﻿Process,Operation,Characteristic,Class,InspectionType,Specification,Method,Equipment,Standard,ISOLevel,AQL,Frequency,LotSize,ISOCode,SampleSize,AcceptanceNumber,RejectionNumber,Owner,ReactionPlan
+Screen Printing,Production,Registration,Critical,Attribute,Position per gauge,Visual,Registration Gauge,ISO 2859-1,II,0.65,Setup + 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Screen
+Screen Printing,Production,Centering,Critical,Attribute,Centered ±1 mm,Visual,Registration Gauge,ISO 2859-1,II,0.65,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Registration
+Screen Printing,Production,Coverage,Major,Attribute,100% printed area,Visual,D65 Light Booth,ISO 2859-1,II,0.65,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Ink/Pressure
+Screen Printing,Production,Color,Minor,Attribute,ΔE ≤ 1.5 vs standard,Colorimeter,Colorimeter,ISO 2859-1,II,1.5,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Quality,Adjust Ink Formula
+Screen Printing,Production,Smudge,Minor,Attribute,Absent,Visual,D65 Light Booth,ISO 2859-1,II,1.5,Continuous,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Speed
+Screen Printing,Production,Pinholes,Minor,Attribute,Absent,Visual,Lupa 10x,ISO 2859-1,II,1.5,Continuous,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Clean Screen
+Screen Printing,Production,Adhesion,Critical,Attribute,Class ≥ 4B (ASTM D3359),Cross Hatch,ASTM D3359 Kit,ISO 2859-1,II,0.1,Per lot,3 samples,—,3,0,1,Laboratory,Block Lot
+Screen Printing,Production,Cure,Critical,Attribute,No removal after 50 rubs,MEK Rub Test,MEK Rub Test,ISO 2859-1,II,0.1,Per lot,3 samples,—,3,0,1,Laboratory,Reprocess (UV Re-cure)

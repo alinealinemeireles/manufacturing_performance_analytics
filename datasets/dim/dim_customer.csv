@@ -1,0 +1,15 @@
+﻿CustomerId,CustomerName,City,Segment,CustomerTier,State,Country,Region
+CUST-001,Bella Vitta Cosmeticos Ltda,Curitiba,Skincare,Large,PR,Brazil,Curitiba Metropolitan Area
+CUST-002,Araucaria Fragrances Ind.,Araucaria,Fragrance,Large,PR,Brazil,Curitiba Metropolitan Area
+CUST-003,Pinhais Personal Care S.A.,Pinhais,Personal Hygiene,Medium,PR,Brazil,Curitiba Metropolitan Area
+CUST-004,CIC Cosmeticos Industrial,Curitiba,Haircare,Large,PR,Brazil,Curitiba Metropolitan Area
+CUST-005,Colombo Beauty Labs,Colombo,Color Cosmetics,Medium,PR,Brazil,Curitiba Metropolitan Area
+CUST-006,Serra Verde Cosmeticos,Curitiba,Skincare,Medium,PR,Brazil,Curitiba Metropolitan Area
+CUST-007,Grupo Iguacu Higiene Pessoal,Sao Jose dos Pinhais,Personal Hygiene,Large,PR,Brazil,Curitiba Metropolitan Area
+CUST-008,NaturAllure Cosmeticos Ltda,Curitiba,Skincare,Medium,PR,Brazil,Curitiba Metropolitan Area
+CUST-009,Campo Largo Skincare Ind.,Campo Largo,Skincare,Small,PR,Brazil,Curitiba Metropolitan Area
+CUST-010,Fazenda Rio Grande Fragrancias,Fazenda Rio Grande,Fragrance,Small,PR,Brazil,Curitiba Metropolitan Area
+CUST-011,Pura Essencia Cosmeticos,Curitiba,Fragrance,Medium,PR,Brazil,Curitiba Metropolitan Area
+CUST-012,Tamandare Higiene e Beleza,Almirante Tamandare,Personal Hygiene,Small,PR,Brazil,Curitiba Metropolitan Area
+CUST-013,Piraquara Baby Care Ltda,Piraquara,Baby Care,Small,PR,Brazil,Curitiba Metropolitan Area
+CUST-014,Boqueirao Color Cosmetics,Curitiba,Color Cosmetics,Medium,PR,Brazil,Curitiba Metropolitan Area

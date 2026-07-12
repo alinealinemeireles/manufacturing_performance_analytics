@@ -1,0 +1,14 @@
+﻿Process,Operation,Characteristic,Class,InspectionType,Specification,Method,Equipment,Standard,ISOLevel,AQL,Frequency,LotSize,ISOCode,SampleSize,AcceptanceNumber,RejectionNumber,Owner,ReactionPlan
+Blow Molding,Production,Weight,Major,Variable,Per technical data sheet,Weighing,Scale 0.01 g,ISO 3951,—,—,Every 30 min,Production run (30min),—,5 pieces,—,—,Quality,Adjust Parameters
+Blow Molding,Production,Height,Major,Variable,Per drawing,Caliper,Caliper,ISO 3951,—,—,Every 1 h,Production run (1h),—,5 pieces,—,—,Quality,Adjust Mold
+Blow Molding,Production,Neck Diameter,Critical,Variable,Per drawing,Go/No-Go,Gauge,ISO 3951,—,—,Every 1 h,Production run (1h),—,5 pieces,—,—,Quality,Block Lot
+Blow Molding,Production,Thickness,Major,Variable,Per technical data sheet,Ultrasound,Thickness Gauge,ISO 3951,—,—,Every 2 h,Production run (2h),—,5 pieces,—,—,Quality,Adjust Process
+Blow Molding,Production,Overflow Volume,Major,Variable,Per technical data sheet,Fill Test,Graduated Cylinder,ISO 3951,—,—,Per lot,Lot,—,3 pieces,—,—,Laboratory,Block Lot
+Blow Molding,Production,Leakage,Critical,Attribute,No leakage,Leak Test,Leak Tester,ISO 2859-1,II,0.1,Per lot,Per lot,Auto,Auto,0,1,Laboratory,Block Lot
+Blow Molding,Production,Flash,Major,Attribute,Absent,Visual,D65 Light Booth,ISO 2859-1,II,0.65,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Mold
+Blow Molding,Production,Bubbles,Major,Attribute,Absent,Visual,D65 Light Booth,ISO 2859-1,II,0.65,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Segregate
+Blow Molding,Production,Black Specks,Minor,Attribute,≤1 per piece,Visual,D65 Light Booth,ISO 2859-1,II,1.5,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Cleaning
+Blow Molding,Production,Stain,Minor,Attribute,Absent,Visual,D65 Light Booth,ISO 2859-1,II,1.5,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Process
+Blow Molding,Production,Transparency,Minor,Attribute,Per standard sample,Visual,D65 Light Booth,ISO 2859-1,II,1.5,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Quality,Adjust Raw Material
+Blow Molding,Production,Color,Minor,Attribute,Master standard,Visual,D65 Light Booth,ISO 2859-1,II,1.5,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Quality,Adjust Masterbatch
+Blow Molding,Production,Burr,Major,Attribute,Absent,Visual,D65 Light Booth,ISO 2859-1,II,0.65,Every 30 min,Per lot,Auto,Auto,ver tabela,ver tabela,Operator,Adjust Closure
