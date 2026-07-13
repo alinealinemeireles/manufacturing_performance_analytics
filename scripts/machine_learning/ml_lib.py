@@ -1,9 +1,9 @@
 """
 ml_lib.py
 
-Shared helper functions for the 4 ML notebooks (09-12) -- same idea as
-etl_lib.py, just for the modeling side: splitting data properly,
-evaluating models, saving/loading them.
+Helper functions used by the 4 Machine Learning notebooks (09-12) --
+same idea as etl_lib.py, but for the modeling side: splitting data
+correctly, evaluating the model, saving/loading it.
 """
 from __future__ import annotations
 import numpy as np
@@ -16,84 +16,97 @@ from sklearn.metrics import (
 )
 
 # ---------------------------------------------------------------------------
-# 1. SPLITTING DATA
+# 1. SPLITTING THE DATA (train/test)
 # ---------------------------------------------------------------------------
 
-def time_based_split(df: pd.DataFrame, date_col: str, test_frac: float = 0.2):
-    """Splits by date instead of randomly -- oldest rows go to train, most
-    recent rows go to test.
+def split_by_date(df: pd.DataFrame, date_column: str, test_fraction: float = 0.2):
+    """Splits the data by date instead of randomly -- the oldest rows go
+    to training, the most recent rows go to testing.
 
-    I almost used a normal random train_test_split at first, but that's
-    wrong for this kind of data: if you shuffle rows before splitting,
-    the model can accidentally "see" things from the future while
-    training (like a machine failure next week helping it guess a
-    failure last week), which makes it look way more accurate than it
-    would actually be once deployed. Splitting by date avoids that.
+    I first thought about using a plain random train/test split, but
+    that's wrong for this kind of data: if I shuffle the rows before
+    splitting, the model could end up "seeing" information from the
+    future during training (like a machine failure next week helping it
+    guess a failure from last week), which makes it look far more
+    accurate than it would actually be in practice. Splitting by date
+    avoids that.
     """
-    df_sorted = df.sort_values(date_col).reset_index(drop=True)
-    cutoff = int(len(df_sorted) * (1 - test_frac))
-    return df_sorted.iloc[:cutoff].copy(), df_sorted.iloc[cutoff:].copy()
+    sorted_df = df.sort_values(date_column).reset_index(drop=True)
+    cutoff = int(len(sorted_df) * (1 - test_fraction))
+    train = sorted_df.iloc[:cutoff].copy()
+    test = sorted_df.iloc[cutoff:].copy()
+    return train, test
 
 
 # ---------------------------------------------------------------------------
-# 2. REGRESSION METRICS
+# 2. REGRESSION METRICS (when the target is a number, like a quantity)
 # ---------------------------------------------------------------------------
 
 def regression_metrics(y_true, y_pred) -> dict:
-    """MAE/RMSE in the same units as the target (easy to compare against
-    the target's average to see if the error is big or small), MAPE as a
-    percentage, and R2 for how much better than just guessing the mean."""
+    """MAE/RMSE in the same unit as the target (easy to compare against
+    the target's average to see if the error is big or small), MAPE as
+    a percentage, and R2 to know how much better the model is than just
+    guessing the average."""
     y_true = np.asarray(y_true, dtype=float)
     y_pred = np.asarray(y_pred, dtype=float)
+
     mae = mean_absolute_error(y_true, y_pred)
     rmse = np.sqrt(mean_squared_error(y_true, y_pred))
+
     nonzero = y_true != 0
-    mape = np.mean(np.abs((y_true[nonzero] - y_pred[nonzero]) / y_true[nonzero])) * 100 if nonzero.any() else np.nan
+    if nonzero.any():
+        mape = np.mean(np.abs((y_true[nonzero] - y_pred[nonzero]) / y_true[nonzero])) * 100
+    else:
+        mape = np.nan
+
     r2 = r2_score(y_true, y_pred)
+
     return {"MAE": mae, "RMSE": rmse, "MAPE_%": mape, "R2": r2}
 
 
 # ---------------------------------------------------------------------------
-# 3. CLASSIFICATION METRICS
+# 3. CLASSIFICATION METRICS (when the target is yes/no)
 # ---------------------------------------------------------------------------
 
-def classification_metrics(y_true, y_pred, y_proba=None) -> dict:
-    """Accuracy alone is misleading here since the "yes" class is rare in
-    all 3 classifiers I built (lot rejections, failures etc. are like
-    5-40% of the data depending on the model) -- a model that just
-    predicts "no" every time would score high on accuracy and be
-    completely useless. So I always look at precision/recall/F1 too, and
-    ROC-AUC if I have probabilities."""
+def classification_metrics(y_true, y_pred, probability=None) -> dict:
+    """Accuracy alone is misleading here, because the "yes" class is
+    rare in every classifier in this project (lot rejections, machine
+    failures etc. are around 5%-40% of the data, depending on the
+    model) -- a model that always predicts "no" would score high on
+    accuracy and be completely useless. So I always look at
+    precision/recall/F1 too, and ROC-AUC when I have a probability."""
     metrics = {
         "Accuracy": accuracy_score(y_true, y_pred),
         "Precision": precision_score(y_true, y_pred, zero_division=0),
         "Recall": recall_score(y_true, y_pred, zero_division=0),
         "F1": f1_score(y_true, y_pred, zero_division=0),
     }
-    if y_proba is not None:
+    if probability is not None:
         try:
-            metrics["ROC_AUC"] = roc_auc_score(y_true, y_proba)
+            metrics["ROC_AUC"] = roc_auc_score(y_true, probability)
         except ValueError:
             metrics["ROC_AUC"] = np.nan
     return metrics
 
 
-def print_classification_report(y_true, y_pred, target_names=("Negative", "Positive")):
-    print(classification_report(y_true, y_pred, target_names=list(target_names), zero_division=0))
-    print("Confusion matrix (rows=actual, cols=predicted):")
-    print(pd.DataFrame(confusion_matrix(y_true, y_pred),
-                        index=[f"Actual {n}" for n in target_names],
-                        columns=[f"Predicted {n}" for n in target_names]))
+def show_classification_report(y_true, y_pred, class_names=("Negative", "Positive")):
+    print(classification_report(y_true, y_pred, target_names=list(class_names), zero_division=0))
+    print("Confusion matrix (rows=actual, columns=predicted):")
+    print(pd.DataFrame(
+        confusion_matrix(y_true, y_pred),
+        index=[f"Actual {n}" for n in class_names],
+        columns=[f"Predicted {n}" for n in class_names],
+    ))
 
 
 # ---------------------------------------------------------------------------
-# 4. SAVING/LOADING MODELS
+# 4. SAVING / LOADING MODELS
 # ---------------------------------------------------------------------------
 
 def save_model(model, path: str, **metadata):
-    """Saves the model plus some extra info (feature names, metrics) in
-    the same pickle, so I can open it again later and remember what it
-    actually was without digging through old notebook output."""
+    """Saves the model along with some extra information (feature
+    names, metrics) in the same file, so I can open it again later and
+    remember what it was without digging through an old notebook."""
     joblib.dump({"model": model, "metadata": metadata}, path)
 
 
