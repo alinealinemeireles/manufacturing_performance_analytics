@@ -74,8 +74,7 @@ CREATE TABLE IF NOT EXISTS `fact_material_consumption_processed` (
   `ISOWeekday` BIGINT,
   `ShiftNumber` BIGINT,
   `MaterialLotSeq` BIGINT,
-  `LotIdStart` VARCHAR(20),
-  `LotIdEnd` VARCHAR(20)
+  `LotIdStart` VARCHAR(20)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `fact_production_plan_processed` (
@@ -500,6 +499,32 @@ CREATE TABLE IF NOT EXISTS `ml_predictions_production_forecast_history` (
   `Process` VARCHAR(34),
   `ActualProducedQty` BIGINT,
   `PredictedProducedQty` DOUBLE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `ml_predictions_downtime_forecast` (
+  `Process` VARCHAR(34),
+  `ForecastedDowntimeHours` BIGINT,
+  `GeneratedFrom` VARCHAR(20)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `ml_predictions_downtime_forecast_history` (
+  `WeekStart` VARCHAR(20),
+  `Process` VARCHAR(34),
+  `ActualDowntimeHours` BIGINT,
+  `PredictedDowntimeHours` DOUBLE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `ml_predictions_rejected_forecast` (
+  `Process` VARCHAR(34),
+  `ForecastedRejectedQty` BIGINT,
+  `GeneratedFrom` VARCHAR(20)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `ml_predictions_rejected_forecast_history` (
+  `WeekStart` VARCHAR(20),
+  `Process` VARCHAR(34),
+  `ActualRejectedQty` BIGINT,
+  `PredictedRejectedQty` DOUBLE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `ml_predictions_scrap_rate` (
