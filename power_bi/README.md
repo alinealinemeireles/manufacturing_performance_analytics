@@ -1,5 +1,12 @@
 # Power BI
 
+> **Note on AI usage:** the Power BI dashboard build (DAX measures, table
+> relationships, and verification of the model's semantic logic) was
+> supported by Claude (Anthropic) as an assistance tool. The AI was used
+> to validate the links between views/tables, review DAX formulas, and
+> help detect inconsistencies in the model -- all final modeling, data,
+> and design decisions were reviewed and validated by me.
+
 Drop the `.pbix` dashboard file(s) built on top of this project's MySQL
 views here.
 
