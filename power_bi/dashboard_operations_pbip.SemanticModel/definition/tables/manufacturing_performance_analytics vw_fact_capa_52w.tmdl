@@ -1,0 +1,161 @@
+table 'manufacturing_performance_analytics vw_fact_capa_52w'
+	lineageTag: 836978d3-3943-4a67-98bd-5cde11ccb875
+
+	column CAPAId
+		dataType: string
+		lineageTag: 993821c9-824c-493c-b3c1-5e3ab59eb44b
+		summarizeBy: none
+		sourceColumn: CAPAId
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpenDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3dfc585e-dcba-443d-9ffa-cb1f3b78aec0
+		summarizeBy: none
+		sourceColumn: OpenDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DueDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e4084ae2-97ac-4efa-8800-7b733aafd150
+		summarizeBy: none
+		sourceColumn: DueDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CloseDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 783effcc-26ca-46e0-854a-71b855b70cd9
+		summarizeBy: none
+		sourceColumn: CloseDate
+
+		variation Variação
+			isDefault
+			relationship: e73fce1e-dbab-4cc3-a529-ef2cb0318237
+			defaultHierarchy: LocalDateTable_4e814fb7-4188-4b68-b865-16c551e9153b.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Status
+		dataType: string
+		lineageTag: 443ab0da-5841-49bd-9fd3-314314f060eb
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column CAPAType
+		dataType: string
+		lineageTag: 8521c58d-e437-40e1-8892-2f0db5cc50b7
+		summarizeBy: none
+		sourceColumn: CAPAType
+
+		annotation SummarizationSetBy = Automatic
+
+	column RelatedNCId
+		dataType: string
+		lineageTag: 7927ced4-1e70-48ec-aa68-ce170bfea83a
+		summarizeBy: none
+		sourceColumn: RelatedNCId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area
+		dataType: string
+		lineageTag: aa740f25-9232-485b-86ba-dbe9755c3bc1
+		summarizeBy: none
+		sourceColumn: Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column Process
+		dataType: string
+		lineageTag: da5f482b-4a1d-4836-9e2c-bbfa6ea806a1
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column Severity
+		dataType: string
+		lineageTag: 09efefa4-362d-4fc2-82bb-cc073ae6dbf1
+		summarizeBy: none
+		sourceColumn: Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column RootCauseCategory
+		dataType: string
+		lineageTag: f23e0297-fd10-463f-a7ee-d3274d808833
+		summarizeBy: none
+		sourceColumn: RootCauseCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column Owner
+		dataType: string
+		lineageTag: 09ee775c-4301-49b6-b370-5ecf53038db9
+		summarizeBy: none
+		sourceColumn: Owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column EffectivenessCheck
+		dataType: string
+		lineageTag: 9bdef79a-e103-4442-9d95-a299b14bbba8
+		summarizeBy: none
+		sourceColumn: EffectivenessCheck
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpenMonth
+		dataType: string
+		lineageTag: 24d57688-a433-4212-bdd5-87944d70bca8
+		summarizeBy: none
+		sourceColumn: OpenMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClosureDays
+		dataType: double
+		lineageTag: 9f9604de-775a-4292-89ed-77b90b8993ee
+		summarizeBy: sum
+		sourceColumn: ClosureDays
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IsOverdue
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f1e12925-0297-4f4e-bfd3-98e3b47b3f87
+		summarizeBy: none
+		sourceColumn: IsOverdue
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics vw_fact_capa_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_capa_52w"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,90 @@
+table 'manufacturing_performance_analytics dim_masterbatch'
+	lineageTag: 29f1a1e9-7ac4-4ded-95ae-e918309172c7
+
+	column ProductId
+		dataType: string
+		lineageTag: 144eb58e-cc5f-4b12-9e8a-a19d59f7e779
+		summarizeBy: none
+		sourceColumn: ProductId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductType
+		dataType: string
+		lineageTag: 34bad2d8-e40d-4e97-ae4d-9bcab29c0ede
+		summarizeBy: none
+		sourceColumn: ProductType
+
+		annotation SummarizationSetBy = Automatic
+
+	column MoldId
+		dataType: string
+		lineageTag: 60f6a7ad-31a0-4c99-8d4b-436e26ca9c29
+		summarizeBy: none
+		sourceColumn: MoldId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BaseMaterial
+		dataType: string
+		lineageTag: bda90433-64e1-4661-ad78-d35830879028
+		summarizeBy: none
+		sourceColumn: BaseMaterial
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorId
+		dataType: string
+		lineageTag: f029424e-66b1-4ea6-bb75-fd1bde609dd2
+		summarizeBy: none
+		sourceColumn: ColorId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorName
+		dataType: string
+		lineageTag: f07b9fe6-e4ce-4f1a-b6ec-232420795084
+		summarizeBy: none
+		sourceColumn: ColorName
+
+		annotation SummarizationSetBy = Automatic
+
+	column PantoneCodeApprox
+		dataType: string
+		lineageTag: 54ba7083-1ee2-4d5d-b892-50f3c48c1785
+		summarizeBy: none
+		sourceColumn: PantoneCodeApprox
+
+		annotation SummarizationSetBy = Automatic
+
+	column MasterbatchType
+		dataType: string
+		lineageTag: fbfd2eda-965f-4faa-a26f-0e9c187e38f6
+		summarizeBy: none
+		sourceColumn: MasterbatchType
+
+		annotation SummarizationSetBy = Automatic
+
+	column StandardDosagePctMass
+		dataType: double
+		lineageTag: 5a1aec34-6fad-4de3-a2fa-11babb8c1617
+		summarizeBy: sum
+		sourceColumn: StandardDosagePctMass
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'manufacturing_performance_analytics dim_masterbatch' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "dim_masterbatch"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

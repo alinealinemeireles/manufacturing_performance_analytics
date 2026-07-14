@@ -1,0 +1,150 @@
+table 'manufacturing_performance_analytics dim_cap'
+	lineageTag: 3b57d549-5eba-4d74-9c49-0c4f00c3713b
+
+	column CapId
+		dataType: string
+		lineageTag: 9dc37968-d882-4d01-b8f1-fed32f3c474f
+		summarizeBy: none
+		sourceColumn: CapId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItemDescription
+		dataType: string
+		lineageTag: 16ba28b0-bff5-4742-862a-8987de9cda99
+		summarizeBy: none
+		sourceColumn: ItemDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpeningType
+		dataType: string
+		lineageTag: cef61c95-d047-44c8-8aa0-cc0db61c3020
+		summarizeBy: none
+		sourceColumn: OpeningType
+
+		annotation SummarizationSetBy = Automatic
+
+	column MoldId
+		dataType: string
+		lineageTag: 9a683c2a-80bf-4bf9-9e39-b771b81c00de
+		summarizeBy: none
+		sourceColumn: MoldId
+
+		annotation SummarizationSetBy = Automatic
+
+	column OuterDiameterMm
+		dataType: int64
+		formatString: 0
+		lineageTag: f6acf07e-ded9-4aac-99e2-f63278e3e9af
+		summarizeBy: sum
+		sourceColumn: OuterDiameterMm
+
+		annotation SummarizationSetBy = Automatic
+
+	column HeightMm
+		dataType: int64
+		formatString: 0
+		lineageTag: 8956afbb-e26d-4c26-af6a-4b06306311b0
+		summarizeBy: sum
+		sourceColumn: HeightMm
+
+		annotation SummarizationSetBy = Automatic
+
+	column Material
+		dataType: string
+		lineageTag: 95523f68-8689-41c3-9bd3-4af320d990f2
+		summarizeBy: none
+		sourceColumn: Material
+
+		annotation SummarizationSetBy = Automatic
+
+	column MinWeightG
+		dataType: double
+		lineageTag: 6d87bfeb-2ee0-471a-9c28-9c3af16ed18f
+		summarizeBy: sum
+		sourceColumn: MinWeightG
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MaxWeightG
+		dataType: double
+		lineageTag: 78e4b1fd-88a5-4144-b85f-4c17a7c63c6d
+		summarizeBy: sum
+		sourceColumn: MaxWeightG
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MinThicknessMm
+		dataType: double
+		lineageTag: a011b38b-c96b-459c-b264-f03d3eab0391
+		summarizeBy: sum
+		sourceColumn: MinThicknessMm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MaxThicknessMm
+		dataType: double
+		lineageTag: 5f4a5c3c-d5e0-4236-9b65-0b41d5311e0b
+		summarizeBy: sum
+		sourceColumn: MaxThicknessMm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThreadType
+		dataType: string
+		lineageTag: e4ba14c4-e963-4c47-ad0d-3d7785248fbf
+		summarizeBy: none
+		sourceColumn: ThreadType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThreadDiameterMm
+		dataType: int64
+		formatString: 0
+		lineageTag: e55fa04f-46a2-46de-b50b-24a67b37fd3a
+		summarizeBy: sum
+		sourceColumn: ThreadDiameterMm
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiodaRosca
+		dataType: int64
+		formatString: 0
+		lineageTag: 21f4e6d1-fc23-4a35-81e7-434159c4138a
+		summarizeBy: sum
+		sourceColumn: FiodaRosca
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThreadFinish
+		dataType: string
+		lineageTag: 4a0d8807-68e1-4d33-8ec5-69db811fd2fe
+		summarizeBy: none
+		sourceColumn: ThreadFinish
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics dim_cap' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "dim_cap"]}[Data],
+				    #"Valor Substituído" = Table.ReplaceValue(#"Navegação 1","Tampa rosca comum","Screw Cap",Replacer.ReplaceText,{"ItemDescription"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","Tampa","Cap",Replacer.ReplaceText,{"ItemDescription"})
+				in
+				  #"Valor Substituído1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

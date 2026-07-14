@@ -1,0 +1,170 @@
+table 'manufacturing_performance_analytics dim_ink_control_plan_cq'
+	lineageTag: b383225f-2a38-449e-8fd5-91acd19bf193
+
+	column Process
+		dataType: string
+		lineageTag: 1fa0a539-59fd-43c3-a693-8f0e42400648
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column Operation
+		dataType: string
+		lineageTag: 1ef22f39-193b-487b-8c06-d676d77c4140
+		summarizeBy: none
+		sourceColumn: Operation
+
+		annotation SummarizationSetBy = Automatic
+
+	column Characteristic
+		dataType: string
+		lineageTag: 16759b7f-34c7-4c31-af8f-0f0c4a4bf05e
+		summarizeBy: none
+		sourceColumn: Characteristic
+
+		annotation SummarizationSetBy = Automatic
+
+	column Class
+		dataType: string
+		lineageTag: 02bf6384-b344-48ab-b90b-a9bed4fb5958
+		summarizeBy: none
+		sourceColumn: Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column InspectionType
+		dataType: string
+		lineageTag: a95b75fc-9958-42fe-9971-cd4c2600b634
+		summarizeBy: none
+		sourceColumn: InspectionType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Specification
+		dataType: string
+		lineageTag: 287d104c-86ab-4c4e-95cc-4fa719bf7dd9
+		summarizeBy: none
+		sourceColumn: Specification
+
+		annotation SummarizationSetBy = Automatic
+
+	column Method
+		dataType: string
+		lineageTag: 3356858a-2ce0-481e-934c-f50d35ae6af9
+		summarizeBy: none
+		sourceColumn: Method
+
+		annotation SummarizationSetBy = Automatic
+
+	column Equipment
+		dataType: string
+		lineageTag: 801fc578-d682-4203-8026-eec692f71934
+		summarizeBy: none
+		sourceColumn: Equipment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Standard
+		dataType: string
+		lineageTag: bde189f3-ca76-43eb-b84b-3ed937aa3b7c
+		summarizeBy: none
+		sourceColumn: Standard
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOLevel
+		dataType: string
+		lineageTag: 7835f549-66c8-49e2-aa09-f10e32c70161
+		summarizeBy: none
+		sourceColumn: ISOLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column AQL
+		dataType: double
+		lineageTag: 562396b5-4d93-4a0b-bad1-5b5cb3312eb1
+		summarizeBy: sum
+		sourceColumn: AQL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Frequency
+		dataType: string
+		lineageTag: 9553a950-885c-4cda-913e-1c80289192cd
+		summarizeBy: none
+		sourceColumn: Frequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotSize
+		dataType: string
+		lineageTag: 5e113cde-148a-4924-bd67-2bc32b5a8ccc
+		summarizeBy: none
+		sourceColumn: LotSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOCode
+		dataType: string
+		lineageTag: d65c5141-2568-459c-b59b-8192b9d1110c
+		summarizeBy: none
+		sourceColumn: ISOCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column SampleSize
+		dataType: string
+		lineageTag: 073e1006-99d7-446c-b761-1a15eb5fbbe9
+		summarizeBy: none
+		sourceColumn: SampleSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column AcceptanceNumber
+		dataType: string
+		lineageTag: 92363f04-38c1-4d36-a358-d9269f017b84
+		summarizeBy: none
+		sourceColumn: AcceptanceNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column RejectionNumber
+		dataType: string
+		lineageTag: 1081aaf8-a53f-4a02-be5b-2551356f90c2
+		summarizeBy: none
+		sourceColumn: RejectionNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Owner
+		dataType: string
+		lineageTag: 83d6a030-e991-4778-8883-bf7d79ae5818
+		summarizeBy: none
+		sourceColumn: Owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReactionPlan
+		dataType: string
+		lineageTag: 913eadd8-59e5-41d3-920b-3ddeef7400f4
+		summarizeBy: none
+		sourceColumn: ReactionPlan
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics dim_ink_control_plan_cq' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "dim_ink_control_plan_cq"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "26b29aef47144b9ab1c7",
+  "position": {
+    "x": 19.477280732652343,
+    "y": 298.65163790066924,
+    "z": 3000,
+    "height": 300.81578020429725,
+    "width": 460.96231067277211,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendario"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "Calendario.Date",
+              "nativeQueryRef": "Date",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_fact_production"
+                    }
+                  },
+                  "Property": "Process"
+                }
+              },
+              "queryRef": "manufacturing_performance_fact_production.Process",
+              "nativeQueryRef": "Process"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "manufacturing_performance_fact_production"
+                        }
+                      },
+                      "Property": "OEE"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Average(manufacturing_performance_fact_production.OEE)",
+              "nativeQueryRef": "Média de OEE"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Tendência de OEE por Processo'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

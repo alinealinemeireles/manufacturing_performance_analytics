@@ -1,0 +1,81 @@
+table 'manufacturing_performance_analytics vw_dim_supplier'
+	lineageTag: 6f3d1f09-6b51-4eaa-a1b2-681872d7f0d0
+
+	column SupplierId
+		dataType: string
+		lineageTag: fe7f31bf-43dc-4cf8-8461-6cd52393ba8c
+		summarizeBy: none
+		sourceColumn: SupplierId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierName
+		dataType: string
+		lineageTag: e9ce8ffc-e289-4dda-bcd2-5f6e259d38c3
+		summarizeBy: none
+		sourceColumn: SupplierName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 206ade64-0c9c-4510-b358-ab66eb613878
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column HeadquartersCity
+		dataType: string
+		lineageTag: 306766e0-6fad-4bf4-90f7-4122181c6088
+		summarizeBy: none
+		sourceColumn: HeadquartersCity
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaterialsSupplied
+		dataType: string
+		lineageTag: bb6db573-eb65-49a9-b423-2b2bd093bf92
+		summarizeBy: none
+		sourceColumn: MaterialsSupplied
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierTier
+		dataType: string
+		lineageTag: 3d50b5af-23db-431c-8d19-9f1015f7cb89
+		summarizeBy: none
+		sourceColumn: SupplierTier
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearsAsSupplier
+		dataType: int64
+		formatString: 0
+		lineageTag: fe8434b8-1aef-4e91-b7d6-1a483f653ed2
+		summarizeBy: sum
+		sourceColumn: YearsAsSupplier
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContractType
+		dataType: string
+		lineageTag: 6f15c3ea-514f-45b7-8b4a-4f04d3401020
+		summarizeBy: none
+		sourceColumn: ContractType
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics vw_dim_supplier' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_dim_supplier"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

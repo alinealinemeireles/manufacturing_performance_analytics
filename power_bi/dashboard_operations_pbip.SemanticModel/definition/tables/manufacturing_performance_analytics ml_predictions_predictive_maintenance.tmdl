@@ -1,0 +1,54 @@
+table 'manufacturing_performance_analytics ml_predictions_predictive_maintenance'
+	lineageTag: 596129a3-3587-463b-b4d2-8660827ac6ed
+
+	column MachineId
+		dataType: string
+		lineageTag: 52fad99f-7afd-4d7f-836a-0527bb16a683
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Process
+		dataType: string
+		lineageTag: 9eca2e3c-512f-4414-a2c9-c86e224015b5
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column PredictedFailureRiskToday
+		dataType: double
+		lineageTag: 955487f1-8cf3-45ca-b4d4-ca0bb16e54e0
+		summarizeBy: sum
+		sourceColumn: PredictedFailureRiskToday
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GeneratedFrom
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2e1edfd0-474d-4717-b80c-57b33aac3eff
+		summarizeBy: none
+		sourceColumn: GeneratedFrom
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'manufacturing_performance_analytics ml_predictions_predictive_maintenance' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "ml_predictions_predictive_maintenance"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Navegação 1",{{"GeneratedFrom", type date}})
+				in
+				  #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

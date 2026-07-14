@@ -1,0 +1,146 @@
+table 'manufacturing_performance_analytics vw_fact_sales_52w'
+	lineageTag: 83413226-7905-4ac7-b1c6-f4f4104d2690
+
+	column SalesOrderId
+		dataType: string
+		lineageTag: 6ff305b1-cecd-4017-8fec-bc65bb5aa079
+		summarizeBy: none
+		sourceColumn: SalesOrderId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c2dbdf11-82cf-4723-ace7-c46e17ceed62
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CustomerId
+		dataType: string
+		lineageTag: c0b5a10b-1d7e-42f8-bcbb-ab3ec1dffca0
+		summarizeBy: none
+		sourceColumn: CustomerId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductFamily
+		dataType: string
+		lineageTag: ff2b45cb-fcf3-419e-80ee-f1610bdad30e
+		summarizeBy: none
+		sourceColumn: ProductFamily
+
+		annotation SummarizationSetBy = Automatic
+
+	column Process
+		dataType: string
+		lineageTag: 558f18d6-06d4-44ce-bfcf-c02baf8843f4
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductId
+		dataType: string
+		lineageTag: 45ebe643-ef93-48c0-850e-7cacf1937df6
+		summarizeBy: none
+		sourceColumn: ProductId
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkOrder
+		dataType: string
+		lineageTag: 75e84a03-f8d0-4d11-b2f3-f7132df32c75
+		summarizeBy: none
+		sourceColumn: WorkOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotId
+		dataType: string
+		lineageTag: 3cea336d-9aca-4f28-be6a-c408cf7cd023
+		summarizeBy: none
+		sourceColumn: LotId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineId
+		dataType: string
+		lineageTag: a47eaf68-4986-4ee3-8d82-bc7c25a9cd31
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ad6691f-7095-4821-874e-3030a6bfc769
+		summarizeBy: sum
+		sourceColumn: ShippedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPriceBRL
+		dataType: double
+		lineageTag: fea941aa-ce45-4358-8b38-e8116f2365b3
+		summarizeBy: sum
+		sourceColumn: UnitPriceBRL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalValueBRL
+		dataType: double
+		lineageTag: 4abb63e5-d974-4810-a518-647562338237
+		summarizeBy: sum
+		sourceColumn: TotalValueBRL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ISOWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: c9f74a42-b21c-441d-a5fc-d89122953894
+		summarizeBy: sum
+		sourceColumn: ISOWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeekday
+		dataType: int64
+		formatString: 0
+		lineageTag: 3012ffcc-bd7e-43b4-a18d-f81f83d95933
+		summarizeBy: sum
+		sourceColumn: ISOWeekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 52dc54e4-3262-48de-bf51-e84d81bfd651
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics vw_fact_sales_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_sales_52w"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

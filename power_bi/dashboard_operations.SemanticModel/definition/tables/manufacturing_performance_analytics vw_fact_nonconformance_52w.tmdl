@@ -1,0 +1,117 @@
+table 'manufacturing_performance_analytics vw_fact_nonconformance_52w'
+	lineageTag: e375599c-931b-4b47-a8b3-ad131e139b84
+
+	column NCId
+		dataType: string
+		lineageTag: f72d899b-c007-4541-ae98-9ac605358cc1
+		summarizeBy: none
+		sourceColumn: NCId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1c4b167e-2743-47e4-8bc6-35f724f4cf68
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Type
+		dataType: string
+		lineageTag: ace902cd-46dc-4e06-8435-f6c037b6c1e0
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source
+		dataType: string
+		lineageTag: 4f952572-ad9e-43e0-91c5-b9c42ab8c219
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area
+		dataType: string
+		lineageTag: 75a8f6db-1d24-49c9-93a6-ef5167a16ea8
+		summarizeBy: none
+		sourceColumn: Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column Process
+		dataType: string
+		lineageTag: 51266eca-203c-43a1-ba6e-6c064ea78a65
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 33b289b0-1d4b-47c4-9d2c-e111b66a2f94
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Severity
+		dataType: string
+		lineageTag: 480640c6-4701-4f4e-9287-1a84a4458a19
+		summarizeBy: none
+		sourceColumn: Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column RelatedRecordId
+		dataType: string
+		lineageTag: a3ecd2f7-9cc8-49b6-ad34-884ecab1a98e
+		summarizeBy: none
+		sourceColumn: RelatedRecordId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: a6aa650e-45ce-461f-9edb-d947a4cdb484
+		summarizeBy: sum
+		sourceColumn: ISOWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeekday
+		dataType: int64
+		formatString: 0
+		lineageTag: 423edcf5-cae7-442b-b3e9-c28ae6ab005a
+		summarizeBy: sum
+		sourceColumn: ISOWeekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 22026d7c-84e4-4c76-ac38-c6624748f53a
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics vw_fact_nonconformance_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_nonconformance_52w"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

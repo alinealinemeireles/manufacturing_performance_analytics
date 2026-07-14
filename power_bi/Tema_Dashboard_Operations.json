@@ -1,0 +1,50 @@
+{
+  "name": "Dashboard Operations - Cinza, Ouro e Vermelho",
+  "dataColors": [
+    "#3A3F44",
+    "#C9A227",
+    "#8C8C8C",
+    "#B23A3A",
+    "#5C6166",
+    "#8A6D1D",
+    "#C4C4C4",
+    "#1F2225"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1F2225",
+  "tableAccent": "#C9A227",
+  "good": "#3F7A4E",
+  "neutral": "#8C8C8C",
+  "bad": "#B23A3A",
+  "maximum": "#1F2225",
+  "center": "#C9A227",
+  "minimum": "#C4C4C4",
+  "null": "#C4C4C4",
+  "textClasses": {
+    "callout": {
+      "color": "#1F2225"
+    },
+    "title": {
+      "color": "#1F2225"
+    },
+    "header": {
+      "color": "#3A3F44"
+    },
+    "label": {
+      "color": "#3A3F44"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

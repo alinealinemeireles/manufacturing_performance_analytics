@@ -1,0 +1,90 @@
+table 'manufacturing_performance_analytics vw_dim_masterbatch'
+	lineageTag: b21b745a-c3b2-4de3-9e1b-862c0ac4ceb1
+
+	column ProductId
+		dataType: string
+		lineageTag: d1fd17b5-d5cc-42bf-be35-a07ed80bbf65
+		summarizeBy: none
+		sourceColumn: ProductId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductType
+		dataType: string
+		lineageTag: 3ff212d9-be52-49f9-9a8c-060be0990bfa
+		summarizeBy: none
+		sourceColumn: ProductType
+
+		annotation SummarizationSetBy = Automatic
+
+	column MoldId
+		dataType: string
+		lineageTag: a590260f-968f-4c50-8363-d98d7a491f1d
+		summarizeBy: none
+		sourceColumn: MoldId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BaseMaterial
+		dataType: string
+		lineageTag: 88fd26f9-a0f7-4093-a04c-fcba0754c966
+		summarizeBy: none
+		sourceColumn: BaseMaterial
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorId
+		dataType: string
+		lineageTag: 17555b8b-c94f-431b-9988-7640b02f72f8
+		summarizeBy: none
+		sourceColumn: ColorId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorName
+		dataType: string
+		lineageTag: 794ad3a8-75d0-4ca1-87a6-fa887ad4ac6e
+		summarizeBy: none
+		sourceColumn: ColorName
+
+		annotation SummarizationSetBy = Automatic
+
+	column PantoneCodeApprox
+		dataType: string
+		lineageTag: 8a02ffc8-340d-4f4a-9c1a-066b98187ed2
+		summarizeBy: none
+		sourceColumn: PantoneCodeApprox
+
+		annotation SummarizationSetBy = Automatic
+
+	column MasterbatchType
+		dataType: string
+		lineageTag: 7a0ae33d-296c-4f61-aef6-f4ffbb931b63
+		summarizeBy: none
+		sourceColumn: MasterbatchType
+
+		annotation SummarizationSetBy = Automatic
+
+	column StandardDosagePctMass
+		dataType: double
+		lineageTag: c695507f-55e3-41e5-9e63-b5cd1f95354b
+		summarizeBy: sum
+		sourceColumn: StandardDosagePctMass
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'manufacturing_performance_analytics vw_dim_masterbatch' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_dim_masterbatch"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

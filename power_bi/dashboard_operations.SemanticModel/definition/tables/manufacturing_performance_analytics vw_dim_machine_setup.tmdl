@@ -1,0 +1,86 @@
+table 'manufacturing_performance_analytics vw_dim_machine_setup'
+	lineageTag: 6cd06dbe-ed47-4b5d-a61a-57b5da6a29d3
+
+	column MoldId
+		dataType: string
+		lineageTag: ba399207-aa7e-469b-aa6f-a3933d309245
+		summarizeBy: none
+		sourceColumn: MoldId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineId
+		dataType: string
+		lineageTag: e066a95c-0334-40c9-8aa7-31e10aed538b
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		lineageTag: cfb22ce9-2331-4364-8a24-b2ef8bf227e5
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cavities
+		dataType: int64
+		formatString: 0
+		lineageTag: 0253348e-5c81-4bec-a268-ec9d23af0fa3
+		summarizeBy: sum
+		sourceColumn: Cavities
+
+		annotation SummarizationSetBy = Automatic
+
+	column RatedCapacityPerDay
+		dataType: string
+		lineageTag: 837feb73-eb91-4a83-9340-6fd0c5cc823f
+		summarizeBy: none
+		sourceColumn: RatedCapacityPerDay
+
+		annotation SummarizationSetBy = Automatic
+
+	column RatedCapacityPerHour
+		dataType: string
+		lineageTag: 7bae95c3-3c17-4658-af46-e6ac50ab18d4
+		summarizeBy: none
+		sourceColumn: RatedCapacityPerHour
+
+		annotation SummarizationSetBy = Automatic
+
+	column CyclesPerHour
+		dataType: int64
+		formatString: 0
+		lineageTag: eb741613-0243-44b8-8119-d82e376c5f72
+		summarizeBy: sum
+		sourceColumn: CyclesPerHour
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdealCycleTimeSec
+		dataType: int64
+		formatString: 0
+		lineageTag: ffa8455e-4734-451b-a828-9923e06a0f1b
+		summarizeBy: sum
+		sourceColumn: IdealCycleTimeSec
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics vw_dim_machine_setup' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_dim_machine_setup"]}[Data],
+				    #"Valor Substituído" = Table.ReplaceValue(#"Navegação 1","Frasco","Bottle",Replacer.ReplaceText,{"Product"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","Tampa rosca comum","Screw Cap",Replacer.ReplaceText,{"Product"}),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Valor Substituído1","Tampa","Cap",Replacer.ReplaceText,{"Product"})
+				in
+				  #"Valor Substituído2"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

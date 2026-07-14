@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "9e44002c9dd24f1cb2a8",
+  "position": {
+    "x": 19.477280732652343,
+    "y": 610.28812962310667,
+    "z": 14000,
+    "height": 281.33849947164492,
+    "width": 460.96231067277211,
+    "tabOrder": 17000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics vw_fact_downtime_unplanned_52w"
+                    }
+                  },
+                  "Property": "StoppageReason"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics vw_fact_downtime_unplanned_52w.StoppageReason",
+              "nativeQueryRef": "StoppageReason",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "manufacturing_performance_analytics vw_fact_downtime_unplanned_52w"
+                        }
+                      },
+                      "Property": "DowntimeDurationMin"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(manufacturing_performance_analytics vw_fact_downtime_unplanned_52w.DowntimeDurationMin)",
+              "nativeQueryRef": "Soma de DowntimeDurationMin"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "manufacturing_performance_analytics vw_fact_downtime_unplanned_52w"
+                      }
+                    },
+                    "Property": "DowntimeDurationMin"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Pareto — Paradas Não Planejadas'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

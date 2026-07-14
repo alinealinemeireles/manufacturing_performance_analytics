@@ -1,0 +1,109 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "c23fe25e88434033acb9",
+  "position": {
+    "x": 660.52624689095433,
+    "y": 584.52048697473492,
+    "z": 9000,
+    "height": 456.03455949731642,
+    "width": 441.557271894227,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics ml_predictions_predictive_maintenance"
+                    }
+                  },
+                  "Property": "MachineId"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics ml_predictions_predictive_maintenance.MachineId",
+              "nativeQueryRef": "MachineId",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics ml_predictions_predictive_maintenance"
+                    }
+                  },
+                  "Property": "Process"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics ml_predictions_predictive_maintenance.Process",
+              "nativeQueryRef": "Process",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics ml_predictions_predictive_maintenance"
+                    }
+                  },
+                  "Property": "PredictedFailureRiskToday"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics ml_predictions_predictive_maintenance.PredictedFailureRiskToday",
+              "nativeQueryRef": "PredictedFailureRiskToday",
+              "active": true
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "manufacturing_performance_analytics ml_predictions_predictive_maintenance"
+                  }
+                },
+                "Property": "PredictedFailureRiskToday"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Ranking de Risco de Avaria — Hoje'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

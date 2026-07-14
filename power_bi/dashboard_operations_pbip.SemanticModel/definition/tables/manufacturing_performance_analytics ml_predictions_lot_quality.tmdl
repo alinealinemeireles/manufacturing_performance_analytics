@@ -1,0 +1,61 @@
+table 'manufacturing_performance_analytics ml_predictions_lot_quality'
+	lineageTag: 74113535-5a24-4171-8bba-9c9bd11a5924
+
+	column WorkOrder
+		dataType: string
+		lineageTag: 7816bf14-4269-4274-b9ce-d4f32869c3f2
+		summarizeBy: none
+		sourceColumn: WorkOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: aee55a7b-3bdc-496d-8749-bb7299311534
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FinalLotDecision
+		dataType: string
+		lineageTag: 15f39bea-01ab-4da9-b8a5-1bd3d3cbf5e4
+		summarizeBy: none
+		sourceColumn: FinalLotDecision
+
+		annotation SummarizationSetBy = Automatic
+
+	column PredictedRejectionRisk
+		dataType: double
+		lineageTag: e50116c3-38f2-409d-a181-998535b30d1c
+		summarizeBy: sum
+		sourceColumn: PredictedRejectionRisk
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PredictedDecision
+		dataType: string
+		lineageTag: d4b46bbc-3493-463e-81ec-0d4b15d8245c
+		summarizeBy: none
+		sourceColumn: PredictedDecision
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics ml_predictions_lot_quality' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "ml_predictions_lot_quality"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

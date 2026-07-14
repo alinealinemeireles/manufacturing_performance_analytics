@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "dafa2b2399624826b276",
+  "position": {
+    "x": 1419.6773511799929,
+    "y": 283.502641775273,
+    "z": 20000,
+    "height": 318.12891863332158,
+    "width": 480.43959140542444,
+    "tabOrder": 20000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w"
+                    }
+                  },
+                  "Property": "Characteristic"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w.Characteristic",
+              "nativeQueryRef": "Characteristic",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w"
+                        }
+                      },
+                      "Property": "DefectsFound"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w.DefectsFound)",
+              "nativeQueryRef": "Soma de DefectsFound"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w"
+                      }
+                    },
+                    "Property": "DefectsFound"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Defeitos por Característica (Frascos)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

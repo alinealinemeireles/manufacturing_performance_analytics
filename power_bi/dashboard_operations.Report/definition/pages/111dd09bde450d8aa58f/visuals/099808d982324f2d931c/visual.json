@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "099808d982324f2d931c",
+  "position": {
+    "x": 976.02817893624513,
+    "y": 300.81578020429725,
+    "z": 2000,
+    "height": 300.81578020429725,
+    "width": 439.3208876364917,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_fact_production"
+                    }
+                  },
+                  "Property": "ShiftNumber"
+                }
+              },
+              "queryRef": "manufacturing_performance_fact_production.ShiftNumber",
+              "nativeQueryRef": "ShiftNumber",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "manufacturing_performance_fact_production"
+                        }
+                      },
+                      "Property": "OEE"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Average(manufacturing_performance_fact_production.OEE)",
+              "nativeQueryRef": "Média de OEE"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'OEE por Turno'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

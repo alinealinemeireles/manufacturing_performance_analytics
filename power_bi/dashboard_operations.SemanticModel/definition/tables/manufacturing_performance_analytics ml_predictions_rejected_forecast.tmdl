@@ -1,0 +1,50 @@
+table 'manufacturing_performance_analytics ml_predictions_rejected_forecast'
+	lineageTag: cc18bd36-538c-4e37-9c3a-c98be8ed9461
+
+	column Process
+		dataType: string
+		lineageTag: f5d2d188-fbb5-477d-9fed-317c1ed56cde
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column ForecastedRejectedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: e8dbf971-0e2e-4464-94e4-ff49a5acdad5
+		summarizeBy: sum
+		sourceColumn: ForecastedRejectedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeneratedFrom
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5b7c51b0-4a6d-43b1-bfbc-b0359e28562b
+		summarizeBy: none
+		sourceColumn: GeneratedFrom
+
+		variation Variação
+			isDefault
+			relationship: da6979b9-a3ad-4d47-bb15-1121e35e35c7
+			defaultHierarchy: LocalDateTable_5d93bc6d-f885-4fc3-8d3f-2bdfcb97a83f.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'manufacturing_performance_analytics ml_predictions_rejected_forecast' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "ml_predictions_rejected_forecast"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Navegação 1",{{"GeneratedFrom", type date}})
+				in
+				  #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

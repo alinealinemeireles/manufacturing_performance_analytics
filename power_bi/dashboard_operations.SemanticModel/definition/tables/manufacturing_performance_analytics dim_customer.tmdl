@@ -1,0 +1,80 @@
+table 'manufacturing_performance_analytics dim_customer'
+	lineageTag: 6bda7e48-351f-445e-8c5a-c93a7b65b459
+
+	column CustomerId
+		dataType: string
+		lineageTag: c74d2d69-efda-452a-baf0-2ed32d936048
+		summarizeBy: none
+		sourceColumn: CustomerId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerName
+		dataType: string
+		lineageTag: 06b96284-fdcf-401f-84e0-894ee37cadc2
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 39b3e502-7534-4b20-a7c9-aaaf479776e9
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		dataType: string
+		lineageTag: b835d2eb-2ebc-433d-b452-5f9061823f59
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerTier
+		dataType: string
+		lineageTag: e5771285-addc-4833-8b02-a6bdb0d27fbb
+		summarizeBy: none
+		sourceColumn: CustomerTier
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: e74ae6b8-a07e-4a95-b253-68d78d06748f
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 8494063b-8998-4eda-aaa9-e9adabd99cfb
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: d8d6c3bb-1289-4570-8a04-0560d4d71ab6
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics dim_customer' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "dim_customer"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,67 @@
+table 'manufacturing_performance_analytics ml_predictions_predictive_maintenance_histor'
+	lineageTag: de36a1a6-df25-493a-adac-e2a7e822d67a
+
+	column MachineId
+		dataType: string
+		lineageTag: 8104b870-9bf0-4893-86be-f51bcb597979
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4fd98e69-87a7-43a5-88b3-4e0aaa426b84
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variação
+			isDefault
+			relationship: d5e73e37-4425-4aba-a440-7a94c53b37cb
+			defaultHierarchy: LocalDateTable_32dfc7b1-d805-48cc-b5eb-7ac40ab3c445.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FailureTomorrow
+		dataType: int64
+		formatString: 0
+		lineageTag: 9ac34d10-63e8-4a37-80b8-240a797c4738
+		summarizeBy: sum
+		sourceColumn: FailureTomorrow
+
+		annotation SummarizationSetBy = Automatic
+
+	column Process
+		dataType: string
+		lineageTag: 98386b15-432c-4065-96d0-49eea08702db
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column PredictedFailureRisk
+		dataType: double
+		lineageTag: 241e97d1-fa4b-4740-a855-425536b32924
+		summarizeBy: sum
+		sourceColumn: PredictedFailureRisk
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'manufacturing_performance_analytics ml_predictions_predictive_maintenance_histor' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "ml_predictions_predictive_maintenance_history"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,109 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "eff3a5bb9faf44868cfb",
+  "position": {
+    "x": 980.35646354350115,
+    "y": 618.94469883761883,
+    "z": 22000,
+    "height": 439.3208876364917,
+    "width": 919.76047904191614,
+    "tabOrder": 22000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics ml_predictions_lot_quality"
+                    }
+                  },
+                  "Property": "WorkOrder"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics ml_predictions_lot_quality.WorkOrder",
+              "nativeQueryRef": "WorkOrder",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics ml_predictions_lot_quality"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics ml_predictions_lot_quality.Date",
+              "nativeQueryRef": "Date",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics ml_predictions_lot_quality"
+                    }
+                  },
+                  "Property": "PredictedRejectionRisk"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics ml_predictions_lot_quality.PredictedRejectionRisk",
+              "nativeQueryRef": "PredictedRejectionRisk",
+              "active": true
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "manufacturing_performance_analytics ml_predictions_lot_quality"
+                  }
+                },
+                "Property": "PredictedRejectionRisk"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Lotes de Risco Elevado (Previsão ML)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

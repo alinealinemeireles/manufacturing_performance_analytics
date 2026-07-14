@@ -1,0 +1,84 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "8935d0dd02d344a9a6ce",
+  "position": {
+    "x": 19.477280732652343,
+    "y": 618.94469883761883,
+    "z": 7000,
+    "height": 439.3208876364917,
+    "width": 941.40190207819649,
+    "tabOrder": 21000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w"
+                    }
+                  },
+                  "Property": "InspectionDate"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w.InspectionDate",
+              "nativeQueryRef": "InspectionDate",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w"
+                        }
+                      },
+                      "Property": "XBar"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Average(manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w.XBar)",
+              "nativeQueryRef": "Média de XBar"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Carta de Controlo X̄ — Frascos (filtre por Máquina para leitura correta)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

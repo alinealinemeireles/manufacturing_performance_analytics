@@ -1,0 +1,270 @@
+table 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'
+	lineageTag: 0478fe2f-25d0-4375-a74b-64b07b617de3
+
+	column ProductBatch
+		dataType: string
+		lineageTag: dc3fe624-020f-4198-8d17-822aa89c04f0
+		summarizeBy: none
+		sourceColumn: ProductBatch
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkOrder
+		dataType: string
+		lineageTag: 3b30efb9-0c05-49d4-b612-5894cd563418
+		summarizeBy: none
+		sourceColumn: WorkOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductionDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 271a1a3a-6167-4b9c-9c18-bded4d2ce2a1
+		summarizeBy: none
+		sourceColumn: ProductionDate
+
+		variation Variação
+			isDefault
+			relationship: 2897f3f6-44b1-496d-bd4d-5b1ea5fd7495
+			defaultHierarchy: LocalDateTable_6f8c1ad8-f9b9-4061-9ca2-1191b31885c7.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Shift
+		dataType: string
+		lineageTag: f78e6f2f-c4e2-4a54-9d6a-17ce4adf509b
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineId
+		dataType: string
+		lineageTag: f003a91f-11ed-4bd1-abd1-487f5909436e
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MoldId
+		dataType: string
+		lineageTag: c0d22fd4-0b60-47f9-aeb8-5867b4c8fc82
+		summarizeBy: none
+		sourceColumn: MoldId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CapId
+		dataType: string
+		lineageTag: dca442dd-eb67-43f5-b680-6d296b01d152
+		summarizeBy: none
+		sourceColumn: CapId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Material
+		dataType: string
+		lineageTag: 3e474c37-0a08-4d15-80dd-cea90eaf32b1
+		summarizeBy: none
+		sourceColumn: Material
+
+		annotation SummarizationSetBy = Automatic
+
+	column CapType
+		dataType: string
+		lineageTag: 5ed20d40-1822-48cf-bf84-22c7a8a9170c
+		summarizeBy: none
+		sourceColumn: CapType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Characteristic
+		dataType: string
+		lineageTag: f2d6a7d1-3acc-4165-8c81-1955f46132e4
+		summarizeBy: none
+		sourceColumn: Characteristic
+
+		annotation SummarizationSetBy = Automatic
+
+	column Class
+		dataType: string
+		lineageTag: 6a0779c0-6a8e-4384-a9d2-fc3f56dc1616
+		summarizeBy: none
+		sourceColumn: Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column AQL
+		dataType: double
+		lineageTag: f5a939f9-62c4-4442-b997-9c9a91b64aaf
+		summarizeBy: sum
+		sourceColumn: AQL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Standard
+		dataType: string
+		lineageTag: ad648e91-2263-4524-bfaa-3afa20d6d242
+		summarizeBy: none
+		sourceColumn: Standard
+
+		annotation SummarizationSetBy = Automatic
+
+	column InspectionLevel
+		dataType: string
+		lineageTag: c687470e-62ec-4e49-8f35-c99b48ea6891
+		summarizeBy: none
+		sourceColumn: InspectionLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotSize
+		dataType: int64
+		formatString: 0
+		lineageTag: 65bd7191-e6de-4522-8a3b-174b000549d1
+		summarizeBy: sum
+		sourceColumn: LotSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodeLetter
+		dataType: string
+		lineageTag: b92e33fe-c8b1-46cb-b8ca-9a7a31677726
+		summarizeBy: none
+		sourceColumn: CodeLetter
+
+		annotation SummarizationSetBy = Automatic
+
+	column SampleSize
+		dataType: int64
+		formatString: 0
+		lineageTag: fc0d1932-3778-4f77-bd5b-038a46fcefea
+		summarizeBy: sum
+		sourceColumn: SampleSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column AcceptanceNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 899b5553-a751-4806-b61c-f428b314343c
+		summarizeBy: sum
+		sourceColumn: AcceptanceNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column RejectionNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: edda6120-4a6c-4745-89bf-bb8dbd37c265
+		summarizeBy: sum
+		sourceColumn: RejectionNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefectsFound
+		dataType: int64
+		formatString: 0
+		lineageTag: b2271e8f-2fcf-41d1-b2f1-32d8e2a8b91f
+		summarizeBy: sum
+		sourceColumn: DefectsFound
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotDecision
+		dataType: string
+		lineageTag: 57b6186b-a5cf-4e05-bc4c-af1eb5c25163
+		summarizeBy: none
+		sourceColumn: LotDecision
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inspector
+		dataType: string
+		lineageTag: 02264606-a4a8-4e2b-ab6b-8cc15a55b130
+		summarizeBy: none
+		sourceColumn: Inspector
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotId
+		dataType: string
+		lineageTag: 0a382ca5-71a1-4715-bffa-79d4e9d3a52e
+		summarizeBy: none
+		sourceColumn: LotId
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefectRateP
+		dataType: double
+		lineageTag: 3e34f01d-71ee-452e-946d-3ebe741725ee
+		summarizeBy: sum
+		sourceColumn: DefectRateP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DPU
+		dataType: double
+		lineageTag: d22d1cd5-f937-4b46-a604-c4c59e3f5cd3
+		summarizeBy: sum
+		sourceColumn: DPU
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DPMO
+		dataType: double
+		lineageTag: 3ae90ba8-6400-4df8-925a-bcd8fb30a118
+		summarizeBy: sum
+		sourceColumn: DPMO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column InspectionDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0fb5d37e-de37-490f-b3b6-12dfdd847972
+		summarizeBy: none
+		sourceColumn: InspectionDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column InspectionTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: bdf86c7a-785e-4428-a63f-f8321b667678
+		summarizeBy: none
+		sourceColumn: InspectionTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	partition 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_cap_attribute_inspection_cq_52w"]}[Data],
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(Table.TransformColumnTypes(#"Navegação 1", {{"InspectionDateTime", type text}}, "pt-PT"), "InspectionDateTime", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"InspectionDateTime.1", "InspectionDateTime.2"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador",{{"InspectionDateTime.1", type date}, {"InspectionDateTime.2", type time}}),
+				    #"Colunas com Nome Mudado" = Table.RenameColumns(#"Tipo Alterado",{{"InspectionDateTime.1", "InspectionDate"}, {"InspectionDateTime.2", "InspectionTime"}})
+				in
+				  #"Colunas com Nome Mudado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

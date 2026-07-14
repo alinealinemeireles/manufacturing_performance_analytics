@@ -1,0 +1,145 @@
+table 'manufacturing_performance_analytics vw_fact_supplier_complaints_52w'
+	lineageTag: 6a60278e-5773-43d1-8afd-327f58672b72
+
+	column SupplierComplaintId
+		dataType: string
+		lineageTag: 9eb051ff-1bd7-4b15-96d2-8c408c6ef138
+		summarizeBy: none
+		sourceColumn: SupplierComplaintId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c5373fc3-8db6-45ae-81f0-aebdbd9d8e78
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SupplierId
+		dataType: string
+		lineageTag: 2425dba1-00d0-426e-8ebe-c7e996ead60b
+		summarizeBy: none
+		sourceColumn: SupplierId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Material
+		dataType: string
+		lineageTag: c7bd3f44-0ecb-4d6a-a86f-c9ff71a67d00
+		summarizeBy: none
+		sourceColumn: Material
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaterialLotId
+		dataType: string
+		lineageTag: 7b9847ca-841b-4743-8bd9-0ca51e5cd643
+		summarizeBy: none
+		sourceColumn: MaterialLotId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PurchaseOrderId
+		dataType: string
+		lineageTag: 2830e9f4-759f-42c6-b221-64d8f2ec1371
+		summarizeBy: none
+		sourceColumn: PurchaseOrderId
+
+		annotation SummarizationSetBy = Automatic
+
+	column IssueType
+		dataType: string
+		lineageTag: 5d507ab3-e4e2-4ed3-a6c3-41d9b9bb47b2
+		summarizeBy: none
+		sourceColumn: IssueType
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateSupplierResponded
+		dataType: string
+		lineageTag: b0530480-b3f4-4a0a-b117-4e2fc0c6067d
+		summarizeBy: none
+		sourceColumn: DateSupplierResponded
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateResolved
+		dataType: string
+		lineageTag: ee2a910b-a4bb-4e62-b009-ed9b2ded93d1
+		summarizeBy: none
+		sourceColumn: DateResolved
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 6f123890-b634-4a10-8e44-829ad2cfa3c8
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: 361a997a-6ae1-4094-9d7c-03d5fb9665e0
+		summarizeBy: sum
+		sourceColumn: ISOWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeekday
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c0fa97a-1255-44e3-9f62-d4de91d890e2
+		summarizeBy: sum
+		sourceColumn: ISOWeekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: bb8dce40-e2d6-47b6-a0a0-ff0dfb30b333
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResponseDays
+		dataType: double
+		lineageTag: f7ab75b5-2420-4373-adce-01414683802a
+		summarizeBy: sum
+		sourceColumn: ResponseDays
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ResolutionDays
+		dataType: double
+		lineageTag: 5ada5a47-08cf-45da-8f80-6208525a74d8
+		summarizeBy: sum
+		sourceColumn: ResolutionDays
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'manufacturing_performance_analytics vw_fact_supplier_complaints_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_supplier_complaints_52w"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

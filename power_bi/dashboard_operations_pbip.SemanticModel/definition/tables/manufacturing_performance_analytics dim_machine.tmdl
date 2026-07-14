@@ -1,0 +1,41 @@
+table 'manufacturing_performance_analytics dim_machine'
+	lineageTag: 0db3cc49-ed30-4b05-a163-f47804cedf92
+
+	column MachineId
+		dataType: string
+		lineageTag: 31ad9f78-681c-4c3b-bc8f-f9a32335c3b3
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Process
+		dataType: string
+		lineageTag: 3403738d-1935-47c6-953e-b2c7fc73111f
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: c564c104-3786-48e0-a908-a750e5fcdaad
+		summarizeBy: sum
+		sourceColumn: MachineNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics dim_machine' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "dim_machine"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

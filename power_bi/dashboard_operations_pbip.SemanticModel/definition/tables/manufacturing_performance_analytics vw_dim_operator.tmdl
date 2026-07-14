@@ -1,0 +1,40 @@
+table 'manufacturing_performance_analytics vw_dim_operator'
+	lineageTag: cd402b60-b1e7-495b-aa07-b96f26c09a2a
+
+	column PersonId
+		dataType: string
+		lineageTag: 3472bbe2-9e39-49fe-b70a-d53c6500ec10
+		summarizeBy: none
+		sourceColumn: PersonId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Process
+		dataType: string
+		lineageTag: d6293427-6f57-47a1-ac06-aaa6e708e8f0
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column Role
+		dataType: string
+		lineageTag: f63e08c1-064f-4ba7-8ff4-c11164886d76
+		summarizeBy: none
+		sourceColumn: Role
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics vw_dim_operator' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_dim_operator"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,1242 @@
+relationship d5e73e37-4425-4aba-a440-7a94c53b37cb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_predictive_maintenance_histor'.Date
+	toColumn: LocalDateTable_32dfc7b1-d805-48cc-b5eb-7ac40ab3c445.Date
+
+relationship 8656475f-02f4-4b63-b2dd-45bb78b73780
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_scrap_rate'.Date
+	toColumn: LocalDateTable_977c4f00-6e94-4a24-a6eb-089bae20f49b.Date
+
+relationship b57bf411-ac0c-484f-8261-c9a468e79302
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'.ProductionDate
+	toColumn: LocalDateTable_c8fd66c1-825e-4963-88a3-cc19b2d45f58.Date
+
+relationship 8f0eeeb9-4059-4ffc-b79b-d03d13c1761c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'.ProductionDate
+	toColumn: LocalDateTable_314381ec-daab-4cc0-92e3-e28232026964.Date
+
+relationship 85945075-73aa-4808-9e89-376b992b3058
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.ProductionDate
+	toColumn: LocalDateTable_6d60a60d-c48b-4a9b-ae3f-747a3c5fb9cd.Date
+
+relationship 2897f3f6-44b1-496d-bd4d-5b1ea5fd7495
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.ProductionDate
+	toColumn: LocalDateTable_6f8c1ad8-f9b9-4061-9ca2-1191b31885c7.Date
+
+relationship 233a034f-93c4-45d8-ae36-86efe122e4e7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'.ProductionDate
+	toColumn: LocalDateTable_e91962d6-efea-43bf-857f-c269dbc5362d.Date
+
+relationship e403694f-45e6-463c-b625-5222ad80a077
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'.ProductionDate
+	toColumn: LocalDateTable_78a2ee93-4303-4172-a40a-185d471867cd.Date
+
+relationship e73fce1e-dbab-4cc3-a529-ef2cb0318237
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics vw_fact_capa_52w'.CloseDate
+	toColumn: LocalDateTable_4e814fb7-4188-4b68-b865-16c551e9153b.Date
+
+relationship 25975239-108a-44e0-a73a-a4da34d0609b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics vw_fact_customer_complaints_52w'.ResolutionDate
+	toColumn: LocalDateTable_f975d6ef-3bfe-40de-ac32-beb0ec046be2.Date
+
+relationship AutoDetected_85785c43-7ab0-4909-aee5-4bb94b1314a1
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics dim_bottle'.ProductId
+	toColumn: 'manufacturing_performance_analytics dim_masterbatch'.ProductId
+
+relationship AutoDetected_3794d6cc-28c5-4108-9429-fa9b9d4cf8ee
+	fromColumn: 'manufacturing_performance_analytics dim_ink'.ProductId
+	toColumn: 'manufacturing_performance_analytics dim_masterbatch'.ProductId
+
+relationship AutoDetected_aa7ca539-5a43-4d7c-8643-0703396fb5b9
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_dim_bottle'.ProductId
+	toColumn: 'manufacturing_performance_analytics dim_masterbatch'.ProductId
+
+relationship AutoDetected_9f00462c-a343-4ae6-91bd-7c8f2e532c35
+	fromColumn: 'manufacturing_performance_analytics vw_dim_ink'.ProductId
+	toColumn: 'manufacturing_performance_analytics dim_masterbatch'.ProductId
+
+relationship AutoDetected_8a261f15-a1bf-4c78-b416-c55f7c8ce583
+	fromColumn: 'manufacturing_performance_analytics vw_fact_customer_complaints_52w'.ProductId
+	toColumn: 'manufacturing_performance_analytics dim_masterbatch'.ProductId
+
+relationship AutoDetected_4459877f-bced-4f56-a4cb-9d83ecb40701
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_blow_molding'.ProductId
+	toColumn: 'manufacturing_performance_analytics dim_masterbatch'.ProductId
+
+relationship AutoDetected_22772be1-94c5-451e-98ae-9dbc02fefc73
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_hot_foil_stamping'.ProductId
+	toColumn: 'manufacturing_performance_analytics dim_masterbatch'.ProductId
+
+relationship AutoDetected_a330057a-5e33-4561-aa2e-dcf3b3dcd1ca
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_injection_molding'.ProductId
+	toColumn: 'manufacturing_performance_analytics dim_masterbatch'.ProductId
+
+relationship AutoDetected_997269ad-fe08-4829-8b28-3aee131159ac
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.ProductId
+	toColumn: 'manufacturing_performance_analytics dim_masterbatch'.ProductId
+
+relationship AutoDetected_56446090-0308-439b-9b25-0299e9fbf7c3
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_screen_printing'.ProductId
+	toColumn: 'manufacturing_performance_analytics dim_masterbatch'.ProductId
+
+relationship AutoDetected_d27bbbaa-3b9c-4491-9c99-c8bde9af6bb4
+	fromColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.ProductId
+	toColumn: 'manufacturing_performance_analytics dim_masterbatch'.ProductId
+
+relationship AutoDetected_6d8b6078-5cda-4c80-9ca9-a038d3760ee2
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics dim_bottle'.ProductId
+	toColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.ProductId
+
+relationship AutoDetected_56e44677-22b2-4f4c-a5c3-8623084bc881
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics dim_ink'.ProductId
+	toColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.ProductId
+
+relationship AutoDetected_19be4a34-d8c9-41d7-bb28-81f5837b345a
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_dim_bottle'.ProductId
+	toColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.ProductId
+
+relationship AutoDetected_6494b7c2-2f3c-4446-b185-20f36f628a7a
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_dim_ink'.ProductId
+	toColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.ProductId
+
+relationship AutoDetected_2aa69162-3e44-4011-8068-25c2a2f523d8
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_customer_complaints_52w'.ProductId
+	toColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.ProductId
+
+relationship AutoDetected_1ad9ae5d-3c16-4fdc-a2dc-aba4c6ee6e53
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_blow_molding'.ProductId
+	toColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.ProductId
+
+relationship AutoDetected_15654a1b-252c-4791-9103-f21a3cab7ed0
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_hot_foil_stamping'.ProductId
+	toColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.ProductId
+
+relationship AutoDetected_bf4dc381-e6b2-4ad4-8585-60c6ec81e398
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_injection_molding'.ProductId
+	toColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.ProductId
+
+relationship AutoDetected_89bd4d8d-d500-4ddc-b21c-1c4f3970b4b9
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.ProductId
+	toColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.ProductId
+
+relationship AutoDetected_4c67379d-5a2c-4916-94f3-85bfd66d283e
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_screen_printing'.ProductId
+	toColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.ProductId
+
+relationship AutoDetected_a70bf993-83f3-42e4-8eef-f3f31886c1eb
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.ProductId
+	toColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.ProductId
+
+relationship AutoDetected_527e934d-fc44-4106-9d23-ffce557e400a
+	fromColumn: 'manufacturing_performance_analytics dim_bottle'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_f9b318bb-4509-4d74-b8fc-e085f2d8f70b
+	fromColumn: 'manufacturing_performance_analytics dim_cap'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_ffc2e961-aa28-41f9-934d-bc368f9acc4a
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics dim_masterbatch'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_4d27471f-938a-4aa4-890e-d20f1a708011
+	fromColumn: 'manufacturing_performance_analytics dim_mold'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_40ebcbbc-579a-45c2-9a33-63cd2653c4df
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_dim_bottle'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_3fd746e5-2152-4381-85ee-cf0f94ac7445
+	fromColumn: 'manufacturing_performance_analytics vw_dim_cap'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_e8af4b6f-6be6-45ec-a9d5-eebeb253e36c
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_3deffc4c-b4c8-46b1-a24a-1d8fa03f34fc
+	fromColumn: 'manufacturing_performance_analytics vw_dim_mold'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_fbcc3cc5-080a-48db-97d2-399c22ba2e6c
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_a2861b8f-131a-4488-a892-99ceeddca95c
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_f3fd8c46-b6cc-4cec-9f0e-d2952a2cd953
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_092692cb-21b1-4565-8351-3328ec65d6be
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_4666eca5-5972-4ec1-b7f9-874fc9864135
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_96753f9f-72c5-4e9c-a30d-ea6b28eab650
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'.MoldId
+	toColumn: 'manufacturing_performance_analytics dim_machine_setup'.MoldId
+
+relationship AutoDetected_2b08974e-fccf-46d7-8beb-1238a714ecd0
+	fromColumn: 'manufacturing_performance_analytics dim_bottle'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_d4080723-5531-41b7-b80b-487bf743752a
+	fromColumn: 'manufacturing_performance_analytics dim_cap'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_a2661af7-d134-4d1d-80b0-5d9034a01f4d
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics dim_masterbatch'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_095e688d-6686-43f4-bc80-5ed1e5749844
+	fromColumn: 'manufacturing_performance_analytics dim_mold'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_d73f020c-c209-4fc5-9c19-1db14bc34512
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_dim_bottle'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_1e0f50e4-9044-468e-9e2e-ac2f00c5a05b
+	fromColumn: 'manufacturing_performance_analytics vw_dim_cap'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_6b57ab2a-7efc-4a3e-b988-e7e7b66635e5
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_fba782e0-3bc2-42ad-83c6-37956fd0260d
+	fromColumn: 'manufacturing_performance_analytics vw_dim_mold'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_1e053ee8-fe25-40ae-9d48-ea385256e23d
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_56c4cb82-9b89-4410-abb9-9d43f9f4901a
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_f9eeabb1-2c72-41d3-910a-7ec87e8affb6
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_47e189ba-ddf3-49b7-88df-87e862c1bb97
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_f89fd273-28a0-49b5-af0d-38b7c9ca6e26
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_7c17f164-d6ca-4029-9f09-a761890c58a0
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'.MoldId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MoldId
+
+relationship AutoDetected_209d4d4c-7714-4cbd-8043-90ab0ac7d45f
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics dim_bottle_control_plan_cq'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_286e6875-ada6-4c5c-a04f-a577e20ef350
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics dim_cap_control_plan_cq'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_7a9f2f40-c325-47f8-8f86-47f951008e43
+	fromColumn: 'manufacturing_performance_analytics dim_ink_control_plan_cq'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_1b22c069-00fe-4248-9629-f87064dde751
+	fromColumn: 'manufacturing_performance_analytics dim_machine'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_bf75d2cf-c964-42d9-b929-0283fbe1d69a
+	fromColumn: 'manufacturing_performance_analytics dim_mold'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_60d58d1f-edb3-441a-89ca-931d1b6c0761
+	fromColumn: 'manufacturing_performance_analytics dim_operator'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_7df0387d-31e6-4d05-9b88-ad8664db8d80
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast_history'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_392b052f-942c-43a1-8179-58121e55b7a6
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_predictive_maintenance'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_db55c967-e503-4144-8d7d-95fb0af4385f
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_predictive_maintenance_histor'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_1b730179-77de-450f-97d0-21dc1a41efb6
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_production_forecast'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_592fb33b-f6c1-47c6-b64b-0d66374545d4
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_production_forecast_history'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_e5bd5d85-d277-435d-be34-355a338fb8c0
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_rejected_forecast'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_32f62ec2-c7f9-43d1-83b2-312a97a05c8d
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_rejected_forecast_history'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_59d35fcd-7bbb-4d90-9add-c29a1a8b2bc0
+	fromColumn: 'manufacturing_performance_analytics vw_dim_bottle_control_plan_cq'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_db00dc82-1929-42be-b854-3b2cf2d34cef
+	fromColumn: 'manufacturing_performance_analytics vw_dim_cap_control_plan_cq'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_2112ab25-81ce-4900-a5ec-799afa5d7dcb
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_dim_ink_control_plan_cq'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_b3559ecf-89a3-4e1d-8dd5-c9cfe1172ffb
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_dim_machine'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_d8ea6936-c2ed-49fb-981c-cb2085e4ea8d
+	fromColumn: 'manufacturing_performance_analytics vw_dim_mold'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_8b686713-49b3-462e-aa8a-2e38e4612f38
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_dim_operator'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_dc38acf6-703e-494c-a074-15c3ff808f60
+	fromColumn: 'manufacturing_performance_analytics vw_fact_capa_52w'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_e2bc3f62-12b0-45b6-96e6-e548c1ec7803
+	fromColumn: 'manufacturing_performance_analytics vw_fact_customer_complaints_52w'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_54a0b170-1b4f-4f43-b55c-193a24500f26
+	fromColumn: 'manufacturing_performance_analytics vw_fact_downtime_52w'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_ec1cf07b-b9c8-44f2-9dca-476e53ae4196
+	fromColumn: 'manufacturing_performance_analytics vw_fact_downtime_planned_52w'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_19a78b78-2461-4f7f-b4bd-fa07f479eb08
+	fromColumn: 'manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_a658f572-1a8c-41fe-b78e-5152bfe49654
+	fromColumn: 'manufacturing_performance_analytics vw_fact_material_consumption_52w'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_1eaecfcb-c635-4e19-8f1e-eb9fb73c7184
+	fromColumn: 'manufacturing_performance_analytics vw_fact_nonconformance_52w'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_799b1827-f785-4524-9db9-d4fe11138914
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_blow_molding'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_f5b7d805-be35-4436-af40-14b46b2dc893
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_hot_foil_stamping'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_bc69741a-aa32-440d-a822-571cbf2998de
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_injection_molding'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_4113eb1a-458f-49ec-81aa-351cce34fd72
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_cb478d48-c17f-4cb1-be72-2dba38d35eb7
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_screen_printing'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_6bfa29df-0c38-418d-a962-9dc40e75f07e
+	fromColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_97faf04e-996a-4bd9-adb3-96518f530728
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'.Characteristic
+	toColumn: 'manufacturing_performance_analytics dim_bottle_control_plan_cq'.Characteristic
+
+relationship AutoDetected_9be83ece-27dc-42f8-af37-7b318dcebb5d
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.Characteristic
+	toColumn: 'manufacturing_performance_analytics dim_bottle_control_plan_cq'.Characteristic
+
+relationship AutoDetected_99338c3f-04f5-4b41-960d-70dd2602da0a
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.Characteristic
+	toColumn: 'manufacturing_performance_analytics dim_bottle_control_plan_cq'.Characteristic
+
+relationship AutoDetected_ab28c072-2b88-4ca1-a505-155dd9602a03
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'.Characteristic
+	toColumn: 'manufacturing_performance_analytics vw_dim_bottle_control_plan_cq'.Characteristic
+
+relationship AutoDetected_53fb0773-593f-49c4-9194-79fbc045f8d0
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.Characteristic
+	toColumn: 'manufacturing_performance_analytics vw_dim_bottle_control_plan_cq'.Characteristic
+
+relationship AutoDetected_37b1605a-b81f-4dc7-ae55-92c74bce4e1a
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.Characteristic
+	toColumn: 'manufacturing_performance_analytics vw_dim_bottle_control_plan_cq'.Characteristic
+
+relationship AutoDetected_1f26a173-6228-43d7-a4c2-102c3539ba10
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.Characteristic
+	toColumn: 'manufacturing_performance_analytics dim_cap_control_plan_cq'.Characteristic
+
+relationship AutoDetected_91d42d4c-6de2-412b-8aeb-208291bd01bc
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.Characteristic
+	toColumn: 'manufacturing_performance_analytics dim_cap_control_plan_cq'.Characteristic
+
+relationship AutoDetected_56d55f27-2dfe-48af-8e8e-c81fb60cdc97
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'.Characteristic
+	toColumn: 'manufacturing_performance_analytics dim_cap_control_plan_cq'.Characteristic
+
+relationship AutoDetected_2594d1ee-9a76-4b78-bb54-5fe4e17d2f3e
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.Characteristic
+	toColumn: 'manufacturing_performance_analytics vw_dim_cap_control_plan_cq'.Characteristic
+
+relationship AutoDetected_a7658201-2f2b-4b4e-b957-1eaeed3b87c8
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.Characteristic
+	toColumn: 'manufacturing_performance_analytics vw_dim_cap_control_plan_cq'.Characteristic
+
+relationship AutoDetected_457c7efc-20f6-4e5d-9c7a-72ec3d4806fc
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'.Characteristic
+	toColumn: 'manufacturing_performance_analytics vw_dim_cap_control_plan_cq'.Characteristic
+
+relationship AutoDetected_ca860194-9b2e-4902-b88b-0c492523e7a1
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.CapId
+	toColumn: 'manufacturing_performance_analytics dim_cap'.CapId
+
+relationship AutoDetected_5a3ba891-c9ca-4d8c-9ee7-d7523f12bac6
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'.CapId
+	toColumn: 'manufacturing_performance_analytics dim_cap'.CapId
+
+relationship AutoDetected_f2f98e3f-4ff5-4bb5-a44d-fb1a1d7addc6
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'.CapId
+	toColumn: 'manufacturing_performance_analytics dim_cap'.CapId
+
+relationship AutoDetected_c4416e0b-bf68-4d8e-bb9f-693ec0e9ba76
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.CapId
+	toColumn: 'manufacturing_performance_analytics vw_dim_cap'.CapId
+
+relationship AutoDetected_9d3e89ba-ef3a-41dc-abe1-8830d6e9e8c2
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'.CapId
+	toColumn: 'manufacturing_performance_analytics vw_dim_cap'.CapId
+
+relationship AutoDetected_485c959e-ec27-4e57-93c7-1df0012ad325
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'.CapId
+	toColumn: 'manufacturing_performance_analytics vw_dim_cap'.CapId
+
+relationship AutoDetected_334e6846-b157-4a09-bad4-56ba9dcec7fc
+	fromColumn: 'manufacturing_performance_analytics vw_fact_customer_complaints_52w'.CustomerId
+	toColumn: 'manufacturing_performance_analytics dim_customer'.CustomerId
+
+relationship AutoDetected_49c7e2cf-4716-400f-a9f8-05d66680ce1e
+	fromColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.CustomerId
+	toColumn: 'manufacturing_performance_analytics dim_customer'.CustomerId
+
+relationship AutoDetected_948f6aea-b93b-48c7-b90c-c5d8b3b7aaa8
+	fromColumn: 'manufacturing_performance_analytics vw_fact_customer_complaints_52w'.CustomerId
+	toColumn: 'manufacturing_performance_analytics vw_dim_customer'.CustomerId
+
+relationship AutoDetected_85b5b42a-903f-4d7e-bec6-aca1ff9d1f02
+	fromColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.CustomerId
+	toColumn: 'manufacturing_performance_analytics vw_dim_customer'.CustomerId
+
+relationship AutoDetected_ade51f60-8e89-4fc2-a9ed-eb6206228582
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w'.PrintToolId
+	toColumn: 'manufacturing_performance_analytics dim_ink'.PrintToolId
+
+relationship AutoDetected_b090ba81-d56f-4731-975f-4cb4f91475bc
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'.PrintToolId
+	toColumn: 'manufacturing_performance_analytics dim_ink'.PrintToolId
+
+relationship AutoDetected_b380f639-d0b7-4c89-97af-2d72cabc2375
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w'.PrintToolId
+	toColumn: 'manufacturing_performance_analytics vw_dim_ink'.PrintToolId
+
+relationship AutoDetected_f4f2338d-1e1f-47ab-bc47-adf0fb830b96
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'.PrintToolId
+	toColumn: 'manufacturing_performance_analytics vw_dim_ink'.PrintToolId
+
+relationship AutoDetected_abc48234-5a23-4b1d-b689-1771b6537b15
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics dim_machine_setup'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_96618871-4c39-4441-a153-4724c586afcf
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics dim_mold'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_98172f47-bf4b-4f0d-9f91-7ec8973bca43
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_predictive_maintenance'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_8c7778ec-6ccb-4695-9ba6-49bf5e9a9836
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_predictive_maintenance_histor'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_0b51269e-295a-4482-91e0-4dd52a332ca4
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_013e2419-639e-4271-8b5d-03af7c870a8e
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_dim_mold'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_dd26c0f3-6c49-44ca-9313-bad96e80c48b
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_03c44781-40ee-4de6-b1e3-39afad1d8aa9
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_88a8d498-6e89-42f3-a9a2-efb657bcb3e3
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_037bc12d-0617-44a2-af6c-aba78c0dcb12
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_0c0cda81-aa47-4e7a-b5ad-05afda1151e9
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_8f2a9cd5-3596-459f-aeb7-677ed405b75d
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_9177789f-41a4-46fc-bad8-3fc604675fa4
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_downtime_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_f71bf0a5-4ce7-4fb6-948b-a984030ae44d
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_downtime_planned_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_45b9215c-a43e-4999-9344-2e085b4fab36
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_b06cb277-9587-4dac-8cf7-39ce37cd13d4
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_3fab4792-455c-4bbf-b9e0-022c75491584
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_9bf847ea-49b6-4fcf-9b59-713e21b010aa
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_material_consumption_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_36bf2eab-6b7f-45f7-b7cd-b06d9cff8231
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_blow_molding'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_4f9a5389-2b59-4600-ba6c-e81c482ee3bb
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_hot_foil_stamping'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_04722ec8-83cb-47d6-9111-cd445932cc32
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_injection_molding'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_9f36eaf9-a1fd-4c2b-9d67-0d8b72833b6d
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_d819a678-2fce-4f2e-a7dc-c80b996ae6ea
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_screen_printing'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_8feff343-94b3-4f4b-9bdc-2df680d783b4
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_79548203-97eb-4d98-9838-7bd04052dbaa
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics dim_machine_setup'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_90ed3d16-f160-483f-92b7-6aab8ca4643c
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics dim_mold'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_906d2df6-70b9-4f02-a2ec-859768527a2d
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_predictive_maintenance'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_211067c7-3502-4c7f-b4c9-ac708b18c7e4
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_predictive_maintenance_histor'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_445769b3-ed6f-48f9-a92e-15776412cb6c
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_dim_machine_setup'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_a20148ad-f735-40f5-bb68-6286238d6b05
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_dim_mold'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_b68145ed-866e-4901-a831-9655f48743b0
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_7829a8ad-0c32-4607-9bdf-a0768653376f
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_1881b593-3c21-40a6-b764-b89d2d6d7975
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_fb57784e-818b-4b23-bf64-83cceb115e63
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_fdd01789-d93d-4c94-83ad-4f988d80fb71
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_a7df909e-f25f-42ef-9f4e-73c99988f8b9
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_75786f9f-7603-4ab6-9df7-d93760ca7fb0
+	fromColumn: 'manufacturing_performance_analytics vw_fact_downtime_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_39475020-19bd-438e-92dd-9d5626ad248f
+	fromColumn: 'manufacturing_performance_analytics vw_fact_downtime_planned_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_bb4a7702-10cf-4a2e-b0ea-442b4e680721
+	fromColumn: 'manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_f8c774d3-afea-4c4d-bd9b-d3e04a8bb687
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_5ae54ef1-0860-4e4e-9538-d93ee0b78d82
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_3a728854-4ba6-44d7-a582-2bfe5c5e5385
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_material_consumption_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_30a76a82-0279-4bc6-b2dc-d2c41f5511e4
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_blow_molding'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_71c95803-daa2-49b7-bbd8-e1ca90f0ce35
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_hot_foil_stamping'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_e63d05da-6d0c-43dd-a169-31552aae239f
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_injection_molding'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_ba9820a3-ad1d-4eef-9124-e5a28627d015
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_d5bf4f5e-87db-4a5d-8d1c-0bce684517bb
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_screen_printing'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_65cdb438-278c-418a-9ce7-be21a74bae1d
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_9f73edee-738c-4210-ad46-7204289a6183
+	fromColumn: 'manufacturing_performance_analytics vw_fact_raw_material_inspection_52w'.SupplierId
+	toColumn: 'manufacturing_performance_analytics dim_supplier'.SupplierId
+
+relationship AutoDetected_dca5de06-42f0-4121-9dc0-5d083247e507
+	fromColumn: 'manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w'.SupplierId
+	toColumn: 'manufacturing_performance_analytics dim_supplier'.SupplierId
+
+relationship AutoDetected_cafe2054-a87f-430f-a55f-ebd0bfa2343d
+	fromColumn: 'manufacturing_performance_analytics vw_fact_supplier_complaints_52w'.SupplierId
+	toColumn: 'manufacturing_performance_analytics dim_supplier'.SupplierId
+
+relationship AutoDetected_b5569afe-182c-444e-b0d4-a82936b44eb2
+	fromColumn: 'manufacturing_performance_analytics vw_fact_raw_material_inspection_52w'.SupplierId
+	toColumn: 'manufacturing_performance_analytics vw_dim_supplier'.SupplierId
+
+relationship AutoDetected_215375c3-9869-4396-8d12-5ff6837b42d1
+	fromColumn: 'manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w'.SupplierId
+	toColumn: 'manufacturing_performance_analytics vw_dim_supplier'.SupplierId
+
+relationship AutoDetected_7a7b6835-d4ec-42bc-8343-e878dfd00410
+	fromColumn: 'manufacturing_performance_analytics vw_fact_supplier_complaints_52w'.SupplierId
+	toColumn: 'manufacturing_performance_analytics vw_dim_supplier'.SupplierId
+
+relationship AutoDetected_6b92e7af-f184-4d12-903c-cf8e7531df2b
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_lot_quality'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_648632d0-0c9c-4d6b-8f2c-1b4bf00f3713
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_dec90e8b-8260-4744-a16d-c4a04071820f
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_1302e7bd-4142-41ed-8346-a622d3741848
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_ee0478d7-44c5-480e-a61b-7c183eafcfb7
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_b3a15597-def9-4d3d-b292-cd428c97e32e
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_9c0c48bc-a431-4e10-b953-9f6e7ca95455
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_29234fd9-731e-4c06-ac57-3e9e36956607
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_customer_complaints_52w'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_115aa810-823a-40bd-8ee6-310734434cd2
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_cd0bc782-d2e3-4ed1-be97-1c92b86d05e7
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_ca7775ef-a2ee-48f4-9c8b-0e86805db326
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_material_consumption_52w'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_6bd6a788-13e4-4810-8ff2-deeadf7be5fd
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_blow_molding'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_c8fe34f3-d83e-4e45-9bb2-0fdd29134da0
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_hot_foil_stamping'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_82e0aeff-ae42-4c2c-8c04-0f1e82489d82
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_injection_molding'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_b5ab3e4b-e7da-4122-82a2-3f37ffc2d832
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_screen_printing'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_bb8aab5b-b079-4266-ae41-dd5abd76c339
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_0bee3eca-47be-4218-90b9-f0c6118212b1
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'.ProductBatch
+	toColumn: 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'.ProductBatch
+
+relationship AutoDetected_c47b5cce-f2a2-44d7-9075-7d4abbd7e8fd
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.ProductBatch
+	toColumn: 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'.ProductBatch
+
+relationship AutoDetected_631b752e-5f1a-42ae-b8b5-5b3c11628b9e
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'.LotId
+	toColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.LotId
+
+relationship AutoDetected_fa77ee93-43ad-488d-b3ed-8022d0af8552
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'.LotId
+	toColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.LotId
+
+relationship AutoDetected_16980cd7-8476-44a2-a6c2-be8e6561cac0
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.LotId
+	toColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.LotId
+
+relationship AutoDetected_35a13969-1fb7-45cc-8459-870a51abfe4f
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.LotId
+	toColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.LotId
+
+relationship AutoDetected_f2cc1ce4-84ef-4f53-ad29-a987d41fd32a
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'.LotId
+	toColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.LotId
+
+relationship AutoDetected_17c15a65-b0cf-412e-8227-cb5c0fefd820
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'.LotId
+	toColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.LotId
+
+relationship AutoDetected_e02450fa-ed4f-49ac-96d1-7d9a5f998e4a
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_customer_complaints_52w'.LotId
+	toColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.LotId
+
+relationship AutoDetected_0b15bd38-a5f7-4a05-9528-3f0de2740819
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_blow_molding'.LotId
+	toColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.LotId
+
+relationship AutoDetected_13ecce9f-a517-4826-8ec2-571a3f210cda
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_injection_molding'.LotId
+	toColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.LotId
+
+relationship AutoDetected_71816bce-0901-420d-b232-8bb885edc301
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w'.PrintLot
+	toColumn: 'manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'.PrintLot
+
+relationship AutoDetected_aa0342d0-adb3-41b8-b7af-5e3ddd9aa51d
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_raw_material_inspection_52w'.MaterialLotId
+	toColumn: 'manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w'.MaterialLotId
+
+relationship AutoDetected_596e4076-2346-4f7e-ba18-76a23f4edec5
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_supplier_complaints_52w'.MaterialLotId
+	toColumn: 'manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w'.MaterialLotId
+
+relationship f2d625c8-e6fe-4c26-9313-bd087cd4da9c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.GeneratedFrom
+	toColumn: LocalDateTable_ce565575-c264-4df7-9c2b-0c8b8738f54e.Date
+
+relationship e457cd15-47b5-4bad-936a-c837a13dcb9e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast_history'.WeekStart
+	toColumn: LocalDateTable_65636a04-d5ba-4c9e-a87d-96696a814c08.Date
+
+relationship c8e3c5bf-7bc5-4d9f-b2fe-f979a87edc66
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_production_forecast'.GeneratedFrom
+	toColumn: LocalDateTable_f73cf3ed-b14a-46c3-8c91-ded49ff54851.Date
+
+relationship c5c0affe-7793-42c0-ac6b-5c9b24ae1c8f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_production_forecast_history'.WeekStart
+	toColumn: LocalDateTable_4edabcfa-51ab-4fe1-b0bb-1a7c8a5dfbb2.Date
+
+relationship da6979b9-a3ad-4d47-bb15-1121e35e35c7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_rejected_forecast'.GeneratedFrom
+	toColumn: LocalDateTable_5d93bc6d-f885-4fc3-8d3f-2bdfcb97a83f.Date
+
+relationship 621c4155-b54a-43a2-a505-218d2bfb6b13
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_rejected_forecast_history'.WeekStart
+	toColumn: LocalDateTable_371dfa6b-17e1-4c8a-ba20-2ba4790a7698.Date
+
+relationship AutoDetected_bd9a2ed8-6c79-4a5d-897a-6fa54b274ead
+	fromColumn: manufacturing_performance_fact_production.ProductId
+	toColumn: 'manufacturing_performance_analytics dim_masterbatch'.ProductId
+
+relationship AutoDetected_41a713b9-842f-4875-8887-ac6f74c19a6c
+	isActive: false
+	fromColumn: manufacturing_performance_fact_production.ProductId
+	toColumn: 'manufacturing_performance_analytics vw_dim_masterbatch'.ProductId
+
+relationship AutoDetected_2ba116ee-f5f1-48c2-bdfb-2351abe602a4
+	fromColumn: manufacturing_performance_fact_production.Process
+	toColumn: 'manufacturing_performance_analytics ml_predictions_downtime_forecast'.Process
+
+relationship AutoDetected_8a3bb66a-15b9-475a-8f36-52af4dec81d6
+	isActive: false
+	fromColumn: manufacturing_performance_fact_production.MachineId
+	toColumn: 'manufacturing_performance_analytics dim_machine'.MachineId
+
+relationship AutoDetected_e0c4d94c-cf16-437d-bcf0-bf1a60b38e31
+	fromColumn: manufacturing_performance_fact_production.MachineId
+	toColumn: 'manufacturing_performance_analytics vw_dim_machine'.MachineId
+
+relationship AutoDetected_76b2058d-5630-48c1-bf4e-a7fa57761bf2
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: manufacturing_performance_fact_production.WorkOrder
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.WorkOrder
+
+relationship AutoDetected_96053863-16c8-4771-a036-5fe91de64dfb
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'.LotId
+	toColumn: manufacturing_performance_fact_production.LotId
+
+relationship AutoDetected_e765ab9c-6b2f-42d0-9160-a3f539a953c6
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'.LotId
+	toColumn: manufacturing_performance_fact_production.LotId
+
+relationship AutoDetected_45fec803-5b7f-4a1f-a736-a1b3d7eb2cad
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.LotId
+	toColumn: manufacturing_performance_fact_production.LotId
+
+relationship AutoDetected_9649e674-e1cc-4c29-9937-1623051803cf
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.LotId
+	toColumn: manufacturing_performance_fact_production.LotId
+
+relationship AutoDetected_134ab2e4-1153-4399-9cb7-424cae505bb0
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'.LotId
+	toColumn: manufacturing_performance_fact_production.LotId
+
+relationship AutoDetected_658fa650-7ee6-48f1-9f7a-5e8a9bd9fe26
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'.LotId
+	toColumn: manufacturing_performance_fact_production.LotId
+
+relationship AutoDetected_306be39a-cc7f-4a62-a762-c6c3b15c1c57
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_customer_complaints_52w'.LotId
+	toColumn: manufacturing_performance_fact_production.LotId
+
+relationship AutoDetected_fa41b9ba-54a3-4dac-94b1-54265a353fd8
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w'.LotId
+	toColumn: manufacturing_performance_fact_production.LotId
+
+relationship AutoDetected_fcee1df7-ac5c-49d0-b6ec-7710ed571b76
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'.LotId
+	toColumn: manufacturing_performance_fact_production.LotId
+
+relationship AutoDetected_9e4cb7e7-910d-4b81-934d-27a41197ff13
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.LotId
+	toColumn: manufacturing_performance_fact_production.LotId
+
+relationship AutoDetected_8bfed71b-6139-47f6-8b2e-79c53e14bff4
+	isActive: false
+	fromColumn: manufacturing_performance_fact_production.ProductBatch
+	toColumn: 'manufacturing_performance_analytics vw_fact_production_hot_foil_stamping'.ProductBatch
+
+relationship 5b427988-b896-4565-9b49-b47f3c80a93e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendario.Date
+	toColumn: LocalDateTable_fe3cdd8b-eeb8-41a6-9c4c-16a7a1201fdb.Date
+
+relationship 9a7bc543-a0ea-6dec-5bda-dab28fe50fb3
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_predictive_maintenance'.GeneratedFrom
+	toColumn: Calendario.Date
+
+relationship 8b9afcc3-d9f5-f846-b421-5fd07889992e
+	fromColumn: 'manufacturing_performance_analytics ml_predictions_lot_quality'.Date
+	toColumn: Calendario.Date
+
+relationship 47f31327-d7d2-2f73-b81a-cfe5b90ea7c1
+	fromColumn: 'manufacturing_performance_analytics vw_fact_supplier_complaints_52w'.Date
+	toColumn: Calendario.Date
+
+relationship a954f273-1946-d0ea-01dc-7a46a35bbebb
+	fromColumn: manufacturing_performance_fact_production.Date
+	toColumn: Calendario.Date
+
+relationship 1eff5800-33c3-90eb-4458-ad13c7838e26
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_supplier_complaints_52w'.DateResolved
+	toColumn: Calendario.Date
+
+relationship 442f0e1f-bd33-c7f7-f2f5-e27722c74aef
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_supplier_complaints_52w'.DateSupplierResponded
+	toColumn: Calendario.Date
+
+relationship 2e201df9-2ce1-bcda-3342-c16a0ce93c5c
+	fromColumn: 'manufacturing_performance_analytics vw_fact_sales_52w'.Date
+	toColumn: Calendario.Date
+
+relationship dfb14624-d19d-2bc4-29f8-21c6efbb2f00
+	fromColumn: 'manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w'.Date
+	toColumn: Calendario.Date
+
+relationship 7f7941ce-3f05-5728-eedc-560271cdcf9c
+	fromColumn: 'manufacturing_performance_analytics vw_fact_raw_material_inspection_52w'.Date
+	toColumn: Calendario.Date
+
+relationship 5f1f52b4-ab80-b04b-e9b3-4c05afc7b8fb
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_screen_printing'.Date
+	toColumn: Calendario.Date
+
+relationship eebf9b4e-147a-bed9-d676-b770f795e885
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_plan_52w'.Date
+	toColumn: Calendario.Date
+
+relationship 0fd7face-13a6-bc11-be38-cf3fc86600a4
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_injection_molding'.Date
+	toColumn: Calendario.Date
+
+relationship 1a21886b-c43c-bb83-fbc4-0bf7455ed5cf
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_hot_foil_stamping'.Date
+	toColumn: Calendario.Date
+
+relationship 07919066-c3ec-7b7d-e405-ecd00b02a727
+	fromColumn: 'manufacturing_performance_analytics vw_fact_production_blow_molding'.Date
+	toColumn: Calendario.Date
+
+relationship 2b9af398-ad93-41bc-7040-e8694ece6db2
+	fromColumn: 'manufacturing_performance_analytics vw_fact_nonconformance_52w'.Date
+	toColumn: Calendario.Date
+
+relationship 273f1da4-8ea8-4c4a-a048-7ab80a8580ac
+	fromColumn: 'manufacturing_performance_analytics vw_fact_material_consumption_52w'.Date
+	toColumn: Calendario.Date
+
+relationship 00e8c304-ddf1-5df0-c7a4-08db6ae42ed4
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'.ProductionDate
+	toColumn: Calendario.Date
+
+relationship dbe3675e-8cba-3082-c76f-26ebf988ea5a
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'.LotDecisionDate
+	toColumn: Calendario.Date
+
+relationship f1533726-7129-3903-0baa-80b85b019995
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w'.ProductionDate
+	toColumn: Calendario.Date
+
+relationship 1d9b68d2-3197-17d3-3611-134a01ec9751
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w'.InspectionDateTime
+	toColumn: Calendario.Date
+
+relationship ce87dcc6-21ec-fe4f-a902-60eb3908aa86
+	fromColumn: 'manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'.Date
+	toColumn: Calendario.Date
+
+relationship 2d8120dc-ae4d-4981-5eee-f5ad36f1d2d4
+	fromColumn: 'manufacturing_performance_analytics vw_fact_downtime_planned_52w'.Date
+	toColumn: Calendario.Date
+
+relationship 45aed4ed-ccae-b379-88d2-59d1a41f989d
+	fromColumn: 'manufacturing_performance_analytics vw_fact_downtime_52w'.Date
+	toColumn: Calendario.Date
+
+relationship b63a2cb2-0fc8-5352-6321-99ba9e9da15f
+	fromColumn: 'manufacturing_performance_analytics vw_fact_customer_complaints_52w'.Date
+	toColumn: Calendario.Date
+
+relationship fbfbb25d-bcb5-2a69-b100-2ea6194c1c22
+	fromColumn: 'manufacturing_performance_analytics vw_fact_capa_52w'.OpenDate
+	toColumn: Calendario.Date
+
+relationship 6e04e9f6-5bbc-9f8d-6f42-732f68d9ef74
+	isActive: false
+	fromColumn: 'manufacturing_performance_analytics vw_fact_capa_52w'.DueDate
+	toColumn: Calendario.Date
+
+relationship 6bdaa2e8-bcb4-18e2-0829-b44b67c1da33
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'.InspectionDate
+	toColumn: Calendario.Date
+
+relationship 7f44c99d-769e-1b3d-4cde-8c50933f089f
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'.LotDecisionDate
+	toColumn: Calendario.Date
+
+relationship 1cbdca13-3cdf-ea5c-8ffa-0ab76fa8bf37
+	fromColumn: 'manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'.InspectionDate
+	toColumn: Calendario.Date
+
+relationship 40ca3e61-14a5-b2aa-bcc4-29ca2295cf5c
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'.InspectionDate
+	toColumn: Calendario.Date
+
+relationship 92c02ac3-90a9-2f70-e9eb-0a8c2d81e2db
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'.LotDecisionDate
+	toColumn: Calendario.Date
+
+relationship 25a089b4-1904-7d39-e8ed-f70231e39cce
+	fromColumn: 'manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'.InspectionDate
+	toColumn: Calendario.Date
+
+relationship 'manufacturing_performance_fact_production_OperatorId_manufacturing_performance_analytics vw_dim_operator_PersonId'
+	fromColumn: manufacturing_performance_fact_production.OperatorId
+	toColumn: 'manufacturing_performance_analytics vw_dim_operator'.PersonId
+
+relationship 'manufacturing_performance_analytics vw_fact_raw_material_inspection_52w_MaterialCharacteristicKey_manufacturing_performance_analytics vw_dim_raw_material_control_plan_MaterialCharacteristicKey'
+	fromColumn: 'manufacturing_performance_analytics vw_fact_raw_material_inspection_52w'.MaterialCharacteristicKey
+	toColumn: 'manufacturing_performance_analytics vw_dim_raw_material_control_plan'.MaterialCharacteristicKey
+
+relationship 'manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w_Characteristic_manufacturing_performance_analytics vw_dim_ink_control_plan_cq_Characteristic'
+	fromColumn: 'manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w'.Characteristic
+	toColumn: 'manufacturing_performance_analytics vw_dim_ink_control_plan_cq'.Characteristic
+

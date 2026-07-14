@@ -1,0 +1,215 @@
+table 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'
+	lineageTag: caedbee6-c746-4609-a0b7-6d00a7613f24
+
+	column ProductBatch
+		dataType: string
+		lineageTag: d7e80c26-efcd-40fc-ab12-70cf708da217
+		summarizeBy: none
+		sourceColumn: ProductBatch
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkOrder
+		dataType: string
+		lineageTag: 3bb847df-ed32-43f0-91af-48a3ddec5eb9
+		summarizeBy: none
+		sourceColumn: WorkOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductionDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 56d345bc-cac0-427f-ab0f-6f71fe0c692f
+		summarizeBy: none
+		sourceColumn: ProductionDate
+
+		variation Variação
+			isDefault
+			relationship: 8f0eeeb9-4059-4ffc-b79b-d03d13c1761c
+			defaultHierarchy: LocalDateTable_314381ec-daab-4cc0-92e3-e28232026964.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Shift
+		dataType: string
+		lineageTag: dc9562c4-0913-4443-9c15-ae9acc512ab7
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineId
+		dataType: string
+		lineageTag: 92e7f435-d52d-4be3-9c93-9051d8c0f11b
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MoldId
+		dataType: string
+		lineageTag: 4c34a5fb-db8d-497d-9b08-dc47d7a7b085
+		summarizeBy: none
+		sourceColumn: MoldId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BottleId
+		dataType: string
+		lineageTag: df46177e-b323-41cb-b940-a4dd031384ee
+		summarizeBy: none
+		sourceColumn: BottleId
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotSize
+		dataType: int64
+		formatString: 0
+		lineageTag: 11e8ac5e-1116-4081-8138-ce00a2bf4a81
+		summarizeBy: sum
+		sourceColumn: LotSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodeLetter
+		dataType: string
+		lineageTag: 6f669c20-9393-401d-ac83-1eabba9560b2
+		summarizeBy: none
+		sourceColumn: CodeLetter
+
+		annotation SummarizationSetBy = Automatic
+
+	column SampleSize
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e5eaf23-41f7-4726-bea4-75410cd17972
+		summarizeBy: sum
+		sourceColumn: SampleSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column CriticalDefects
+		dataType: int64
+		formatString: 0
+		lineageTag: 853d0a19-a1e9-46af-b6e5-ee98fe302bdd
+		summarizeBy: sum
+		sourceColumn: CriticalDefects
+
+		annotation SummarizationSetBy = Automatic
+
+	column MajorDefects
+		dataType: int64
+		formatString: 0
+		lineageTag: b7f32d14-3156-457f-91bb-00ec5418660e
+		summarizeBy: sum
+		sourceColumn: MajorDefects
+
+		annotation SummarizationSetBy = Automatic
+
+	column MinorDefects
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d17c1ba-fccd-4e08-91a5-3e014e63a86c
+		summarizeBy: sum
+		sourceColumn: MinorDefects
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalSampleDefects
+		dataType: int64
+		formatString: 0
+		lineageTag: 06fd7760-672b-4f18-afd5-1455c8b0bd5d
+		summarizeBy: sum
+		sourceColumn: TotalSampleDefects
+
+		annotation SummarizationSetBy = Automatic
+
+	column VariablesDecision
+		dataType: string
+		lineageTag: 8f2eacb1-9989-4c22-98b8-ce5c7e0bf0db
+		summarizeBy: none
+		sourceColumn: VariablesDecision
+
+		annotation SummarizationSetBy = Automatic
+
+	column AttributesDecision
+		dataType: string
+		lineageTag: 29a1a777-6a76-48ef-abac-9efd4f46d79f
+		summarizeBy: none
+		sourceColumn: AttributesDecision
+
+		annotation SummarizationSetBy = Automatic
+
+	column FinalLotDecision
+		dataType: string
+		lineageTag: 840bd0fb-dbf2-46c1-a4c5-97ae37769291
+		summarizeBy: none
+		sourceColumn: FinalLotDecision
+
+		annotation SummarizationSetBy = Automatic
+
+	column Remarks
+		dataType: string
+		lineageTag: 72376a19-9e9b-4777-a9ed-8a2988b54ff4
+		summarizeBy: none
+		sourceColumn: Remarks
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inspector
+		dataType: string
+		lineageTag: 7e375a49-c1d4-43ad-948c-6b58c9417dfb
+		summarizeBy: none
+		sourceColumn: Inspector
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotId
+		dataType: string
+		lineageTag: 109897de-546d-4665-a98e-65845722018f
+		summarizeBy: none
+		sourceColumn: LotId
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotDecisionDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 50cc132e-0883-4017-b178-e32448f693c2
+		summarizeBy: none
+		sourceColumn: LotDecisionDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LotDecisionTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 66db26b7-887d-433b-a95a-878d9908e5bb
+		summarizeBy: none
+		sourceColumn: LotDecisionTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	partition 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_bottle_disposition_lot_cq_52w"]}[Data],
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(Table.TransformColumnTypes(#"Navegação 1", {{"LotDecisionDateTime", type text}}, "pt-PT"), "LotDecisionDateTime", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"LotDecisionDateTime.1", "LotDecisionDateTime.2"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador",{{"LotDecisionDateTime.1", type date}, {"LotDecisionDateTime.2", type time}}),
+				    #"Colunas com Nome Mudado" = Table.RenameColumns(#"Tipo Alterado",{{"LotDecisionDateTime.1", "LotDecisionDate"}, {"LotDecisionDateTime.2", "LotDecisionTime"}})
+				in
+				  #"Colunas com Nome Mudado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,317 @@
+table 'manufacturing_performance_analytics vw_fact_production_injection_molding'
+	lineageTag: 430d74e7-88cb-4cc1-8fa4-a6cb006f4d1f
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 799f1acc-a932-4411-920b-aef856412953
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Process
+		dataType: string
+		lineageTag: 3cd63eef-30b9-4702-8fcb-38f26b398e3c
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineId
+		dataType: string
+		lineageTag: ff82a746-1277-4831-be69-63413a2275e7
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ToolId
+		dataType: string
+		lineageTag: b4c46cfa-6753-47a0-a816-b57bd25e2bcc
+		summarizeBy: none
+		sourceColumn: ToolId
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkOrder
+		dataType: string
+		lineageTag: 02429efc-f157-4f1b-b03c-78296dbc9240
+		summarizeBy: none
+		sourceColumn: WorkOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductId
+		dataType: string
+		lineageTag: a6b7d14b-a87f-4496-b6e8-10d4076ca50c
+		summarizeBy: none
+		sourceColumn: ProductId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductBatch
+		dataType: int64
+		formatString: 0
+		lineageTag: 17a66b87-332c-4c70-8ce7-588a17bf7b4b
+		summarizeBy: sum
+		sourceColumn: ProductBatch
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 208cb97a-db63-4082-8848-1bb537791e5b
+		summarizeBy: none
+		sourceColumn: StartTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column EndTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: a79d86d4-3254-4de6-a882-698251421b7c
+		summarizeBy: none
+		sourceColumn: EndTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column PlannedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 8887b54d-c320-4671-aefa-884c48de7fa7
+		summarizeBy: sum
+		sourceColumn: PlannedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProducedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ac47def-0b1e-4479-aee1-3e0349b88600
+		summarizeBy: sum
+		sourceColumn: ProducedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column RejectedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 0167d1e0-9f3e-4a35-9302-086888d42337
+		summarizeBy: sum
+		sourceColumn: RejectedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column OperatorId
+		dataType: string
+		lineageTag: 6c133071-c8e1-46e4-a1e6-615f2e02fb79
+		summarizeBy: none
+		sourceColumn: OperatorId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: d24a065b-7a2e-4068-97fa-5693f77de626
+		summarizeBy: sum
+		sourceColumn: ISOWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeekday
+		dataType: int64
+		formatString: 0
+		lineageTag: 91be7031-d3e7-481f-9589-af92017ed294
+		summarizeBy: sum
+		sourceColumn: ISOWeekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShiftNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 1b5b3bde-e125-453a-a2ec-536b24164f4b
+		summarizeBy: sum
+		sourceColumn: ShiftNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaterialLotSeq
+		dataType: int64
+		formatString: 0
+		lineageTag: fab7b899-e5c8-4088-bffa-3db45b51d9fa
+		summarizeBy: sum
+		sourceColumn: MaterialLotSeq
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotId
+		dataType: string
+		lineageTag: f0dcb54b-52ff-4e0e-a32a-1960df0d3d14
+		summarizeBy: none
+		sourceColumn: LotId
+
+		annotation SummarizationSetBy = Automatic
+
+	column LeadTimeProdHours
+		dataType: double
+		lineageTag: 78154bcc-7732-47da-8566-fdbf46eb59de
+		summarizeBy: sum
+		sourceColumn: LeadTimeProdHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PlannedHours
+		dataType: double
+		lineageTag: 1d8f33ad-7d42-47b7-a84e-041991afc998
+		summarizeBy: sum
+		sourceColumn: PlannedHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PlannedTimeHours
+		dataType: double
+		lineageTag: 1a39fca1-e8f4-4fb9-8303-87c9a5034b17
+		summarizeBy: sum
+		sourceColumn: PlannedTimeHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UnplannedDowntimeHours
+		dataType: double
+		lineageTag: fed0196f-fb02-44e3-addc-cd74a87bb458
+		summarizeBy: sum
+		sourceColumn: UnplannedDowntimeHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SetupTimeHours
+		dataType: double
+		lineageTag: 03fe1ac2-2561-4fef-9514-29553653c216
+		summarizeBy: sum
+		sourceColumn: SetupTimeHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RunTimeHours
+		dataType: double
+		lineageTag: b0c3937f-1d48-41b3-8c46-1dbbd61539e5
+		summarizeBy: sum
+		sourceColumn: RunTimeHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Availability
+		dataType: double
+		lineageTag: 26f780e4-1ab0-42e3-9770-ab44c171d010
+		summarizeBy: sum
+		sourceColumn: Availability
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RatedCapacityPcH
+		dataType: double
+		lineageTag: 44cc0af3-9f60-4bea-8fdc-4231c213fd47
+		summarizeBy: sum
+		sourceColumn: RatedCapacityPcH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IdealCycleTimeSec
+		dataType: double
+		lineageTag: c2906030-8b21-4027-aea6-bf0f3b473a4c
+		summarizeBy: sum
+		sourceColumn: IdealCycleTimeSec
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Performance
+		dataType: double
+		lineageTag: 3f7835a8-35ab-4944-a019-74f1c755dfb9
+		summarizeBy: sum
+		sourceColumn: Performance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Quality
+		dataType: double
+		lineageTag: a55dcbf0-f01f-418e-8c85-7fb61e4097ec
+		summarizeBy: sum
+		sourceColumn: Quality
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OEE
+		dataType: double
+		lineageTag: e6eef492-8312-4249-8b32-5983b64f9716
+		summarizeBy: sum
+		sourceColumn: OEE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ActualCycleTimeSec
+		dataType: double
+		lineageTag: dbd86466-f8da-4461-a926-d35d8d23a3e7
+		summarizeBy: sum
+		sourceColumn: ActualCycleTimeSec
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ThroughputLeadTimeHours
+		dataType: double
+		lineageTag: f5517271-db17-41af-9a20-8077064905d6
+		summarizeBy: sum
+		sourceColumn: ThroughputLeadTimeHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'manufacturing_performance_analytics vw_fact_production_injection_molding' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_production_injection_molding"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

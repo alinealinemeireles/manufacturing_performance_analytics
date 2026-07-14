@@ -1,0 +1,131 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "8114b47144e64d9d81d0",
+  "position": {
+    "x": 976.02817893624513,
+    "y": 610.28812962310667,
+    "z": 11000,
+    "height": 281.33849947164492,
+    "width": 458.79816836914404,
+    "tabOrder": 19000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Unplanned Downtime"
+                }
+              },
+              "queryRef": "_Medidas.Unplanned Downtime",
+              "nativeQueryRef": "Unplanned Downtime"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Setup Hours"
+                }
+              },
+              "queryRef": "_Medidas.Setup Hours",
+              "nativeQueryRef": "Setup Hours"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Preventive Maintenance Hours"
+                }
+              },
+              "queryRef": "_Medidas.Preventive Maintenance Hours",
+              "nativeQueryRef": "Preventive Maintenance Hours"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Speed Loss (hours)"
+                }
+              },
+              "queryRef": "_Medidas.Speed Loss (hours)",
+              "nativeQueryRef": "Speed Loss (hours)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Loss of Quality (hours)"
+                }
+              },
+              "queryRef": "_Medidas.Loss of Quality (hours)",
+              "nativeQueryRef": "Loss of Quality (hours)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Grandes Perdas (horas)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "c2bc7e9b7c0a46398b7b",
+  "position": {
+    "x": 20,
+    "y": 585,
+    "z": 10000,
+    "height": 280,
+    "width": 620,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics vw_fact_downtime_unplanned_52w"
+                    }
+                  },
+                  "Property": "StoppageReason"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics vw_fact_downtime_unplanned_52w.StoppageReason",
+              "nativeQueryRef": "StoppageReason",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics vw_fact_downtime_unplanned_52w"
+                    }
+                  },
+                  "Property": "MaintenanceTeam"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics vw_fact_downtime_unplanned_52w.MaintenanceTeam",
+              "nativeQueryRef": "MaintenanceTeam"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "manufacturing_performance_analytics vw_fact_downtime_unplanned_52w"
+                        }
+                      },
+                      "Property": "DowntimeDurationMin"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(manufacturing_performance_analytics vw_fact_downtime_unplanned_52w.DowntimeDurationMin)",
+              "nativeQueryRef": "Soma de DowntimeDurationMin"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "manufacturing_performance_analytics vw_fact_downtime_unplanned_52w"
+                      }
+                    },
+                    "Property": "DowntimeDurationMin"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Pareto — Paradas Não Planejadas por Equipe'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

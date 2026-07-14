@@ -1,0 +1,1269 @@
+table _Medidas
+	lineageTag: 40fb8f3c-82b7-4a39-8ccd-792a42f820db
+
+	measure OEE = AVERAGE(manufacturing_performance_fact_production[OEE])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Produção
+		lineageTag: dc08baca-5af7-402e-8317-e710e10c5679
+
+	measure 'Availability M' = AVERAGE(manufacturing_performance_fact_production[Availability])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Produção
+		lineageTag: a43b1e8d-1f1a-4347-b338-20cbd892791b
+
+	measure 'Performance M' = AVERAGE(manufacturing_performance_fact_production[Performance])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Produção
+		lineageTag: bea15fae-e2dd-406a-ae1e-e3158e41e3a1
+
+	measure 'Quality M' = AVERAGE(manufacturing_performance_fact_production[Quality])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Produção
+		lineageTag: 43a431b6-d0d6-441e-8e24-ab6107ee588b
+
+	measure 'Unplanned Downtime' = ```
+			
+			CALCULATE(
+			    SUM('manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'[DowntimeDurationMin]) / 60,
+			    'manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'[UnplannedFailure] = TRUE
+			)
+			
+			```
+		displayFolder: Manutenção
+		lineageTag: 281a563e-7791-45fd-8d15-d3ac257b04ed
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Setup Hours' = ```
+			
+			CALCULATE(
+			    SUM('manufacturing_performance_analytics vw_fact_downtime_planned_52w'[DowntimeDurationMin]) / 60,
+			'manufacturing_performance_analytics vw_fact_downtime_52w'[IsChangeoverSetup] = TRUE
+			)
+			
+			```
+		displayFolder: Manutenção
+		lineageTag: 2ce67e48-edd2-497e-bc31-7012bb6c8058
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Preventive Maintenance Hours' =
+			
+			CALCULATE(
+			    SUM('manufacturing_performance_analytics vw_fact_downtime_planned_52w'[DowntimeDurationMin]) / 60,
+			     'manufacturing_performance_analytics vw_fact_downtime_planned_52w'[IsPreventiveMaintenance]= TRUE
+			)
+		displayFolder: Manutenção
+		lineageTag: c8a142fe-f6eb-466c-b10b-2ec2a1b4a8d3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Speed Loss (hours)' =
+			
+			SUMX(manufacturing_performance_fact_production, manufacturing_performance_fact_production[RunTimeHours]* (1 -manufacturing_performance_fact_production[Performance] ))
+		displayFolder: Produção
+		lineageTag: 5a11c878-131a-4531-8dba-6a11a766b938
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Loss of Quality (hours)' =
+			
+			SUMX(manufacturing_performance_fact_production, manufacturing_performance_fact_production[RunTimeHours]* (1 -manufacturing_performance_fact_production[Performance])*(1-manufacturing_performance_fact_production[Quality]))
+		displayFolder: Produção
+		lineageTag: 9a663812-5aca-4609-b58b-68b6184b806a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Unplanned Failures' =
+			
+			CALCULATE(
+			    COUNTROWS('manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'),
+			    'manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'[UnplannedFailure])
+		formatString: 0
+		displayFolder: Manutenção
+		lineageTag: e4c56dd4-4c91-4a34-93ef-b6da80107a37
+
+	measure 'MTBF (hours)' =
+			DIVIDE(
+			    SUM(manufacturing_performance_fact_production[RunTimeHours]),
+			    [Unplanned Failures]
+			)
+		formatString: 0.00
+		displayFolder: Manutenção
+		lineageTag: 8da3ec44-469c-4da7-9ced-0fa15f1b022e
+
+	measure 'MTTR (horas)' =
+			
+			CALCULATE(
+			    AVERAGE('manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'[DowntimeDurationMin]),
+			    'manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'[UnplannedFailure] = TRUE
+			) / 60
+		displayFolder: Manutenção
+		lineageTag: 2a1cc8f0-c2ab-470f-b3d8-3071464dfd74
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Lots Inspections' =
+			COUNTROWS('manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w')
+			+ COUNTROWS('manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w')
+			+ COUNTROWS('manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w')
+		formatString: 0
+		displayFolder: Qualidade
+		lineageTag: 038bced7-50f3-4008-ac6d-1827c21df7b2
+
+	measure 'Lots Appproved' =
+			CALCULATE(
+			    COUNTROWS('manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'),
+			    'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'[FinalLotDecision] = "Approved"
+			)
+			+ CALCULATE(
+			    COUNTROWS('manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'),
+			    'manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'[FinalLotDecision] = "Approved"
+			)
+			+ CALCULATE(
+			    COUNTROWS('manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'),
+			    'manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'[FinalLotDecision] = "Approved"
+			)
+		formatString: 0
+		displayFolder: Qualidade
+		lineageTag: c0847eba-09bf-4ce1-8eaa-360d7e201885
+
+	measure FPY = DIVIDE([Lots Appproved], [Lots Inspections])
+		displayFolder: Qualidade
+		lineageTag: ed432d59-08a2-430b-94c9-885a9318190b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cpk Médio' =
+			VAR CapGroups =
+			    SUMMARIZE(
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w',
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[Characteristic],
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[MachineId],
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[MoldId],
+			        "CpkGrupo", AVERAGE('manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[Cpk])
+			    )
+			VAR BottleGroups =
+			    SUMMARIZE(
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w',
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[Characteristic],
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[MachineId],
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[MoldId],
+			        "CpkGrupo", AVERAGE('manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[Cpk])
+			    )
+			VAR AllGroups = UNION(CapGroups, BottleGroups)
+			RETURN
+			    AVERAGEX(AllGroups, [CpkGrupo])
+		formatString: 0.00
+		displayFolder: Qualidade
+		lineageTag: 493573e2-2484-496f-bfd9-542d07e23b4c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Reclamações' = COUNTROWS('manufacturing_performance_analytics vw_fact_customer_complaints_52w')
+		formatString: 0
+		displayFolder: QA
+		lineageTag: 2a03bc26-a983-4605-bedb-372733a75111
+
+	measure 'Total Unidades Expedidas' = SUM('manufacturing_performance_analytics vw_fact_sales_52w'[ShippedQty])
+		formatString: 0
+		displayFolder: QA
+		lineageTag: 71a70ba5-d26e-46d9-a345-a6c083cdfb11
+
+	measure PMU = DIVIDE([Total Reclamações], [Total Unidades Expedidas]) * 1000000
+		displayFolder: QA
+		lineageTag: 3cf405db-948d-4356-bed5-8da3c6c41cd3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cor OEE' =
+			
+			VAR v = [OEE]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        v >= 0.85, "Verde",
+			        v >= 0.70, "Amarelo",
+			        "Vermelho"
+			    )
+		displayFolder: Visão Geral
+		lineageTag: 9a493b9e-d713-44ed-a1cd-9c58d47946fd
+
+	measure 'OEE Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX(manufacturing_performance_fact_production[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [OEE],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: Visão Geral
+		lineageTag: 33f9b73b-9df4-4db8-8e46-2dc3c848321b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'OEE 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX(manufacturing_performance_fact_production[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [OEE],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: Visão Geral
+		lineageTag: 63cc1dc3-3de3-42e5-b2ba-31d05505349a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variação OEE (p.p.)' =
+			
+			([OEE Últimas 4 Semanas] - [OEE 4 Semanas Anteriores]) * 100
+		displayFolder: Visão Geral
+		lineageTag: 3b909c31-2899-4408-914f-0f2052c305fe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Tendência OEE' =
+			
+			VAR delta = [Variação OEE (p.p.)]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(delta), "Sem dados suficientes",
+			        delta > 1, "▲ A melhorar",
+			        delta < -1, "▼ A degradar",
+			        "➡ Estável"
+			    )
+		displayFolder: Visão Geral
+		lineageTag: c6f26e0c-d41a-45d2-9856-50db98c3a4f2
+
+	measure 'Cartao valor' = [OEE]
+		displayFolder: Visão Geral
+		lineageTag: 76fcc912-b6b1-4261-a57a-00ed7647f849
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cartão KPI' = "85% | 75%"
+		displayFolder: Visão Geral
+		lineageTag: 0cb52888-c842-463c-b301-f77af478bb6f
+
+	measure 'Lots Reprovados' = [Lots Inspections] - [Lots Appproved]
+		formatString: 0
+		displayFolder: Qualidade
+		lineageTag: f5155af1-5a8f-489f-b093-63ad5b7bf814
+
+	measure 'FPY Frascos' =
+			DIVIDE(
+			    CALCULATE(COUNTROWS('manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'), 'manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'[FinalLotDecision] = "Approved"),
+			    COUNTROWS('manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w')
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Qualidade
+		lineageTag: 0f1a4314-17b7-4b6f-b3b5-933feb6742f9
+
+	measure 'FPY Tampas' =
+			DIVIDE(
+			    CALCULATE(COUNTROWS('manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'), 'manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'[FinalLotDecision] = "Approved"),
+			    COUNTROWS('manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w')
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Qualidade
+		lineageTag: 99952c81-c16d-4147-8497-5f902e41a4b1
+
+	measure 'FPY Tinta' =
+			DIVIDE(
+			    CALCULATE(COUNTROWS('manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'), 'manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'[FinalLotDecision] = "Approved"),
+			    COUNTROWS('manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w')
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Qualidade
+		lineageTag: 0a6ab61a-4b3e-4f32-b146-2270f5ebbb1d
+
+	measure 'XBar UCL Médio' =
+			VAR CapGroups =
+			    SUMMARIZE(
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w',
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[Characteristic],
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[MachineId],
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[MoldId],
+			        "Grupo", AVERAGE('manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[XBarUCL])
+			    )
+			VAR BottleGroups =
+			    SUMMARIZE(
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w',
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[Characteristic],
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[MachineId],
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[MoldId],
+			        "Grupo", AVERAGE('manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[XBarUCL])
+			    )
+			VAR AllGroups = UNION(CapGroups, BottleGroups)
+			RETURN AVERAGEX(AllGroups, [Grupo])
+		displayFolder: Qualidade\Carta XR
+		lineageTag: 5cd102d1-f999-4ae1-a238-92da9c7ce8da
+
+	measure 'XBar LCL Médio' =
+			VAR CapGroups =
+			    SUMMARIZE(
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w',
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[Characteristic],
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[MachineId],
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[MoldId],
+			        "Grupo", AVERAGE('manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[XBarLCL])
+			    )
+			VAR BottleGroups =
+			    SUMMARIZE(
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w',
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[Characteristic],
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[MachineId],
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[MoldId],
+			        "Grupo", AVERAGE('manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[XBarLCL])
+			    )
+			VAR AllGroups = UNION(CapGroups, BottleGroups)
+			RETURN AVERAGEX(AllGroups, [Grupo])
+		displayFolder: Qualidade\Carta XR
+		lineageTag: a1eebbe8-605d-4d47-88fe-4a2a399834bc
+
+	measure 'Range UCL Médio' =
+			VAR CapGroups =
+			    SUMMARIZE(
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w',
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[Characteristic],
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[MachineId],
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[MoldId],
+			        "Grupo", AVERAGE('manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[RangeRUCL])
+			    )
+			VAR BottleGroups =
+			    SUMMARIZE(
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w',
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[Characteristic],
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[MachineId],
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[MoldId],
+			        "Grupo", AVERAGE('manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[RangeRUCL])
+			    )
+			VAR AllGroups = UNION(CapGroups, BottleGroups)
+			RETURN AVERAGEX(AllGroups, [Grupo])
+		displayFolder: Qualidade\Carta XR
+		lineageTag: 721d9045-20d2-40a7-879b-567c77e69678
+
+	measure 'Range LCL Médio' =
+			VAR CapGroups =
+			    SUMMARIZE(
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w',
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[Characteristic],
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[MachineId],
+			        'manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[MoldId],
+			        "Grupo", AVERAGE('manufacturing_performance_analytics vw_fact_cap_inspection_variable_cq_52w'[RangeRLCL])
+			    )
+			VAR BottleGroups =
+			    SUMMARIZE(
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w',
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[Characteristic],
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[MachineId],
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[MoldId],
+			        "Grupo", AVERAGE('manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[RangeRLCL])
+			    )
+			VAR AllGroups = UNION(CapGroups, BottleGroups)
+			RETURN AVERAGEX(AllGroups, [Grupo])
+		displayFolder: Qualidade\Carta XR
+		lineageTag: fe43bff9-283e-46d7-bd87-c7f2d6c5b5d3
+
+	measure 'PPM Defeitos' =
+			VAR TotalDefeitos =
+			    SUM('manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'[DefectsFound])
+			    + SUM('manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'[DefectsFound])
+			    + SUM('manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w'[DefectsFound])
+			VAR TotalAmostra =
+			    SUM('manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'[SampleSize])
+			    + SUM('manufacturing_performance_analytics vw_fact_cap_attribute_inspection_cq_52w'[SampleSize])
+			    + SUM('manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w'[SampleSize])
+			RETURN
+			    DIVIDE(TotalDefeitos, TotalAmostra) * 1000000
+		formatString: 0
+		displayFolder: Qualidade
+		lineageTag: e9701ee7-6652-49a8-a18a-19cebb040c9c
+
+	measure '% Cumprimento do Plano' =
+			DIVIDE(
+			    SUM(manufacturing_performance_fact_production[ProducedQty]),
+			    SUM(manufacturing_performance_fact_production[PlannedQty])
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Produção
+		lineageTag: af7e499f-c13d-4396-b3c0-578f562169aa
+
+	measure 'Setup Médio (horas)' =
+			CALCULATE(
+			    AVERAGE('manufacturing_performance_analytics vw_fact_downtime_52w'[DowntimeDurationMin]),
+			    'manufacturing_performance_analytics vw_fact_downtime_52w'[IsChangeoverSetup] = TRUE
+			) / 60
+		formatString: 0.00
+		displayFolder: Produção
+		lineageTag: 90042614-0b15-4c55-8b36-be4bf2919cf4
+
+	measure 'Scrap % Real' =
+			DIVIDE(
+			    SUM(manufacturing_performance_fact_production[RejectedQty]),
+			    SUM(manufacturing_performance_fact_production[ProducedQty])
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Produção
+		lineageTag: 00ed5e6c-1652-4a16-90b6-c66058f2e540
+
+	measure 'Downtime Planejado (hours)' =
+			CALCULATE(
+			    SUM('manufacturing_performance_analytics vw_fact_downtime_52w'[DowntimeDurationMin]),
+			    'manufacturing_performance_analytics vw_fact_downtime_52w'[UnplannedFailure] = FALSE
+			) / 60
+		formatString: 0.00
+		displayFolder: Manutenção
+		lineageTag: ae00398f-1d38-4c14-a28a-6eed0ed76d38
+
+	measure '% Downtime Planejado' =
+			DIVIDE(
+			    [Downtime Planejado (hours)],
+			    [Downtime Planejado (hours)] + [Unplanned Downtime]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Manutenção
+		lineageTag: f9f1af01-c814-439e-a143-4341169980f2
+
+	measure '% Downtime Não Planejado' =
+			DIVIDE(
+			    [Unplanned Downtime],
+			    [Downtime Planejado (hours)] + [Unplanned Downtime]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Manutenção
+		lineageTag: d2bcc258-2fd1-4df1-92c8-892f0746272b
+
+	measure 'Índice de Aprovação de Fornecedor' =
+			DIVIDE(
+			    CALCULATE(
+			        COUNTROWS('manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w'),
+			        'manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w'[IsAccepted] = TRUE
+			    ),
+			    COUNTROWS('manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w')
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: QA
+		lineageTag: 53b521df-ddf2-4e42-ac8a-d87897cbf63b
+
+	measure 'Tempo Médio de Resposta do Fornecedor' = AVERAGE('manufacturing_performance_analytics vw_fact_supplier_complaints_52w'[ResponseDays])
+		formatString: 0.0
+		displayFolder: QA
+		lineageTag: 4908ede4-e9e3-4d7d-8992-377e237f13fc
+
+	measure 'Tempo Médio de Encerramento CAPA' = AVERAGE('manufacturing_performance_analytics vw_fact_capa_52w'[ClosureDays])
+		formatString: 0.0
+		displayFolder: QA
+		lineageTag: 7e4a3095-503a-4729-9ad7-d6821db8305b
+
+	measure 'CAPAs Vencidas' =
+			CALCULATE(
+			    COUNTROWS('manufacturing_performance_analytics vw_fact_capa_52w'),
+			    'manufacturing_performance_analytics vw_fact_capa_52w'[IsOverdue] = TRUE
+			)
+		formatString: 0
+		displayFolder: QA
+		lineageTag: 640208ed-3ce1-4980-bb60-12bb57629335
+
+	measure '% CAPAs Vencidas' =
+			DIVIDE(
+			    [CAPAs Vencidas],
+			    COUNTROWS('manufacturing_performance_analytics vw_fact_capa_52w')
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: QA
+		lineageTag: 6284db67-463b-4383-bc67-67a57378b4df
+
+	measure 'Avarias Esta Semana' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_downtime_52w'[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [Unplanned Failures],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -7, DAY)
+			)
+		formatString: 0
+		displayFolder: Manutenção
+		lineageTag: 07d03d55-2bc2-4522-828c-94ae2e99d219
+
+	measure 'Cor FPY' =
+			VAR v = [FPY]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(v), "Sem dados",
+			        v >= 0.95, "Verde",
+			        v >= 0.90, "Amarelo",
+			        "Vermelho"
+			    )
+		displayFolder: Qualidade
+		lineageTag: 836ee17b-0ae2-4970-90c9-7bc0832cf9f5
+
+	measure 'Cor Cpk Médio' =
+			VAR v = [Cpk Médio]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(v), "Sem dados",
+			        v >= 1.33, "Verde",
+			        v >= 1.00, "Amarelo",
+			        "Vermelho"
+			    )
+		displayFolder: Qualidade
+		lineageTag: 24945593-d331-4ee7-a2d7-8c197c34e3c3
+
+	measure 'Cor PPM Defeitos' =
+			VAR v = [PPM Defeitos]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(v), "Sem dados",
+			        v <= 1000, "Verde",
+			        v <= 10000, "Amarelo",
+			        "Vermelho"
+			    )
+		displayFolder: Qualidade
+		lineageTag: a777feb9-6cbe-4bcc-9e7d-def9f5afd9f7
+
+	measure 'Cpk Médio Frascos' =
+			AVERAGEX(
+			    SUMMARIZE(
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w',
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[Characteristic],
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[MachineId],
+			        'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[MoldId],
+			        "CpkGrupo", AVERAGE('manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[Cpk])
+			    ),
+			    [CpkGrupo]
+			)
+		formatString: 0.00
+		displayFolder: Qualidade
+		lineageTag: 679b73cc-9b6c-482f-89a0-a3f77bd23485
+
+	measure 'Reclamações Mês Atual' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_customer_complaints_52w'[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [Total Reclamações],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -1, MONTH)
+			)
+		formatString: 0
+		displayFolder: QA
+		lineageTag: 3b8a2e11-6d4f-4c2a-9e17-8f5c0a9d6e42
+
+	measure 'Matéria-Prima Rejeitada (lotes)' =
+			CALCULATE(
+			    COUNTROWS('manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w'),
+			    'manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w'[IsRejected] = TRUE
+			)
+		formatString: 0
+		displayFolder: QA
+		lineageTag: 9c1e7a58-3f6b-4d92-a5c8-1b7e4f0d6a93
+
+	measure 'Total NC' = COUNTROWS('manufacturing_performance_analytics vw_fact_nonconformance_52w')
+		formatString: 0
+		displayFolder: QA
+		lineageTag: 2d4f8b61-7a93-4e15-b6c8-0f9a3d5e7c21
+
+	measure 'Total CAPAs' = COUNTROWS('manufacturing_performance_analytics vw_fact_capa_52w')
+		formatString: 0
+		displayFolder: QA
+		lineageTag: 6e1a9c34-5b82-4f07-a4d6-2c8e1f0b9d43
+
+	measure 'Máquina de Maior Risco Hoje' =
+			VAR TopRisk =
+			    TOPN(
+			        1,
+			        'manufacturing_performance_analytics ml_predictions_predictive_maintenance',
+			        'manufacturing_performance_analytics ml_predictions_predictive_maintenance'[PredictedFailureRiskToday],
+			        DESC
+			    )
+			RETURN
+			    MAXX(TopRisk, 'manufacturing_performance_analytics ml_predictions_predictive_maintenance'[MachineId])
+		displayFolder: Visão Geral
+		lineageTag: 4f7c2a91-8e6d-4b03-9a5f-7c1d8e0b4a62
+
+	measure 'Cor Tendência OEE' =
+			VAR delta = [Variação OEE (p.p.)]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(delta), "#8C8C8C",
+			        delta > 1, "#3F7A4E",
+			        delta < -1, "#B23A3A",
+			        "#8C8C8C"
+			    )
+		displayFolder: Visão Geral\Tendências
+		lineageTag: 7489b420-0eb4-482d-a523-0fb36119be39
+
+	measure 'FPY Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'[LotDecisionDate]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [FPY],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: Visão Geral\Tendências
+		lineageTag: 470a854d-e2f0-4acd-a140-fc68c623d946
+
+	measure 'FPY 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'[LotDecisionDate]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [FPY],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: Visão Geral\Tendências
+		lineageTag: 30bbd582-8261-45f9-9cd9-24a2342caeb2
+
+	measure 'Variação FPY (p.p.)' = ([FPY Últimas 4 Semanas] - [FPY 4 Semanas Anteriores]) * 100
+		displayFolder: Visão Geral\Tendências
+		lineageTag: df928507-5c40-408d-aca1-1241e90d6b90
+
+	measure 'Tendência FPY' =
+			VAR delta = [Variação FPY (p.p.)]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(delta), "Sem dados suficientes",
+			        delta > 1, "▲ A melhorar",
+			        delta < -1, "▼ A degradar",
+			        "➡ Estável"
+			    )
+		displayFolder: Visão Geral\Tendências
+		lineageTag: 17feabf2-a9c2-406f-b155-40a35f20b5a7
+
+	measure 'Cor Tendência FPY' =
+			VAR delta = [Variação FPY (p.p.)]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(delta), "#8C8C8C",
+			        delta > 1, "#3F7A4E",
+			        delta < -1, "#B23A3A",
+			        "#8C8C8C"
+			    )
+		displayFolder: Visão Geral\Tendências
+		lineageTag: fedb3b3f-1af7-4ca7-a60c-7d24d9d3d659
+
+	measure 'MTBF Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [MTBF (hours)],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: Visão Geral\Tendências
+		lineageTag: 9ef10c6f-78ab-439a-b914-1d955a89f293
+
+	measure 'MTBF 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [MTBF (hours)],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: Visão Geral\Tendências
+		lineageTag: 599ba9e5-f9fd-4c0d-ac6e-113727cbf155
+
+	measure 'Variação MTBF (%)' = DIVIDE([MTBF Últimas 4 Semanas] - [MTBF 4 Semanas Anteriores], [MTBF 4 Semanas Anteriores])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Visão Geral\Tendências
+		lineageTag: f530fd60-e005-4ba7-9442-bf81cf2dfddb
+
+	measure 'Tendência MTBF' =
+			VAR delta = [Variação MTBF (%)]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(delta), "Sem dados suficientes",
+			        delta > 0.05, "▲ A melhorar",
+			        delta < -0.05, "▼ A degradar",
+			        "➡ Estável"
+			    )
+		displayFolder: Visão Geral\Tendências
+		lineageTag: 22a5c375-8365-424a-a76a-aee97928482b
+
+	measure 'Cor Tendência MTBF' =
+			VAR delta = [Variação MTBF (%)]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(delta), "#8C8C8C",
+			        delta > 0.05, "#3F7A4E",
+			        delta < -0.05, "#B23A3A",
+			        "#8C8C8C"
+			    )
+		displayFolder: Visão Geral\Tendências
+		lineageTag: 32a7344b-edcb-492d-8ac5-9aa43a87308c
+
+	measure 'Reclamações Mês Anterior' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_customer_complaints_52w'[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [Total Reclamações],
+			    DATESINPERIOD(Calendario[Date], EDATE(UltimaData, -1), -1, MONTH)
+			)
+		formatString: 0
+		displayFolder: Visão Geral\Tendências
+		lineageTag: 34a0cdfa-556b-4f27-9702-8e3837faac76
+
+	measure 'Variação Reclamações (%)' = DIVIDE([Reclamações Mês Atual] - [Reclamações Mês Anterior], [Reclamações Mês Anterior])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Visão Geral\Tendências
+		lineageTag: ac94d21c-c09e-4f64-9ca8-1b39be331038
+
+	measure 'Tendência Reclamações' =
+			VAR delta = [Variação Reclamações (%)]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(delta), "Sem dados suficientes",
+			        delta > 0.05, "▲ Aumentou",
+			        delta < -0.05, "▼ Caiu",
+			        "➡ Estável"
+			    )
+		displayFolder: Visão Geral\Tendências
+		lineageTag: 6df8cd54-c443-4c7c-888d-0328ec2ace37
+
+	measure 'Cor Tendência Reclamações' =
+			VAR delta = [Variação Reclamações (%)]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(delta), "#8C8C8C",
+			        delta > 0.05, "#B23A3A",
+			        delta < -0.05, "#3F7A4E",
+			        "#8C8C8C"
+			    )
+		displayFolder: Visão Geral\Tendências
+		lineageTag: eaf1dc4e-f55a-4057-a801-73f095506785
+
+	measure 'Rótulo Tendência OEE' =
+			VAR delta = [Variação OEE (p.p.)]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(delta), "Sem dados suficientes",
+			        delta > 0, "▲ " & FORMAT(delta, "0.0") & " p.p.",
+			        delta < 0, "▼ " & FORMAT(ABS(delta), "0.0") & " p.p.",
+			        "➡ 0,0 p.p."
+			    )
+		displayFolder: Visão Geral\Tendências
+		lineageTag: 977f40a8-ade0-457d-af1f-a42184cada4e
+
+	measure 'Rótulo Tendência FPY' =
+			VAR delta = [Variação FPY (p.p.)]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(delta), "Sem dados suficientes",
+			        delta > 0, "▲ " & FORMAT(delta, "0.0") & " p.p.",
+			        delta < 0, "▼ " & FORMAT(ABS(delta), "0.0") & " p.p.",
+			        "➡ 0,0 p.p."
+			    )
+		displayFolder: Visão Geral\Tendências
+		lineageTag: 271dc14a-81c9-426b-a1af-4be0e1dc6cc5
+
+	measure 'Rótulo Tendência MTBF' =
+			VAR delta = [Variação MTBF (%)]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(delta), "Sem dados suficientes",
+			        delta > 0, "▲ " & FORMAT(delta, "0.0%"),
+			        delta < 0, "▼ " & FORMAT(ABS(delta), "0.0%"),
+			        "➡ 0,0%"
+			    )
+		displayFolder: Visão Geral\Tendências
+		lineageTag: e187882e-e685-4efa-beaf-603d39ade938
+
+	measure 'Rótulo Tendência Reclamações' =
+			VAR delta = [Variação Reclamações (%)]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(delta), "Sem dados suficientes",
+			        delta > 0, "▲ " & FORMAT(delta, "0.0%"),
+			        delta < 0, "▼ " & FORMAT(ABS(delta), "0.0%"),
+			        "➡ 0,0%"
+			    )
+		displayFolder: Visão Geral\Tendências
+		lineageTag: e7c4c9a9-5284-47f8-8070-b450cc5f8f11
+
+	measure 'Availability Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX(manufacturing_performance_fact_production[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [Availability M],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: Produção\Tendências
+		lineageTag: 48962b6e-68f4-4406-91da-06f9f994afbc
+
+	measure 'Availability 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX(manufacturing_performance_fact_production[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [Availability M],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: Produção\Tendências
+		lineageTag: cb817b23-cf4c-481b-bd4f-f603af3e0a7a
+
+	measure 'Variação Availability (p.p.)' = ([Availability Últimas 4 Semanas] - [Availability 4 Semanas Anteriores]) * 100
+		displayFolder: Produção\Tendências
+		lineageTag: f2ef8e9a-bad3-44df-8a74-87d0cc73405d
+
+	measure 'Cor Tendência Availability' =
+			VAR delta = [Variação Availability (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "#8C8C8C", delta > 1, "#3F7A4E", delta < -1, "#B23A3A", "#8C8C8C")
+		displayFolder: Produção\Tendências
+		lineageTag: f9275246-e734-4383-8714-f16981008f28
+
+	measure 'Rótulo Tendência Availability' =
+			VAR delta = [Variação Availability (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "Sem dados suficientes", delta > 0, "▲ " & FORMAT(delta, "0.0") & " p.p.", delta < 0, "▼ " & FORMAT(ABS(delta), "0.0") & " p.p.", "➡ 0,0 p.p.")
+		displayFolder: Produção\Tendências
+		lineageTag: d8c414ec-d398-47a5-a072-9ad70d6a556e
+
+	measure 'Performance Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX(manufacturing_performance_fact_production[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [Performance M],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: Produção\Tendências
+		lineageTag: be62b49f-5ef1-4ee1-b964-474992a16356
+
+	measure 'Performance 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX(manufacturing_performance_fact_production[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [Performance M],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: Produção\Tendências
+		lineageTag: 3a45bb92-32ca-40c1-aa02-ef54d96e5da4
+
+	measure 'Variação Performance (p.p.)' = ([Performance Últimas 4 Semanas] - [Performance 4 Semanas Anteriores]) * 100
+		displayFolder: Produção\Tendências
+		lineageTag: 7f2975d9-3645-4bd1-bd4e-26a988a82a1d
+
+	measure 'Cor Tendência Performance' =
+			VAR delta = [Variação Performance (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "#8C8C8C", delta > 1, "#3F7A4E", delta < -1, "#B23A3A", "#8C8C8C")
+		displayFolder: Produção\Tendências
+		lineageTag: 9971ac0e-432d-4678-ac93-1e1677d51929
+
+	measure 'Rótulo Tendência Performance' =
+			VAR delta = [Variação Performance (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "Sem dados suficientes", delta > 0, "▲ " & FORMAT(delta, "0.0") & " p.p.", delta < 0, "▼ " & FORMAT(ABS(delta), "0.0") & " p.p.", "➡ 0,0 p.p.")
+		displayFolder: Produção\Tendências
+		lineageTag: 81943b8b-c545-41d8-968d-61f8d0e86b35
+
+	measure 'Quality Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX(manufacturing_performance_fact_production[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [Quality M],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: Produção\Tendências
+		lineageTag: 19e38368-f006-4db4-bfe8-0e9688550fa1
+
+	measure 'Quality 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX(manufacturing_performance_fact_production[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [Quality M],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: Produção\Tendências
+		lineageTag: f22ec54d-c9eb-4c50-b8d2-1333639f71b9
+
+	measure 'Variação Quality (p.p.)' = ([Quality Últimas 4 Semanas] - [Quality 4 Semanas Anteriores]) * 100
+		displayFolder: Produção\Tendências
+		lineageTag: 82ce2716-c055-4f1b-a142-85f0169452c0
+
+	measure 'Cor Tendência Quality' =
+			VAR delta = [Variação Quality (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "#8C8C8C", delta > 1, "#3F7A4E", delta < -1, "#B23A3A", "#8C8C8C")
+		displayFolder: Produção\Tendências
+		lineageTag: 51125b3f-ef99-4589-98bb-a35e9fe66480
+
+	measure 'Rótulo Tendência Quality' =
+			VAR delta = [Variação Quality (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "Sem dados suficientes", delta > 0, "▲ " & FORMAT(delta, "0.0") & " p.p.", delta < 0, "▼ " & FORMAT(ABS(delta), "0.0") & " p.p.", "➡ 0,0 p.p.")
+		displayFolder: Produção\Tendências
+		lineageTag: 709f79f9-064b-4460-902c-d0b9a132a931
+
+	measure '% Cumprimento do Plano Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX(manufacturing_performance_fact_production[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [% Cumprimento do Plano],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: Produção\Tendências
+		lineageTag: 9d5983cb-7848-46e0-827d-dfbd7b69260d
+
+	measure '% Cumprimento do Plano 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX(manufacturing_performance_fact_production[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [% Cumprimento do Plano],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: Produção\Tendências
+		lineageTag: 30f41f34-9305-47c7-ada7-ad53dcddd0d5
+
+	measure 'Variação Cumprimento do Plano (p.p.)' = ([% Cumprimento do Plano Últimas 4 Semanas] - [% Cumprimento do Plano 4 Semanas Anteriores]) * 100
+		displayFolder: Produção\Tendências
+		lineageTag: bc00308c-3cd3-4e46-96f4-1ccf8ee5962b
+
+	measure 'Cor Tendência Cumprimento' =
+			VAR delta = [Variação Cumprimento do Plano (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "#8C8C8C", delta > 1, "#3F7A4E", delta < -1, "#B23A3A", "#8C8C8C")
+		displayFolder: Produção\Tendências
+		lineageTag: c47ddeb6-c3f6-41a3-b0b7-3d4690980869
+
+	measure 'Rótulo Tendência Cumprimento' =
+			VAR delta = [Variação Cumprimento do Plano (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "Sem dados suficientes", delta > 0, "▲ " & FORMAT(delta, "0.0") & " p.p.", delta < 0, "▼ " & FORMAT(ABS(delta), "0.0") & " p.p.", "➡ 0,0 p.p.")
+		displayFolder: Produção\Tendências
+		lineageTag: 7b4ff2d3-4530-4367-9db7-d7bbc605b5d6
+
+	measure 'MTTR Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [MTTR (horas)],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: Manutenção\Tendências
+		lineageTag: 7ba0061a-275f-494c-9333-95e183b95319
+
+	measure 'MTTR 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_downtime_unplanned_52w'[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [MTTR (horas)],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: Manutenção\Tendências
+		lineageTag: 7ae08cc0-7f17-4444-8ec8-b0942887ec95
+
+	measure 'Variação MTTR (%)' = DIVIDE([MTTR Últimas 4 Semanas] - [MTTR 4 Semanas Anteriores], [MTTR 4 Semanas Anteriores])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Manutenção\Tendências
+		lineageTag: a44a0652-409b-4e58-950a-b1f02692e6b8
+
+	measure 'Cor Tendência MTTR' =
+			VAR delta = [Variação MTTR (%)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "#8C8C8C", delta > 0.05, "#B23A3A", delta < -0.05, "#3F7A4E", "#8C8C8C")
+		displayFolder: Manutenção\Tendências
+		lineageTag: c47a9711-8887-4640-ab93-40d51965072c
+
+	measure 'Rótulo Tendência MTTR' =
+			VAR delta = [Variação MTTR (%)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "Sem dados suficientes", delta > 0, "▲ " & FORMAT(delta, "0.0%"), delta < 0, "▼ " & FORMAT(ABS(delta), "0.0%"), "➡ 0,0%")
+		displayFolder: Manutenção\Tendências
+		lineageTag: 4287a1ea-faac-48b7-9a0b-00f4dbf32df3
+
+	measure 'FPY Frascos Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'[LotDecisionDate]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [FPY Frascos],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: Qualidade\Tendências
+		lineageTag: 79b778c6-ace8-4573-bb91-46b8c81d105c
+
+	measure 'FPY Frascos 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_bottle_disposition_lot_cq_52w'[LotDecisionDate]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [FPY Frascos],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: Qualidade\Tendências
+		lineageTag: 380ae9c5-52a7-4ee1-a087-00567159e549
+
+	measure 'Variação FPY Frascos (p.p.)' = ([FPY Frascos Últimas 4 Semanas] - [FPY Frascos 4 Semanas Anteriores]) * 100
+		displayFolder: Qualidade\Tendências
+		lineageTag: 226e0016-1703-43a2-87a0-9c5440d72e9a
+
+	measure 'Cor Tendência FPY Frascos' =
+			VAR delta = [Variação FPY Frascos (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "#8C8C8C", delta > 1, "#3F7A4E", delta < -1, "#B23A3A", "#8C8C8C")
+		displayFolder: Qualidade\Tendências
+		lineageTag: 961bb652-5644-4e05-b413-e079c6af3d7b
+
+	measure 'Rótulo Tendência FPY Frascos' =
+			VAR delta = [Variação FPY Frascos (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "Sem dados suficientes", delta > 0, "▲ " & FORMAT(delta, "0.0") & " p.p.", delta < 0, "▼ " & FORMAT(ABS(delta), "0.0") & " p.p.", "➡ 0,0 p.p.")
+		displayFolder: Qualidade\Tendências
+		lineageTag: bba135b1-930e-465c-83a4-5f62c76899fc
+
+	measure 'FPY Tampas Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'[LotDecisionDate]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [FPY Tampas],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: Qualidade\Tendências
+		lineageTag: 6427c4bf-5e51-401f-be14-f4117714d603
+
+	measure 'FPY Tampas 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_cap_disposition_lot_cq_52w'[LotDecisionDate]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [FPY Tampas],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: Qualidade\Tendências
+		lineageTag: a71c37dc-728a-42b8-9869-01d2eaf552de
+
+	measure 'Variação FPY Tampas (p.p.)' = ([FPY Tampas Últimas 4 Semanas] - [FPY Tampas 4 Semanas Anteriores]) * 100
+		displayFolder: Qualidade\Tendências
+		lineageTag: 4b9f49bb-bcb5-45b2-9a33-65ca16eb4adf
+
+	measure 'Cor Tendência FPY Tampas' =
+			VAR delta = [Variação FPY Tampas (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "#8C8C8C", delta > 1, "#3F7A4E", delta < -1, "#B23A3A", "#8C8C8C")
+		displayFolder: Qualidade\Tendências
+		lineageTag: 7cdd2ed0-dad0-4b5d-8c0f-78087ca6d6f4
+
+	measure 'Rótulo Tendência FPY Tampas' =
+			VAR delta = [Variação FPY Tampas (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "Sem dados suficientes", delta > 0, "▲ " & FORMAT(delta, "0.0") & " p.p.", delta < 0, "▼ " & FORMAT(ABS(delta), "0.0") & " p.p.", "➡ 0,0 p.p.")
+		displayFolder: Qualidade\Tendências
+		lineageTag: ad6a0027-8096-46dd-afcf-497ab39a3a8e
+
+	measure 'FPY Tinta Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'[ProductionDate]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [FPY Tinta],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: Qualidade\Tendências
+		lineageTag: 13539dfd-992c-48c1-802c-3324095ba40c
+
+	measure 'FPY Tinta 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'[ProductionDate]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [FPY Tinta],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: Qualidade\Tendências
+		lineageTag: 075b404e-10cc-4fd8-826e-af904770221b
+
+	measure 'Variação FPY Tinta (p.p.)' = ([FPY Tinta Últimas 4 Semanas] - [FPY Tinta 4 Semanas Anteriores]) * 100
+		displayFolder: Qualidade\Tendências
+		lineageTag: 2c3b702b-8da7-4cc3-978c-4616fd0730db
+
+	measure 'Cor Tendência FPY Tinta' =
+			VAR delta = [Variação FPY Tinta (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "#8C8C8C", delta > 1, "#3F7A4E", delta < -1, "#B23A3A", "#8C8C8C")
+		displayFolder: Qualidade\Tendências
+		lineageTag: c9e2f16d-8d82-4c96-8139-c1196737e3bb
+
+	measure 'Rótulo Tendência FPY Tinta' =
+			VAR delta = [Variação FPY Tinta (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "Sem dados suficientes", delta > 0, "▲ " & FORMAT(delta, "0.0") & " p.p.", delta < 0, "▼ " & FORMAT(ABS(delta), "0.0") & " p.p.", "➡ 0,0 p.p.")
+		displayFolder: Qualidade\Tendências
+		lineageTag: f7282667-2495-42b1-be86-72d1436d1d97
+
+	measure 'PPM Defeitos Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'[InspectionDate]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [PPM Defeitos],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: Qualidade\Tendências
+		lineageTag: 76b2f8fd-4ddb-4582-b6bf-318b1417a56f
+
+	measure 'PPM Defeitos 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_bottle_attribute_inspection_cq_52w'[InspectionDate]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [PPM Defeitos],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: Qualidade\Tendências
+		lineageTag: aa1ef9e2-fb74-481a-9ec7-34de51cf6f94
+
+	measure 'Variação PPM Defeitos (%)' = DIVIDE([PPM Defeitos Últimas 4 Semanas] - [PPM Defeitos 4 Semanas Anteriores], [PPM Defeitos 4 Semanas Anteriores])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Qualidade\Tendências
+		lineageTag: c5b342c6-6a35-4e9e-9367-a5e3c5db34d6
+
+	measure 'Cor Tendência PPM Defeitos' =
+			VAR delta = [Variação PPM Defeitos (%)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "#8C8C8C", delta > 0.05, "#B23A3A", delta < -0.05, "#3F7A4E", "#8C8C8C")
+		displayFolder: Qualidade\Tendências
+		lineageTag: c1f71380-0fb2-47d6-9bcf-3835ab191345
+
+	measure 'Rótulo Tendência PPM Defeitos' =
+			VAR delta = [Variação PPM Defeitos (%)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "Sem dados suficientes", delta > 0, "▲ " & FORMAT(delta, "0.0%"), delta < 0, "▼ " & FORMAT(ABS(delta), "0.0%"), "➡ 0,0%")
+		displayFolder: Qualidade\Tendências
+		lineageTag: 7986cbfc-e31e-4040-a8e0-de2136cf7543
+
+	measure 'Cpk Médio Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[InspectionDate]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [Cpk Médio],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: Qualidade\Tendências
+		lineageTag: 4174e814-b956-4083-b93c-32674ca48010
+
+	measure 'Cpk Médio 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'[InspectionDate]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [Cpk Médio],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: Qualidade\Tendências
+		lineageTag: a7403afd-2660-4219-b8d8-4188db091e67
+
+	measure 'Variação Cpk Médio (%)' = DIVIDE([Cpk Médio Últimas 4 Semanas] - [Cpk Médio 4 Semanas Anteriores], [Cpk Médio 4 Semanas Anteriores])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Qualidade\Tendências
+		lineageTag: 9494df91-cc9a-4cb8-866c-4a3d42ea8d0c
+
+	measure 'Cor Tendência Cpk Médio' =
+			VAR delta = [Variação Cpk Médio (%)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "#8C8C8C", delta > 0.02, "#3F7A4E", delta < -0.02, "#B23A3A", "#8C8C8C")
+		displayFolder: Qualidade\Tendências
+		lineageTag: 9bb1f8ac-973e-409b-aa86-511e2f1f0e48
+
+	measure 'Rótulo Tendência Cpk Médio' =
+			VAR delta = [Variação Cpk Médio (%)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "Sem dados suficientes", delta > 0, "▲ " & FORMAT(delta, "0.0%"), delta < 0, "▼ " & FORMAT(ABS(delta), "0.0%"), "➡ 0,0%")
+		displayFolder: Qualidade\Tendências
+		lineageTag: 7adc9d02-5a39-4eed-bab0-3ce873b89774
+
+	measure 'PMU Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_customer_complaints_52w'[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [PMU],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: QA\Tendências
+		lineageTag: 3f529311-362b-4a86-b5d1-9850720b334c
+
+	measure 'PMU 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_customer_complaints_52w'[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [PMU],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: QA\Tendências
+		lineageTag: 0f4efb7a-bfb6-49e0-b6c9-96dadc4d3335
+
+	measure 'Variação PMU (%)' = DIVIDE([PMU Últimas 4 Semanas] - [PMU 4 Semanas Anteriores], [PMU 4 Semanas Anteriores])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: QA\Tendências
+		lineageTag: 811fdc36-c6cc-4842-a35b-4ee3c96f84b0
+
+	measure 'Cor Tendência PMU' =
+			VAR delta = [Variação PMU (%)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "#8C8C8C", delta > 0.05, "#B23A3A", delta < -0.05, "#3F7A4E", "#8C8C8C")
+		displayFolder: QA\Tendências
+		lineageTag: 03d66f31-89e2-4fd5-97ad-b6f1ec2667ef
+
+	measure 'Rótulo Tendência PMU' =
+			VAR delta = [Variação PMU (%)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "Sem dados suficientes", delta > 0, "▲ " & FORMAT(delta, "0.0%"), delta < 0, "▼ " & FORMAT(ABS(delta), "0.0%"), "➡ 0,0%")
+		displayFolder: QA\Tendências
+		lineageTag: 4d05ea15-8792-48ac-98de-547bccb0879f
+
+	measure 'Índice de Aprovação de Fornecedor Últimas 4 Semanas' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w'[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [Índice de Aprovação de Fornecedor],
+			    DATESINPERIOD(Calendario[Date], UltimaData, -28, DAY)
+			)
+		displayFolder: QA\Tendências
+		lineageTag: 9f42d422-c18a-4fbb-8550-78f469d74f58
+
+	measure 'Índice de Aprovação de Fornecedor 4 Semanas Anteriores' =
+			VAR UltimaData = CALCULATE(MAX('manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w'[Date]), ALL(Calendario))
+			RETURN
+			CALCULATE(
+			    [Índice de Aprovação de Fornecedor],
+			    DATESINPERIOD(Calendario[Date], UltimaData - 28, -28, DAY)
+			)
+		displayFolder: QA\Tendências
+		lineageTag: a3e9ccdd-354f-492a-90d8-d17df2bc7502
+
+	measure 'Variação Índice Aprovação Fornecedor (p.p.)' = ([Índice de Aprovação de Fornecedor Últimas 4 Semanas] - [Índice de Aprovação de Fornecedor 4 Semanas Anteriores]) * 100
+		displayFolder: QA\Tendências
+		lineageTag: 0711aee1-d550-48bf-896c-e88c438d362b
+
+	measure 'Cor Tendência Índice Aprovação Fornecedor' =
+			VAR delta = [Variação Índice Aprovação Fornecedor (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "#8C8C8C", delta > 1, "#3F7A4E", delta < -1, "#B23A3A", "#8C8C8C")
+		displayFolder: QA\Tendências
+		lineageTag: cc5622d9-bd40-4312-ac5c-25fc3dae687d
+
+	measure 'Rótulo Tendência Índice Aprovação Fornecedor' =
+			VAR delta = [Variação Índice Aprovação Fornecedor (p.p.)]
+			RETURN
+			    SWITCH(TRUE(), ISBLANK(delta), "Sem dados suficientes", delta > 0, "▲ " & FORMAT(delta, "0.0") & " p.p.", delta < 0, "▼ " & FORMAT(ABS(delta), "0.0") & " p.p.", "➡ 0,0 p.p.")
+		displayFolder: QA\Tendências
+		lineageTag: 907e4f0d-7d53-4553-8065-4521426b7108
+
+	column Value
+		lineageTag: 7c444e4c-132a-4706-8dbf-01b159f2b790
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Medidas = calculated
+		mode: import
+		source = ```
+				{ "placeholder" }
+				
+				```
+
+	annotation PBI_Id = d5393f6673154f7fa61e69ccfc9ef5e0
+

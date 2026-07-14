@@ -1,0 +1,135 @@
+table 'manufacturing_performance_analytics vw_fact_production_plan_52w'
+	lineageTag: cb875f0e-4923-4c27-a733-54da3748716d
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ce41cf11-bc07-4dcd-a2bc-7eb8661d59f3
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Process
+		dataType: string
+		lineageTag: f5670a2b-8f94-4fba-95d0-f41d20d836ab
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineId
+		dataType: string
+		lineageTag: 4fa472d4-51f1-4a4c-bc15-5dcc1b1b28fd
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ToolId
+		dataType: string
+		lineageTag: c7c8c01e-064d-4600-9474-821a02b0b144
+		summarizeBy: none
+		sourceColumn: ToolId
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkOrder
+		dataType: string
+		lineageTag: 73bdc53d-84e2-4fa9-bd65-c065a89ef3d5
+		summarizeBy: none
+		sourceColumn: WorkOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column PlannedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b5e3cc7-0ef2-42b5-bffc-2088651e12c7
+		summarizeBy: sum
+		sourceColumn: PlannedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 45cbf884-e890-4b63-9a81-da3263d6093c
+		summarizeBy: none
+		sourceColumn: StartTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column EndTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 1eb2630d-3572-494d-b9fe-fea70576d29e
+		summarizeBy: none
+		sourceColumn: EndTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column PlannedHours
+		dataType: double
+		lineageTag: f11b7d43-faf0-4d3b-8e4f-f477243452f8
+		summarizeBy: sum
+		sourceColumn: PlannedHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ProductId
+		dataType: string
+		lineageTag: 3db456f3-fb60-44cb-a1ba-dd74a8a28717
+		summarizeBy: none
+		sourceColumn: ProductId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: aadeea28-297f-405e-b6f5-21c87813ece7
+		summarizeBy: sum
+		sourceColumn: ISOWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeekday
+		dataType: int64
+		formatString: 0
+		lineageTag: d3edf398-9fd5-43d6-9616-ffefc5f052b6
+		summarizeBy: sum
+		sourceColumn: ISOWeekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShiftNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e095a32-4803-4e53-98df-d1d289907500
+		summarizeBy: sum
+		sourceColumn: ShiftNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics vw_fact_production_plan_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_production_plan_52w"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

@@ -1,0 +1,274 @@
+table 'manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w'
+	lineageTag: e23dfe7e-2c4f-4717-b63b-6cf42707cd0b
+
+	column PrintLot
+		dataType: string
+		lineageTag: 3870505a-1f47-4688-ad36-6876770ae720
+		summarizeBy: none
+		sourceColumn: PrintLot
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductBatch
+		dataType: string
+		lineageTag: ae79284e-2278-4fa7-92a4-96ffc020c1f6
+		summarizeBy: none
+		sourceColumn: ProductBatch
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkOrder
+		dataType: string
+		lineageTag: bf32f13b-52af-44b1-93cf-baf4f1d2cd0c
+		summarizeBy: none
+		sourceColumn: WorkOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductionDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 56ed36c3-8e2e-4061-bb1b-730b1ef9dab2
+		summarizeBy: none
+		sourceColumn: ProductionDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Shift
+		dataType: string
+		lineageTag: 54f38600-e3e6-4f0d-a8fa-fd5a673a729a
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineId
+		dataType: string
+		lineageTag: 0e352e4b-8fc0-4e46-ae63-317c56e6a978
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrintToolId
+		dataType: string
+		lineageTag: 05a73870-5c5f-4f3e-af3f-2068830f439e
+		summarizeBy: none
+		sourceColumn: PrintToolId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BottleId
+		dataType: string
+		lineageTag: 0e6ae986-f0bb-4ffe-ab31-9a5d4648bd0e
+		summarizeBy: none
+		sourceColumn: BottleId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorCount
+		dataType: int64
+		formatString: 0
+		lineageTag: 87c3b4d3-8e5f-472d-8a70-a8c95ab87e7b
+		summarizeBy: sum
+		sourceColumn: ColorCount
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorsUsed
+		dataType: string
+		lineageTag: b7cc9634-7c22-43dd-a3ea-1a5c1588c953
+		summarizeBy: none
+		sourceColumn: ColorsUsed
+
+		annotation SummarizationSetBy = Automatic
+
+	column Characteristic
+		dataType: string
+		lineageTag: 4e751648-3229-4774-8809-d85c4acd40ed
+		summarizeBy: none
+		sourceColumn: Characteristic
+
+		annotation SummarizationSetBy = Automatic
+
+	column Class
+		dataType: string
+		lineageTag: f0ba2641-27bc-483a-88a2-282c883c64af
+		summarizeBy: none
+		sourceColumn: Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column AQL
+		dataType: double
+		lineageTag: e2b7c5e4-2191-4365-b86d-6c1ca4f9ed0b
+		summarizeBy: sum
+		sourceColumn: AQL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Standard
+		dataType: string
+		lineageTag: 54e7e127-a44c-4cb6-8211-859cd5ce0f74
+		summarizeBy: none
+		sourceColumn: Standard
+
+		annotation SummarizationSetBy = Automatic
+
+	column InspectionLevel
+		dataType: string
+		lineageTag: 0577dada-fa26-4f8b-9329-84ad22dd5c29
+		summarizeBy: none
+		sourceColumn: InspectionLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Frequency
+		dataType: string
+		lineageTag: 793db1ea-e679-4159-9d89-f3ba50fb8ed3
+		summarizeBy: none
+		sourceColumn: Frequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column Equipment
+		dataType: string
+		lineageTag: 2b8db3dd-a235-4112-922d-0a407a48ad30
+		summarizeBy: none
+		sourceColumn: Equipment
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotSize
+		dataType: int64
+		formatString: 0
+		lineageTag: e794af59-ba93-4b70-bee8-e2549e0a0062
+		summarizeBy: sum
+		sourceColumn: LotSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodeLetter
+		dataType: string
+		lineageTag: 8292b52d-82de-47e4-abbc-042610e277c7
+		summarizeBy: none
+		sourceColumn: CodeLetter
+
+		annotation SummarizationSetBy = Automatic
+
+	column SampleSize
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ff1a98a-e318-4dd7-b418-26e46b168bfc
+		summarizeBy: sum
+		sourceColumn: SampleSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column AcceptanceNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 7fbc8c5b-98c7-43ca-8610-8de44b3023c2
+		summarizeBy: sum
+		sourceColumn: AcceptanceNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column RejectionNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 04c027c1-dad5-42a2-b6cd-9138ac08f13f
+		summarizeBy: sum
+		sourceColumn: RejectionNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefectsFound
+		dataType: int64
+		formatString: 0
+		lineageTag: ca8b3e51-2a24-4c1d-ab74-c8a3dfe07e10
+		summarizeBy: sum
+		sourceColumn: DefectsFound
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotDecision
+		dataType: string
+		lineageTag: 66f72958-7daf-4e0f-8f8c-84a84e5c9e66
+		summarizeBy: none
+		sourceColumn: LotDecision
+
+		annotation SummarizationSetBy = Automatic
+
+	column InspectionDateTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 177df835-b0cc-431d-ba5d-6441f168cb60
+		summarizeBy: none
+		sourceColumn: InspectionDateTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inspector
+		dataType: string
+		lineageTag: b81593ad-6c83-445b-9473-40337be4af03
+		summarizeBy: none
+		sourceColumn: Inspector
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotId
+		dataType: string
+		lineageTag: 075ea7bf-42f4-488d-a44d-a2f49b0a0821
+		summarizeBy: none
+		sourceColumn: LotId
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefectRateP
+		dataType: double
+		lineageTag: 6640ec34-9fc9-4570-82ee-6fb60480c9c8
+		summarizeBy: sum
+		sourceColumn: DefectRateP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DPU
+		dataType: double
+		lineageTag: 2dbcf3f4-3b87-405e-bfec-49f4e1647d75
+		summarizeBy: sum
+		sourceColumn: DPU
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DPMO
+		dataType: double
+		lineageTag: 5bad282a-ed02-4137-92e5-46d25390de81
+		summarizeBy: sum
+		sourceColumn: DPMO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'manufacturing_performance_analytics vw_fact_ink_attribute_inspection_cq_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_ink_attribute_inspection_cq_52w"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

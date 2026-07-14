@@ -1,0 +1,99 @@
+table 'manufacturing_performance_analytics dim_bottle'
+	lineageTag: cf0a34bc-2905-4176-a746-e2b4484a0ff7
+
+	column ProductId
+		dataType: string
+		lineageTag: 014e36e9-19c8-4ded-a97a-519c760e2340
+		summarizeBy: none
+		sourceColumn: ProductId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductType
+		dataType: string
+		lineageTag: 91f5b4c0-3a2d-476a-9442-af312812d602
+		summarizeBy: none
+		sourceColumn: ProductType
+
+		annotation SummarizationSetBy = Automatic
+
+	column MoldId
+		dataType: string
+		lineageTag: 14b69d9e-6b99-4f09-9461-242137d5d75d
+		summarizeBy: none
+		sourceColumn: MoldId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BaseMaterial
+		dataType: string
+		lineageTag: 8f60d8f8-43b6-4599-942b-eea9b3032794
+		summarizeBy: none
+		sourceColumn: BaseMaterial
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorId
+		dataType: string
+		lineageTag: 772dc5f2-4ad5-436e-818d-8ebbf16e6e52
+		summarizeBy: none
+		sourceColumn: ColorId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorName
+		dataType: string
+		lineageTag: c1c5cab9-6433-4c48-bb51-8953d9b5c908
+		summarizeBy: none
+		sourceColumn: ColorName
+
+		annotation SummarizationSetBy = Automatic
+
+	column PantoneCodeApprox
+		dataType: string
+		lineageTag: f97d1648-2ff4-4f8c-84ba-45fa9d8e0a8e
+		summarizeBy: none
+		sourceColumn: PantoneCodeApprox
+
+		annotation SummarizationSetBy = Automatic
+
+	column MasterbatchType
+		dataType: string
+		lineageTag: 13365e2d-f142-4131-af3e-00f989f202a9
+		summarizeBy: none
+		sourceColumn: MasterbatchType
+
+		annotation SummarizationSetBy = Automatic
+
+	column StandardDosagePctMass
+		dataType: double
+		lineageTag: 7dd70f88-052f-4ccb-8bd4-dd8156418532
+		summarizeBy: none
+		sourceColumn: StandardDosagePctMass
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VolumeMl
+		dataType: int64
+		formatString: 0
+		lineageTag: 301f1b6e-0eeb-4de4-89cf-514343b8e349
+		summarizeBy: none
+		sourceColumn: VolumeMl
+
+		annotation SummarizationSetBy = User
+
+	partition 'manufacturing_performance_analytics dim_bottle' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "dim_bottle"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,156 @@
+table 'manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w'
+	lineageTag: fabeb007-5ea4-40c3-a5d3-035c8435987d
+
+	column MaterialLotId
+		dataType: string
+		lineageTag: 2a352c2c-ecd7-49c7-bfab-c8892e1b75c4
+		summarizeBy: none
+		sourceColumn: MaterialLotId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1cbc6e04-725f-41ef-ba5a-655a3d098cf3
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SupplierId
+		dataType: string
+		lineageTag: 6be5c1cc-c9f2-4319-8593-f59db4063b9d
+		summarizeBy: none
+		sourceColumn: SupplierId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Material
+		dataType: string
+		lineageTag: 1a99a0aa-78e7-48b8-8d26-dbafbc876573
+		summarizeBy: none
+		sourceColumn: Material
+
+		annotation SummarizationSetBy = Automatic
+
+	column PurchaseOrderId
+		dataType: string
+		lineageTag: 50ded6c4-a73b-4add-93b0-41ebce740ca3
+		summarizeBy: none
+		sourceColumn: PurchaseOrderId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReceivedQtyKg
+		dataType: int64
+		formatString: 0
+		lineageTag: 4541bb6b-8f75-4668-8387-a674325717f4
+		summarizeBy: sum
+		sourceColumn: ReceivedQtyKg
+
+		annotation SummarizationSetBy = Automatic
+
+	column CharacteristicsTested
+		dataType: int64
+		formatString: 0
+		lineageTag: bbe27ee8-746b-4df3-8f3f-c2829b9f1b61
+		summarizeBy: sum
+		sourceColumn: CharacteristicsTested
+
+		annotation SummarizationSetBy = Automatic
+
+	column CharacteristicsFailed
+		dataType: int64
+		formatString: 0
+		lineageTag: a917fcf2-5902-4ed5-80a5-29a1d5f60c35
+		summarizeBy: sum
+		sourceColumn: CharacteristicsFailed
+
+		annotation SummarizationSetBy = Automatic
+
+	column FinalDecision
+		dataType: string
+		lineageTag: 3df27996-cc01-421e-b9fa-d2911d566c5d
+		summarizeBy: none
+		sourceColumn: FinalDecision
+
+		annotation SummarizationSetBy = Automatic
+
+	column SupplierResponseDays
+		dataType: double
+		lineageTag: 1868212d-4ac7-4ced-97b2-f584a76dea12
+		summarizeBy: sum
+		sourceColumn: SupplierResponseDays
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Inspector
+		dataType: string
+		lineageTag: b754c998-6f8f-4ed4-879a-c03b1e5c4b96
+		summarizeBy: none
+		sourceColumn: Inspector
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: b368808e-cdca-4e66-86b3-7b9d5bd3d33e
+		summarizeBy: sum
+		sourceColumn: ISOWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeekday
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c9bf13e-062d-4f4d-b812-edcb205ddac0
+		summarizeBy: sum
+		sourceColumn: ISOWeekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: fc277170-dfd4-4b41-ad01-5777128c7536
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsAccepted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fdf4753a-026b-44de-99e5-8cdcd2c999c1
+		summarizeBy: none
+		sourceColumn: IsAccepted
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsRejected
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d0617de8-f59b-46be-a532-4974abf0a862
+		summarizeBy: none
+		sourceColumn: IsRejected
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics vw_fact_raw_material_lot_disposition_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_raw_material_lot_disposition_52w"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

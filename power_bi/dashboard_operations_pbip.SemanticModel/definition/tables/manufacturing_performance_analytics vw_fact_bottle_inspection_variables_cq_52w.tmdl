@@ -1,0 +1,426 @@
+table 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w'
+	lineageTag: 3fd410e2-54df-4219-8768-30d631493546
+
+	column ProductBatch
+		dataType: string
+		lineageTag: adaf4b70-1648-45ef-9296-ac6c8544f927
+		summarizeBy: none
+		sourceColumn: ProductBatch
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkOrder
+		dataType: string
+		lineageTag: fac832b3-0ef2-4252-9d97-445e8eb76616
+		summarizeBy: none
+		sourceColumn: WorkOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductionDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ecc695ca-1572-4cbf-a5da-624d00521ba2
+		summarizeBy: none
+		sourceColumn: ProductionDate
+
+		variation Variação
+			isDefault
+			relationship: 85945075-73aa-4808-9e89-376b992b3058
+			defaultHierarchy: LocalDateTable_6d60a60d-c48b-4a9b-ae3f-747a3c5fb9cd.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Shift
+		dataType: string
+		lineageTag: ca204759-5bc2-4958-b9ef-9040a614104d
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineId
+		dataType: string
+		lineageTag: a08737b9-c75d-45a7-9776-4fc5a346ad4e
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MoldId
+		dataType: string
+		lineageTag: e995f482-878d-4ac1-bf68-71b0de2732c9
+		summarizeBy: none
+		sourceColumn: MoldId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BottleId
+		dataType: string
+		lineageTag: 37f27315-e87a-4677-9108-92cefd24de09
+		summarizeBy: none
+		sourceColumn: BottleId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Material
+		dataType: string
+		lineageTag: 03f00f18-bdff-4ffb-97cf-56529063e0ee
+		summarizeBy: none
+		sourceColumn: Material
+
+		annotation SummarizationSetBy = Automatic
+
+	column Characteristic
+		dataType: string
+		lineageTag: d1d9ae65-50a6-4778-8d8c-3743e0b0c230
+		summarizeBy: none
+		sourceColumn: Characteristic
+
+		annotation SummarizationSetBy = Automatic
+
+	column Equipment
+		dataType: string
+		lineageTag: cf76d68a-c892-4c8a-a3c0-24dd405dc4c4
+		summarizeBy: none
+		sourceColumn: Equipment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Standard
+		dataType: string
+		lineageTag: ae69fa50-c332-444c-b60f-8aca8cd61817
+		summarizeBy: none
+		sourceColumn: Standard
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit
+		dataType: string
+		lineageTag: 43f3636c-e334-4ed5-959d-da082a6640eb
+		summarizeBy: none
+		sourceColumn: Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column SampleGroup
+		dataType: int64
+		formatString: 0
+		lineageTag: cbb8da30-f578-41a3-bc09-07b29f7d2c79
+		summarizeBy: sum
+		sourceColumn: SampleGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column LSL
+		dataType: double
+		lineageTag: 01947f8c-9ef6-4303-8217-fbf3dc5e54d4
+		summarizeBy: sum
+		sourceColumn: LSL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Nominal
+		dataType: double
+		lineageTag: d02048d7-8e6d-4e11-a0da-9e95e73ced82
+		summarizeBy: sum
+		sourceColumn: Nominal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column USL
+		dataType: double
+		lineageTag: 8ae93f1a-de09-4720-b126-49d3d62d1f63
+		summarizeBy: sum
+		sourceColumn: USL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column M1
+		dataType: double
+		lineageTag: d77ba4b4-7a8e-4ad3-94a8-b661be7f2d96
+		summarizeBy: sum
+		sourceColumn: M1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column M2
+		dataType: double
+		lineageTag: 6e8bc548-a458-4c75-9ec6-67edf09fb37b
+		summarizeBy: sum
+		sourceColumn: M2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column M3
+		dataType: double
+		lineageTag: bc6ed89d-3c88-4ebd-8eed-765d7c804eeb
+		summarizeBy: sum
+		sourceColumn: M3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column M4
+		dataType: double
+		lineageTag: 365543c4-8186-4855-a19b-c72c40fdb3ea
+		summarizeBy: sum
+		sourceColumn: M4
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column M5
+		dataType: double
+		lineageTag: dd53c515-49a6-4bf5-aaca-eb33b94a221c
+		summarizeBy: sum
+		sourceColumn: M5
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column XBar
+		dataType: double
+		lineageTag: 64b2eadf-ed89-4e4b-929d-60967e392ca9
+		summarizeBy: sum
+		sourceColumn: XBar
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RangeR
+		dataType: double
+		lineageTag: c87bbb4a-4717-484d-b34b-dde68e9d0b1e
+		summarizeBy: sum
+		sourceColumn: RangeR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column StdDevS
+		dataType: double
+		lineageTag: 3247a0f4-90a2-4d81-b541-1c14de317077
+		summarizeBy: sum
+		sourceColumn: StdDevS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GroupResult
+		dataType: string
+		lineageTag: b154aeaa-cab7-4d19-91bd-912412a7c627
+		summarizeBy: none
+		sourceColumn: GroupResult
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inspector
+		dataType: string
+		lineageTag: 8684e259-6bf4-4543-8565-d847979fb7a5
+		summarizeBy: none
+		sourceColumn: Inspector
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotId
+		dataType: string
+		lineageTag: ce66a2fe-d16c-454c-8c4c-d06ba8359ac5
+		summarizeBy: none
+		sourceColumn: LotId
+
+		annotation SummarizationSetBy = Automatic
+
+	column XBarCL
+		dataType: double
+		lineageTag: 43320f2c-095a-4d9d-ac7d-77c1fc234d83
+		summarizeBy: sum
+		sourceColumn: XBarCL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RangeRCL
+		dataType: double
+		lineageTag: be0878e7-2cc1-427f-98e2-4e272f585aa6
+		summarizeBy: sum
+		sourceColumn: RangeRCL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column XBarUCL
+		dataType: double
+		lineageTag: e903979d-40e1-4b7c-bf3b-a74e057ab184
+		summarizeBy: sum
+		sourceColumn: XBarUCL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column XBarLCL
+		dataType: double
+		lineageTag: 6ff2ffc2-ae76-4c37-82b0-ddf50c75be7a
+		summarizeBy: sum
+		sourceColumn: XBarLCL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RangeRUCL
+		dataType: double
+		lineageTag: 60e955a9-d5ba-4726-a72e-877c6ebfff8a
+		summarizeBy: sum
+		sourceColumn: RangeRUCL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RangeRLCL
+		dataType: double
+		lineageTag: 1a031f03-c50a-4faa-b27e-a44e95d7f92c
+		summarizeBy: sum
+		sourceColumn: RangeRLCL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OutOfControlXBar
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 82aa513d-1459-49cc-969f-b044fc5b6081
+		summarizeBy: none
+		sourceColumn: OutOfControlXBar
+
+		annotation SummarizationSetBy = Automatic
+
+	column OutOfControlRange
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 75d1b05d-e465-41b1-8da5-44f84418a5fb
+		summarizeBy: none
+		sourceColumn: OutOfControlRange
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cp
+		dataType: double
+		lineageTag: 628fd8ea-45d9-40d9-a34f-efecbbf98e20
+		summarizeBy: sum
+		sourceColumn: Cp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Cpk
+		dataType: double
+		lineageTag: ea2995c7-0f41-4f96-82bf-fd4adc54ecb6
+		summarizeBy: sum
+		sourceColumn: Cpk
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Pp
+		dataType: double
+		lineageTag: a55d091c-52ed-4b91-a62e-39266bdf725b
+		summarizeBy: sum
+		sourceColumn: Pp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Ppk
+		dataType: double
+		lineageTag: 9c128339-fb7e-49e7-904d-0ae20d745c6c
+		summarizeBy: sum
+		sourceColumn: Ppk
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Cpm
+		dataType: double
+		lineageTag: fa6521d6-200b-443c-850e-fc61eef83cb1
+		summarizeBy: sum
+		sourceColumn: Cpm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SigmaLevel
+		dataType: double
+		lineageTag: b6839a9b-a821-41c9-8e98-a663f62f4361
+		summarizeBy: sum
+		sourceColumn: SigmaLevel
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column InspectionDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 902f9bf7-31cc-4609-8c22-aef117faaf60
+		summarizeBy: none
+		sourceColumn: InspectionDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column InspectionTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 95d3d2af-1218-41ed-9cae-09b0cc5e48d5
+		summarizeBy: none
+		sourceColumn: InspectionTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	partition 'manufacturing_performance_analytics vw_fact_bottle_inspection_variables_cq_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_bottle_inspection_variables_cq_52w"]}[Data],
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(Table.TransformColumnTypes(#"Navegação 1", {{"InspectionDateTime", type text}}, "pt-PT"), "InspectionDateTime", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"InspectionDateTime.1", "InspectionDateTime.2"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador",{{"InspectionDateTime.1", type date}, {"InspectionDateTime.2", type time}}),
+				    #"Colunas com Nome Mudado" = Table.RenameColumns(#"Tipo Alterado",{{"InspectionDateTime.1", "InspectionDate"}, {"InspectionDateTime.2", "InspectionTime"}})
+				in
+				  #"Colunas com Nome Mudado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

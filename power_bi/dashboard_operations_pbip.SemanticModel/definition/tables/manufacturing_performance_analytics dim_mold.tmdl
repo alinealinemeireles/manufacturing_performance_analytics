@@ -1,0 +1,78 @@
+table 'manufacturing_performance_analytics dim_mold'
+	lineageTag: 406a1803-17b1-4551-8128-04ec445c3f02
+
+	column MoldId
+		dataType: string
+		lineageTag: 375db0e5-5772-4f85-b00e-c837254ff05c
+		summarizeBy: none
+		sourceColumn: MoldId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineId
+		dataType: string
+		lineageTag: b28b92d5-bfb4-4151-bcc3-73c2fdb26d2d
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Process
+		dataType: string
+		lineageTag: 5f3dcb4c-2c16-4308-95e7-38b0eebe0441
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cavities
+		dataType: double
+		lineageTag: 6c73b4b5-df35-457c-b61e-7836ff5aacb1
+		summarizeBy: sum
+		sourceColumn: Cavities
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RatedCapacityPerHour
+		dataType: string
+		lineageTag: a1b3e891-2856-4711-b854-eb65b24a1634
+		summarizeBy: none
+		sourceColumn: RatedCapacityPerHour
+
+		annotation SummarizationSetBy = Automatic
+
+	column CyclesPerHour
+		dataType: double
+		lineageTag: 56275ba8-3778-43f9-aa5e-e3637966f505
+		summarizeBy: sum
+		sourceColumn: CyclesPerHour
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IdealCycleTimeSec
+		dataType: double
+		lineageTag: 4d6027c4-74fa-4656-a02a-e4306ba1510e
+		summarizeBy: sum
+		sourceColumn: IdealCycleTimeSec
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'manufacturing_performance_analytics dim_mold' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "dim_mold"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

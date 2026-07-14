@@ -1,0 +1,103 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "f73b4456465f4ad4966e",
+  "position": {
+    "x": 1434.8263473053892,
+    "y": 298.65163790066924,
+    "z": 20000,
+    "height": 300.81578020429725,
+    "width": 460.96231067277211,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_fact_production"
+                    }
+                  },
+                  "Property": "ISOWeek"
+                }
+              },
+              "queryRef": "manufacturing_performance_fact_production.ISOWeek",
+              "nativeQueryRef": "ISOWeek",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "manufacturing_performance_fact_production"
+                        }
+                      },
+                      "Property": "PlannedQty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(manufacturing_performance_fact_production.PlannedQty)",
+              "nativeQueryRef": "Soma de PlannedQty"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "manufacturing_performance_fact_production"
+                        }
+                      },
+                      "Property": "ProducedQty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(manufacturing_performance_fact_production.ProducedQty)",
+              "nativeQueryRef": "Soma de ProducedQty"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Produção Planejada vs. Real (por Semana ISO)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

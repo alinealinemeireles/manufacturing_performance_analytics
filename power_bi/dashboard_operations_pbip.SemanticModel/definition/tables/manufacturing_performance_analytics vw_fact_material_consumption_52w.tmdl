@@ -1,0 +1,147 @@
+table 'manufacturing_performance_analytics vw_fact_material_consumption_52w'
+	lineageTag: 939643c1-e990-4dcf-bca7-aac83c8d490b
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8b4bdfd5-e890-495c-837f-3d9b26d05a76
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Process
+		dataType: string
+		lineageTag: e48246e8-1a9f-41a1-964b-8fa42e99fd8e
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineId
+		dataType: string
+		lineageTag: d32f0bed-92dd-461c-be7b-3d5409647831
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shift
+		dataType: string
+		lineageTag: 3a6cd93b-e586-4397-8390-676b35b0d255
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkOrder
+		dataType: string
+		lineageTag: 791ced5b-308d-451d-92cf-601f11bb58f5
+		summarizeBy: none
+		sourceColumn: WorkOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaterialId
+		dataType: string
+		lineageTag: 985bd5d4-d491-44ba-bab9-c4f7064b9f43
+		summarizeBy: none
+		sourceColumn: MaterialId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaterialLot
+		dataType: string
+		lineageTag: 43d8f996-4c67-4c5c-bb7a-ceadb966d2a9
+		summarizeBy: none
+		sourceColumn: MaterialLot
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartWeightKg
+		dataType: double
+		lineageTag: a650c8cf-ee41-4ae0-af76-b4cdedeb6814
+		summarizeBy: sum
+		sourceColumn: StartWeightKg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EndWeightKg
+		dataType: double
+		lineageTag: fd4f51b2-0dc1-47d3-b223-f3dce6d82996
+		summarizeBy: sum
+		sourceColumn: EndWeightKg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ISOWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: c3a4c2ac-de52-4a1d-bf30-cd1f6ac6bde2
+		summarizeBy: sum
+		sourceColumn: ISOWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeekday
+		dataType: int64
+		formatString: 0
+		lineageTag: 031b6e6a-8989-4fb3-bf7c-a45105a80a43
+		summarizeBy: sum
+		sourceColumn: ISOWeekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShiftNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 4705808f-bb9c-440b-96aa-b30bef9855da
+		summarizeBy: sum
+		sourceColumn: ShiftNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaterialLotSeq
+		dataType: int64
+		formatString: 0
+		lineageTag: a0e12200-934c-4b90-a099-42dddbdbca74
+		summarizeBy: sum
+		sourceColumn: MaterialLotSeq
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotIdStart
+		dataType: string
+		lineageTag: 96b9717d-0119-4f44-9f6c-ec8ed7d537b0
+		summarizeBy: none
+		sourceColumn: LotIdStart
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotIdEnd
+		dataType: string
+		lineageTag: 79fcc9be-5f69-4d4b-92e3-0d1b9df67182
+		summarizeBy: none
+		sourceColumn: LotIdEnd
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics vw_fact_material_consumption_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_material_consumption_52w"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

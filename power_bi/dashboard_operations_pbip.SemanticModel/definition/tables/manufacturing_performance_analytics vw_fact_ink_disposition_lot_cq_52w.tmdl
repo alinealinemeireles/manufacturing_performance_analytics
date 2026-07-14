@@ -1,0 +1,227 @@
+table 'manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w'
+	lineageTag: aceb7c3c-0662-46ea-9779-a20444342236
+
+	column PrintLot
+		dataType: string
+		lineageTag: 83d6b528-1fe9-454c-af63-5dc91fcd2c56
+		summarizeBy: none
+		sourceColumn: PrintLot
+
+		annotation SummarizationSetBy = Automatic
+
+	column BottleLot
+		dataType: string
+		lineageTag: 01697a3d-6bf5-416c-9a0b-844a445e1259
+		summarizeBy: none
+		sourceColumn: BottleLot
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkOrder
+		dataType: string
+		lineageTag: d9414389-392d-41d8-a7c7-ca12d8363a51
+		summarizeBy: none
+		sourceColumn: WorkOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductionDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: aa0e8b0c-85a0-460a-8d0c-095f9c7f92ad
+		summarizeBy: none
+		sourceColumn: ProductionDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Shift
+		dataType: string
+		lineageTag: fbb927f0-6b50-4028-b0fd-88c58915ca66
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineId
+		dataType: string
+		lineageTag: 2e6e2ff9-c2cc-46a2-ab99-25d9e0fb7202
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrintToolId
+		dataType: string
+		lineageTag: 5d331845-b7cc-4e5f-b709-36afc1e395d5
+		summarizeBy: none
+		sourceColumn: PrintToolId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BottleId
+		dataType: string
+		lineageTag: 0fa0e4b7-4415-401a-83f9-e9dfba4f56d0
+		summarizeBy: none
+		sourceColumn: BottleId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorCount
+		dataType: int64
+		formatString: 0
+		lineageTag: 9af6a203-0598-478d-b12b-a0b9f4758e9c
+		summarizeBy: sum
+		sourceColumn: ColorCount
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorsUsed
+		dataType: string
+		lineageTag: b844cab0-7cef-488d-9ae6-f36180d6a0e2
+		summarizeBy: none
+		sourceColumn: ColorsUsed
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotSize
+		dataType: int64
+		formatString: 0
+		lineageTag: ca5c6977-08b8-402c-a737-64004fbf1db0
+		summarizeBy: sum
+		sourceColumn: LotSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodeLetter
+		dataType: string
+		lineageTag: d5fa96cc-4356-49f7-bcae-a7661cb7e2d1
+		summarizeBy: none
+		sourceColumn: CodeLetter
+
+		annotation SummarizationSetBy = Automatic
+
+	column SampleSize
+		dataType: int64
+		formatString: 0
+		lineageTag: f9b0b31f-5a62-46c8-93c6-02216aa5a71f
+		summarizeBy: sum
+		sourceColumn: SampleSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column CriticalDefects
+		dataType: int64
+		formatString: 0
+		lineageTag: 66020aa6-6a11-47f4-838b-72d265c41a20
+		summarizeBy: sum
+		sourceColumn: CriticalDefects
+
+		annotation SummarizationSetBy = Automatic
+
+	column MajorDefects
+		dataType: int64
+		formatString: 0
+		lineageTag: 39625c93-92cf-483b-a136-609853a607dd
+		summarizeBy: sum
+		sourceColumn: MajorDefects
+
+		annotation SummarizationSetBy = Automatic
+
+	column MinorDefects
+		dataType: int64
+		formatString: 0
+		lineageTag: 7aaea4d4-fe0a-4e85-af9e-41890dee64e8
+		summarizeBy: sum
+		sourceColumn: MinorDefects
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalSampleDefects
+		dataType: int64
+		formatString: 0
+		lineageTag: 468b14f7-b365-4651-8ff3-875ffa8670e8
+		summarizeBy: sum
+		sourceColumn: TotalSampleDefects
+
+		annotation SummarizationSetBy = Automatic
+
+	column AttributesDecision
+		dataType: string
+		lineageTag: 39dc5221-18ad-4709-a728-f8fe284b4e6f
+		summarizeBy: none
+		sourceColumn: AttributesDecision
+
+		annotation SummarizationSetBy = Automatic
+
+	column FinalLotDecision
+		dataType: string
+		lineageTag: dd02a4d7-d41b-48a6-8dab-3f3c56427d1a
+		summarizeBy: none
+		sourceColumn: FinalLotDecision
+
+		annotation SummarizationSetBy = Automatic
+
+	column Remarks
+		dataType: string
+		lineageTag: d8c7e02a-258f-4282-acf4-3aca73885e3e
+		summarizeBy: none
+		sourceColumn: Remarks
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inspector
+		dataType: string
+		lineageTag: ccfd8d8c-1968-458f-8709-1dd2671df299
+		summarizeBy: none
+		sourceColumn: Inspector
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotId
+		dataType: string
+		lineageTag: 998e6d96-4df8-4c14-abb2-58277c8ea38f
+		summarizeBy: none
+		sourceColumn: LotId
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotDecisionDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 16aa1fc6-5c45-4848-8c34-27b818dca882
+		summarizeBy: none
+		sourceColumn: LotDecisionDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LotDecisionTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 3eea8e49-22fa-411c-899a-d3b360cd2760
+		summarizeBy: none
+		sourceColumn: LotDecisionTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	partition 'manufacturing_performance_analytics vw_fact_ink_disposition_lot_cq_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_ink_disposition_lot_cq_52w"]}[Data],
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(Table.TransformColumnTypes(#"Navegação 1", {{"LotDecisionDateTime", type text}}, "pt-PT"), "LotDecisionDateTime", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"LotDecisionDateTime.1", "LotDecisionDateTime.2"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador",{{"LotDecisionDateTime.1", type date}, {"LotDecisionDateTime.2", type time}}),
+				    #"Colunas com Nome Mudado" = Table.RenameColumns(#"Tipo Alterado",{{"LotDecisionDateTime.1", "LotDecisionDate"}, {"LotDecisionDateTime.2", "LotDecisionTime"}})
+				in
+				  #"Colunas com Nome Mudado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

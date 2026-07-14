@@ -1,0 +1,139 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "548080dfd8494b72b6d9",
+  "position": {
+    "x": 1380,
+    "y": 835,
+    "z": 3000,
+    "height": 230,
+    "width": 520,
+    "tabOrder": 21000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics vw_fact_capa_52w"
+                    }
+                  },
+                  "Property": "CAPAId"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics vw_fact_capa_52w.CAPAId",
+              "nativeQueryRef": "CAPAId",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics vw_fact_capa_52w"
+                    }
+                  },
+                  "Property": "Owner"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics vw_fact_capa_52w.Owner",
+              "nativeQueryRef": "Owner",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics vw_fact_capa_52w"
+                    }
+                  },
+                  "Property": "DueDate"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics vw_fact_capa_52w.DueDate",
+              "nativeQueryRef": "DueDate",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics vw_fact_capa_52w"
+                    }
+                  },
+                  "Property": "Severity"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics vw_fact_capa_52w.Severity",
+              "nativeQueryRef": "Severity",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics vw_fact_capa_52w"
+                    }
+                  },
+                  "Property": "IsOverdue"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics vw_fact_capa_52w.IsOverdue",
+              "nativeQueryRef": "IsOverdue",
+              "active": true
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "manufacturing_performance_analytics vw_fact_capa_52w"
+                  }
+                },
+                "Property": "DueDate"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'CAPAs — Ordenadas por Vencimento (filtre IsOverdue = TRUE)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

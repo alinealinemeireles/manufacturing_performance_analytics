@@ -1,0 +1,60 @@
+table 'manufacturing_performance_analytics ml_predictions_production_forecast_history'
+	lineageTag: 34f9e9db-6658-4992-bece-9c948767149e
+
+	column WeekStart
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b5334bce-e559-49e3-a205-8f27d141a263
+		summarizeBy: none
+		sourceColumn: WeekStart
+
+		variation Variação
+			isDefault
+			relationship: c5c0affe-7793-42c0-ac6b-5c9b24ae1c8f
+			defaultHierarchy: LocalDateTable_4edabcfa-51ab-4fe1-b0bb-1a7c8a5dfbb2.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Process
+		dataType: string
+		lineageTag: a44a1bd1-c0e4-4d6b-bf6d-e6f7171c2ba5
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActualProducedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 2641510e-abe8-4686-84ea-c77668c10c1f
+		summarizeBy: sum
+		sourceColumn: ActualProducedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column PredictedProducedQty
+		dataType: double
+		lineageTag: 08d5dfdb-171a-4f5e-be8e-26eca96c92a4
+		summarizeBy: sum
+		sourceColumn: PredictedProducedQty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'manufacturing_performance_analytics ml_predictions_production_forecast_history' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "ml_predictions_production_forecast_history"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Navegação 1",{{"WeekStart", type date}})
+				in
+				  #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

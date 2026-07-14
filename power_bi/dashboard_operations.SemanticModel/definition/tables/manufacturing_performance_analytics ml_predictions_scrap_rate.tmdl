@@ -1,0 +1,52 @@
+table 'manufacturing_performance_analytics ml_predictions_scrap_rate'
+	lineageTag: 771b65c9-4d4a-431c-a4f1-88c9a58f0470
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5c50c7af-078f-4aeb-bf32-0eaf52a358fb
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variação
+			isDefault
+			relationship: 8656475f-02f4-4b63-b2dd-45bb78b73780
+			defaultHierarchy: LocalDateTable_977c4f00-6e94-4a24-a6eb-089bae20f49b.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ActualScrapRatePct
+		dataType: double
+		lineageTag: 25e116bb-068b-419e-bb42-1ae62bb5eeb4
+		summarizeBy: sum
+		sourceColumn: ActualScrapRatePct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PredictedScrapRatePct
+		dataType: double
+		lineageTag: f65a228f-2742-4d69-b3eb-c61a45b665c4
+		summarizeBy: sum
+		sourceColumn: PredictedScrapRatePct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'manufacturing_performance_analytics ml_predictions_scrap_rate' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "ml_predictions_scrap_rate"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,195 @@
+table 'manufacturing_performance_analytics vw_fact_downtime_planned_52w'
+	lineageTag: 8c399375-096a-4f30-9bd8-71371d5b2ac1
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3b0496a6-fbdf-4ac2-b7da-d113dc1a0c89
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Process
+		dataType: string
+		lineageTag: fda16c7f-6189-48a8-9ab8-618bafe1fc59
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineId
+		dataType: string
+		lineageTag: b64dd85b-d8fb-44c7-b823-491714987ec1
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shift
+		dataType: string
+		lineageTag: f9f8748b-bd07-4b5a-899a-4732d7f2bda4
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoppageStartTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 2a97d2cc-d449-4623-8107-b13df5f77ecc
+		summarizeBy: none
+		sourceColumn: StoppageStartTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column StoppageEndTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 6bb5d223-97db-480b-b0e6-4622ac6c660c
+		summarizeBy: none
+		sourceColumn: StoppageEndTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column PlannedStoppage
+		dataType: string
+		lineageTag: 4b5af9e3-9984-4a2f-bf59-4cdfea4839fe
+		summarizeBy: none
+		sourceColumn: PlannedStoppage
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoppageReason
+		dataType: string
+		lineageTag: da2212b2-e9ec-4255-995a-cc435aef6727
+		summarizeBy: none
+		sourceColumn: StoppageReason
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaintenanceTeam
+		dataType: string
+		lineageTag: 66eaccfe-ca5a-49be-aec0-7a3ccfaf5993
+		summarizeBy: none
+		sourceColumn: MaintenanceTeam
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaintenanceTechnician
+		dataType: string
+		lineageTag: 75144131-7d13-4c7a-a7fa-6de75617407b
+		summarizeBy: none
+		sourceColumn: MaintenanceTechnician
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: beec668c-5500-49da-adfe-dd68544851c2
+		summarizeBy: sum
+		sourceColumn: ISOWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeekday
+		dataType: int64
+		formatString: 0
+		lineageTag: fed32682-ec05-4839-a52d-8545e2a32843
+		summarizeBy: sum
+		sourceColumn: ISOWeekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShiftNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b24c899-6c53-469d-bb56-1e073bf2d2e0
+		summarizeBy: sum
+		sourceColumn: ShiftNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column MatchedWorkOrder
+		dataType: string
+		lineageTag: ea7743c7-b438-4d61-b8fc-1bf515f3feb1
+		summarizeBy: none
+		sourceColumn: MatchedWorkOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column LotId
+		dataType: string
+		lineageTag: efd4336f-be10-47cb-b134-fe97fd507166
+		summarizeBy: none
+		sourceColumn: LotId
+
+		annotation SummarizationSetBy = Automatic
+
+	column DowntimeDurationMin
+		dataType: double
+		lineageTag: d0ac5fbf-dde9-423e-88a6-42ae5fdb34b3
+		summarizeBy: sum
+		sourceColumn: DowntimeDurationMin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UnplannedFailure
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 76273850-2dd5-4ade-9e40-5721a7c86ffb
+		summarizeBy: none
+		sourceColumn: UnplannedFailure
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsChangeoverSetup
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 817aec66-d77a-46b7-bd27-5b6b4ec95d82
+		summarizeBy: none
+		sourceColumn: IsChangeoverSetup
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsPreventiveMaintenance
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 45c893fe-08df-4eb7-9e12-85118463188d
+		summarizeBy: none
+		sourceColumn: IsPreventiveMaintenance
+
+		annotation SummarizationSetBy = Automatic
+
+	column LeadTimeProdHours
+		dataType: double
+		lineageTag: 20b8bef2-d921-4706-b71f-7a49a4e0e44a
+		summarizeBy: sum
+		sourceColumn: LeadTimeProdHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'manufacturing_performance_analytics vw_fact_downtime_planned_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_downtime_planned_52w"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

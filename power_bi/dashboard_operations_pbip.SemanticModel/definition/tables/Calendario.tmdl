@@ -1,0 +1,94 @@
+table Calendario
+	lineageTag: b596ba71-ef3c-4131-8502-213eba5620d8
+
+	column Date
+		formatString: General Date
+		lineageTag: 1fb43290-6549-4a24-b953-c74f81b32370
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variação
+			isDefault
+			relationship: 5b427988-b896-4565-9b49-b47f3c80a93e
+			defaultHierarchy: LocalDateTable_fe3cdd8b-eeb8-41a6-9c4c-16a7a1201fdb.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		formatString: 0
+		lineageTag: 5defc3d7-acb0-446f-a1b1-9ed173530289
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Ano]
+
+		annotation SummarizationSetBy = User
+
+	column MêsNum
+		formatString: 0
+		lineageTag: 28492c0c-83bf-4251-a712-cc7377e111c5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MêsNum]
+
+		annotation SummarizationSetBy = User
+
+	column Mês
+		lineageTag: b89dc3ab-95e9-4067-9140-47888f69182f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mês]
+		sortByColumn: MêsNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Semana_ISO
+		formatString: 0
+		lineageTag: 3ad1be40-9f12-4c2a-8814-c679cfb583e4
+		summarizeBy: none
+		sourceColumn: [SemanaISO]
+
+		annotation SummarizationSetBy = User
+
+	column DiaSemana
+		lineageTag: f606ca7f-2d93-4d9b-9dc5-b5be08af589d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DiaSemana]
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy Calendário
+		lineageTag: 0ef2a36c-dd9d-4049-9975-2e466f4d5440
+
+		level Ano
+			lineageTag: 0a332848-5a0d-4471-8a8d-4f3c885ba43b
+			column: Ano
+
+		level Mês
+			lineageTag: e43c4939-ebda-48a3-881a-eb8bcf897f28
+			column: Mês
+
+		level 'Semana ISO'
+			lineageTag: 08ec0e3e-3ee3-4159-b924-fd362103e23b
+			column: Semana_ISO
+
+		level Data
+			lineageTag: c37d84b3-e593-47ff-8914-caa3c806d85c
+			column: Date
+
+	partition Calendario = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS(
+				    CALENDAR(DATE(2025,7,1), DATE(2026,7,31)),
+				    "Ano", YEAR([Date]),
+				    "MêsNum", MONTH([Date]),
+				    "Mês", FORMAT([Date], "MMM"),
+				    "SemanaISO", WEEKNUM([Date], 21),
+				    "DiaSemana", FORMAT([Date], "ddd")
+				)
+
+	annotation PBI_Id = cc6357f51ec94599a153bfe9b1cdde78
+

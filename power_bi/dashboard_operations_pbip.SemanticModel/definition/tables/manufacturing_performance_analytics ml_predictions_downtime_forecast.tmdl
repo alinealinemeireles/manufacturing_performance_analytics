@@ -1,0 +1,50 @@
+table 'manufacturing_performance_analytics ml_predictions_downtime_forecast'
+	lineageTag: 24e13979-7696-494c-9541-a7cdf099a6cb
+
+	column Process
+		dataType: string
+		lineageTag: 49c7d722-b112-4dba-af7f-dcb46086e99d
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column ForecastedDowntimeHours
+		dataType: int64
+		formatString: 0
+		lineageTag: a10f923f-60b8-4bab-ae89-a54045858fa9
+		summarizeBy: sum
+		sourceColumn: ForecastedDowntimeHours
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeneratedFrom
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8a2cd4ae-1a1f-4a04-b2fb-a47536efbbd1
+		summarizeBy: none
+		sourceColumn: GeneratedFrom
+
+		variation Variação
+			isDefault
+			relationship: f2d625c8-e6fe-4c26-9313-bd087cd4da9c
+			defaultHierarchy: LocalDateTable_ce565575-c264-4df7-9c2b-0c8b8738f54e.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'manufacturing_performance_analytics ml_predictions_downtime_forecast' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "ml_predictions_downtime_forecast"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Navegação 1",{{"GeneratedFrom", type date}})
+				in
+				  #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

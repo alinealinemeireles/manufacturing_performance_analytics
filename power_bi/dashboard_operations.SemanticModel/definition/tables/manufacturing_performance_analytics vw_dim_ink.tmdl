@@ -1,0 +1,42 @@
+table 'manufacturing_performance_analytics vw_dim_ink'
+	lineageTag: dbe91f80-5087-4b4f-92e0-1d021c421652
+
+	column PrintToolId
+		dataType: string
+		lineageTag: e182975a-f45b-4282-94cf-bd48240d11a9
+		summarizeBy: none
+		sourceColumn: PrintToolId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductId
+		dataType: string
+		lineageTag: 275c65b4-9cd3-4976-b450-724c09921da5
+		summarizeBy: none
+		sourceColumn: ProductId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColorCount
+		dataType: double
+		lineageTag: 0fe1b5f0-5348-41b9-8e75-5a7b21dc314c
+		summarizeBy: sum
+		sourceColumn: ColorCount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'manufacturing_performance_analytics vw_dim_ink' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_dim_ink"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

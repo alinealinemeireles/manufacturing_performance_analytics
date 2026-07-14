@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "73bb7b9370b44cfb9393",
+  "position": {
+    "x": 887.29834448749557,
+    "y": 283.502641775273,
+    "z": 5000,
+    "height": 318.12891863332158,
+    "width": 499.91687213807677,
+    "tabOrder": 19000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics dim_bottle_control_plan_cq"
+                    }
+                  },
+                  "Property": "Characteristic"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics dim_bottle_control_plan_cq.Characteristic",
+              "nativeQueryRef": "Characteristic",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_performance_analytics vw_dim_machine"
+                    }
+                  },
+                  "Property": "MachineId"
+                }
+              },
+              "queryRef": "manufacturing_performance_analytics vw_dim_machine.MachineId",
+              "nativeQueryRef": "MachineId",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Cpk Médio Frascos"
+                }
+              },
+              "queryRef": "_Medidas.Cpk Médio Frascos",
+              "nativeQueryRef": "Cpk Médio Frascos"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cpk Médio — Máquina × Característica (Frascos)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

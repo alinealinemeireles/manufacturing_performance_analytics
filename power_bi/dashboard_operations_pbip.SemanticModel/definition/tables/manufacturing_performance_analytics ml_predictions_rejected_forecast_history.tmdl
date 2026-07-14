@@ -1,0 +1,60 @@
+table 'manufacturing_performance_analytics ml_predictions_rejected_forecast_history'
+	lineageTag: f489ea54-9c05-4af8-a01c-293c7bee866a
+
+	column WeekStart
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 994e59ed-2581-4b0c-abfc-65eef1c3c9f3
+		summarizeBy: none
+		sourceColumn: WeekStart
+
+		variation Variação
+			isDefault
+			relationship: 621c4155-b54a-43a2-a505-218d2bfb6b13
+			defaultHierarchy: LocalDateTable_371dfa6b-17e1-4c8a-ba20-2ba4790a7698.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Process
+		dataType: string
+		lineageTag: 6f861487-bd0f-405e-ae60-328e36c0ae0c
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActualRejectedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 6df5c6bb-0e22-4840-a270-917a8c274150
+		summarizeBy: sum
+		sourceColumn: ActualRejectedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column PredictedRejectedQty
+		dataType: double
+		lineageTag: 2150ce5a-80f7-436e-9186-7d43be3ace70
+		summarizeBy: sum
+		sourceColumn: PredictedRejectedQty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'manufacturing_performance_analytics ml_predictions_rejected_forecast_history' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "ml_predictions_rejected_forecast_history"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Navegação 1",{{"WeekStart", type date}})
+				in
+				  #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

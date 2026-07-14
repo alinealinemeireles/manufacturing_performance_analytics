@@ -1,0 +1,186 @@
+table 'manufacturing_performance_analytics vw_fact_raw_material_inspection_52w'
+	lineageTag: 4bee637e-6bf7-40ee-88f7-537347ada2c5
+
+	column InspectionId
+		dataType: string
+		lineageTag: 7702a9d5-b369-402a-91bc-549edab74068
+		summarizeBy: none
+		sourceColumn: InspectionId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 01cda951-66c7-4c89-a3cc-273f223cde4e
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SupplierId
+		dataType: string
+		lineageTag: 21c25235-9ade-4eb2-9ff4-32e23d5cd841
+		summarizeBy: none
+		sourceColumn: SupplierId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Material
+		dataType: string
+		lineageTag: 1cac442b-0eff-4f91-8996-73e847337885
+		summarizeBy: none
+		sourceColumn: Material
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaterialLotId
+		dataType: string
+		lineageTag: 7a92097e-0c20-478a-8755-6d9815100672
+		summarizeBy: none
+		sourceColumn: MaterialLotId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PurchaseOrderId
+		dataType: string
+		lineageTag: f69fdb72-8ae7-4c14-a728-ee703c5ba05d
+		summarizeBy: none
+		sourceColumn: PurchaseOrderId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Characteristic
+		dataType: string
+		lineageTag: 5f8e453b-a1bc-441d-ba75-0c17aeca0721
+		summarizeBy: none
+		sourceColumn: Characteristic
+
+		annotation SummarizationSetBy = Automatic
+
+	column Standard
+		dataType: string
+		lineageTag: 946afa04-3847-4e70-a3fd-0319e84d3ace
+		summarizeBy: none
+		sourceColumn: Standard
+
+		annotation SummarizationSetBy = Automatic
+
+	column Method
+		dataType: string
+		lineageTag: 419e0a3c-a10d-4181-a89d-f4334a748160
+		summarizeBy: none
+		sourceColumn: Method
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit
+		dataType: string
+		lineageTag: 662b79ed-fbf2-4a86-9c77-443ae16a52d4
+		summarizeBy: none
+		sourceColumn: Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResultValue
+		dataType: double
+		lineageTag: ca1cf31a-48c8-4d0c-be05-af081617bc80
+		summarizeBy: sum
+		sourceColumn: ResultValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LSL
+		dataType: double
+		lineageTag: 747ee6b6-8568-4fe2-be00-b2688f836a0d
+		summarizeBy: sum
+		sourceColumn: LSL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Nominal
+		dataType: double
+		lineageTag: a91f5247-ac72-4616-b846-3f8bc183b29f
+		summarizeBy: sum
+		sourceColumn: Nominal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column USL
+		dataType: double
+		lineageTag: a7d95dcb-f36f-41f7-9254-c85ad7df77f6
+		summarizeBy: sum
+		sourceColumn: USL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Result
+		dataType: string
+		lineageTag: 0ca555e7-86f7-4034-920b-69298cf312cb
+		summarizeBy: none
+		sourceColumn: Result
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inspector
+		dataType: string
+		lineageTag: b6289aab-fbd9-4b40-8041-0afce600c2be
+		summarizeBy: none
+		sourceColumn: Inspector
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: ad05d6bb-dd22-46ae-ae30-22662f3e29d1
+		summarizeBy: sum
+		sourceColumn: ISOWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISOWeekday
+		dataType: int64
+		formatString: 0
+		lineageTag: 30fb73f1-2bc0-4ac9-868a-73cf1aa2b8e4
+		summarizeBy: sum
+		sourceColumn: ISOWeekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: bbc3eb8b-af13-4c32-8751-1d9213933d19
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaterialCharacteristicKey = 'manufacturing_performance_analytics vw_fact_raw_material_inspection_52w'[Material] & "|" & 'manufacturing_performance_analytics vw_fact_raw_material_inspection_52w'[Characteristic]
+		dataType: string
+		isHidden
+		lineageTag: 019d1833-1605-49c2-967b-85641a55066e
+
+	partition 'manufacturing_performance_analytics vw_fact_raw_material_inspection_52w' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_fact_raw_material_inspection_52w"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

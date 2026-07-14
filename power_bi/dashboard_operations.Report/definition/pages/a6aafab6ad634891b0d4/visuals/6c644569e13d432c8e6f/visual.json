@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "6c644569e13d432c8e6f",
+  "position": {
+    "x": 1075.5787249031348,
+    "y": 114.69954209228601,
+    "z": 1000,
+    "height": 129.84853821768229,
+    "width": 493.42444522719268,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "% Downtime Planejado"
+                }
+              },
+              "queryRef": "_Medidas.% Downtime Planejado",
+              "nativeQueryRef": "% Downtime Planejado"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "% Downtime Não Planejado"
+                }
+              },
+              "queryRef": "_Medidas.% Downtime Não Planejado",
+              "nativeQueryRef": "% Downtime Não Planejado"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'% Planejado vs. Não Planejado'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

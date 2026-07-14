@@ -1,0 +1,40 @@
+table 'manufacturing_performance_analytics dim_operator'
+	lineageTag: beb0f755-854b-40b5-8741-6f2f7d9d26d1
+
+	column PersonId
+		dataType: string
+		lineageTag: f46765e7-4cb5-48de-95ef-d721f2a20566
+		summarizeBy: none
+		sourceColumn: PersonId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Process
+		dataType: string
+		lineageTag: da86d88d-b22e-40ff-8abd-745704354529
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column Role
+		dataType: string
+		lineageTag: 386711c1-a742-42e6-910b-507952f4f115
+		summarizeBy: none
+		sourceColumn: Role
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics dim_operator' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "dim_operator"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

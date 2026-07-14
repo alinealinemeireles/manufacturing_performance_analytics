@@ -1,0 +1,118 @@
+table 'manufacturing_performance_analytics dim_raw_material_control_plan'
+	lineageTag: ae2f45fb-3002-48a6-8181-c6e69b765cc4
+
+	column Material
+		dataType: string
+		lineageTag: bb585772-9267-4272-9098-63fa02f40c89
+		summarizeBy: none
+		sourceColumn: Material
+
+		annotation SummarizationSetBy = Automatic
+
+	column Characteristic
+		dataType: string
+		lineageTag: 1da24d89-12c3-451b-9bb8-9a1e0cd36880
+		summarizeBy: none
+		sourceColumn: Characteristic
+
+		annotation SummarizationSetBy = Automatic
+
+	column Standard
+		dataType: string
+		lineageTag: 0582431e-206b-43b4-9b6e-108d1a3ab6eb
+		summarizeBy: none
+		sourceColumn: Standard
+
+		annotation SummarizationSetBy = Automatic
+
+	column Method
+		dataType: string
+		lineageTag: 27a6a1e1-5e08-4f09-b9e4-0815bccdb218
+		summarizeBy: none
+		sourceColumn: Method
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit
+		dataType: string
+		lineageTag: 5690ef17-3f0a-4d8b-8e9e-9570a01204af
+		summarizeBy: none
+		sourceColumn: Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column LSL
+		dataType: double
+		lineageTag: a28d065f-5797-4674-bdd4-75c1ccee7ed8
+		summarizeBy: sum
+		sourceColumn: LSL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Nominal
+		dataType: double
+		lineageTag: a496ec0e-a00f-489d-9e5b-1fd76d7d62c6
+		summarizeBy: sum
+		sourceColumn: Nominal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column USL
+		dataType: double
+		lineageTag: 4d342545-40c9-4313-b07a-2e98b585dded
+		summarizeBy: sum
+		sourceColumn: USL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column InspectionType
+		dataType: string
+		lineageTag: 1ad718e8-a8a4-4a24-9cf7-7f4c75cee080
+		summarizeBy: none
+		sourceColumn: InspectionType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Frequency
+		dataType: string
+		lineageTag: 622dd82c-e1f4-4b1c-a502-d4a4348e8bf2
+		summarizeBy: none
+		sourceColumn: Frequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column SampleSize
+		dataType: string
+		lineageTag: 6d7efcc0-40c4-4a31-8659-5da31fff260e
+		summarizeBy: none
+		sourceColumn: SampleSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReactionPlan
+		dataType: string
+		lineageTag: b41728e7-5f2b-4863-af45-7dbef80b2eb6
+		summarizeBy: none
+		sourceColumn: ReactionPlan
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'manufacturing_performance_analytics dim_raw_material_control_plan' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "dim_raw_material_control_plan"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

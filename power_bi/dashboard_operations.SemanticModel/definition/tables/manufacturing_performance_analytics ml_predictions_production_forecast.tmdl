@@ -1,0 +1,50 @@
+table 'manufacturing_performance_analytics ml_predictions_production_forecast'
+	lineageTag: 815d1d88-177f-4216-bca5-cfcf9786a573
+
+	column Process
+		dataType: string
+		lineageTag: 201ed998-a1d6-4a19-88df-2ae8de79e8a4
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column ForecastedProducedQty
+		dataType: int64
+		formatString: 0
+		lineageTag: d387fb68-b8db-4bb2-b23e-2cf79926cd47
+		summarizeBy: sum
+		sourceColumn: ForecastedProducedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeneratedFrom
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cb950250-a0fa-4c04-b0c0-171e2e130700
+		summarizeBy: none
+		sourceColumn: GeneratedFrom
+
+		variation Variação
+			isDefault
+			relationship: c8e3c5bf-7bc5-4d9f-b2fe-f979a87edc66
+			defaultHierarchy: LocalDateTable_f73cf3ed-b14a-46c3-8c91-ded49ff54851.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'manufacturing_performance_analytics ml_predictions_production_forecast' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "ml_predictions_production_forecast"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Navegação 1",{{"GeneratedFrom", type date}})
+				in
+				  #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

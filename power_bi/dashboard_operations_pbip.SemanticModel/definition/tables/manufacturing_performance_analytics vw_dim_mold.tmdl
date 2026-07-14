@@ -1,0 +1,78 @@
+table 'manufacturing_performance_analytics vw_dim_mold'
+	lineageTag: ad72ca9a-b5d7-4970-86bf-7bb43519d713
+
+	column MoldId
+		dataType: string
+		lineageTag: 743f93dc-8774-4c9c-a853-f56c9749c696
+		summarizeBy: none
+		sourceColumn: MoldId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MachineId
+		dataType: string
+		lineageTag: 35c0e387-8998-4d2c-85b2-dea4c23fc926
+		summarizeBy: none
+		sourceColumn: MachineId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Process
+		dataType: string
+		lineageTag: 03f063a0-96da-46c3-b47a-c24a57364fe2
+		summarizeBy: none
+		sourceColumn: Process
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cavities
+		dataType: double
+		lineageTag: d9405ad4-1201-4a72-9cae-45ddc5ce788e
+		summarizeBy: sum
+		sourceColumn: Cavities
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RatedCapacityPerHour
+		dataType: string
+		lineageTag: 33a0b919-20aa-49a0-a984-e0504f0d26d0
+		summarizeBy: none
+		sourceColumn: RatedCapacityPerHour
+
+		annotation SummarizationSetBy = Automatic
+
+	column CyclesPerHour
+		dataType: double
+		lineageTag: ba9d4639-517b-404e-9f32-dfe86f3be3ce
+		summarizeBy: sum
+		sourceColumn: CyclesPerHour
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IdealCycleTimeSec
+		dataType: double
+		lineageTag: 7b542e0f-b248-41d3-acdd-15bd8ef7956e
+		summarizeBy: sum
+		sourceColumn: IdealCycleTimeSec
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'manufacturing_performance_analytics vw_dim_mold' = m
+		mode: import
+		source =
+				let
+				  Origem = MySQL.Database("localhost:3306", "manufacturing_performance_analytics"),
+				  #"Navegação 1" = Origem{[Schema = "manufacturing_performance_analytics", Item = "vw_dim_mold"]}[Data]
+				in
+				  #"Navegação 1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
